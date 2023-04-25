@@ -14,7 +14,7 @@ export function Splash() {
           </button>
         </Link>
 
-        <Link to="/signInUser">
+        <Link to="/signUpUser">
           <button type="button" class="btn btn-success">
           <i class="fa-solid fa-user"></i>          
           </button>
