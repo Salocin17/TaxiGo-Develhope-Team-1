@@ -7,8 +7,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
+import { useState } from "react"; 
 
 export function SignUpUser() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+
+    console.log("Username: ", username);
+    console.log("Password: ", password);
+
+    // codice per inviare i dati al server 
+  };
+
   return (
     <div className="container-sign-up">
     <div className="container-logo-sign-up">
@@ -24,7 +37,7 @@ export function SignUpUser() {
         </Link>
       </div>
 
-      <form className="wrapper-form">
+      <form className="wrapper-form" onSubmit={handleSubmit}>
       <div class="input-group">
 
       <div class="input-group-prepend">
@@ -37,6 +50,8 @@ export function SignUpUser() {
             class="form-control"
             id="username"
             placeholder="Enter email"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
           />
         </div>
 
@@ -51,6 +66,8 @@ export function SignUpUser() {
             class="form-control"
             id="password"
             placeholder="Enter your password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
         <button type="submit" class="btn btn-success">
