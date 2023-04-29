@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 export function SignInUser() {
   const [firstName, setFirstName] = useState("");
@@ -16,7 +17,7 @@ export function SignInUser() {
   const [email, setEmail] = useState("");
   const [emailExists, setEmailExists] = useState(false);
 
- /* useEffect(() => {
+  /* useEffect(() => {
     if (email !== "") {
       //API
         .then(response => {
@@ -40,17 +41,33 @@ export function SignInUser() {
       console.log("Passwords do not match");
       return;
     }
-  
-    console.log(`
-      First Name: ${firstName}
-      Last Name: ${lastName}
-      Date of Birth: ${dateOfBirth}
-      City: ${city}
-      Phone Number: ${phoneNumber}
-      Email: ${email}
-      Password: ${password}
-      Confirm Password: ${confirmPassword}
-    `);
+
+    const data = {
+      name: firstName,
+      surname: lastName,
+      date: dateOfBirth,
+      citta: city,
+      number: phoneNumber,
+      email: email,
+      password: password,
+    };
+
+    const jsonData = JSON.stringify(data);
+
+    fetch("http://federicov.ddns.net:3300/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: jsonData,
+      mode: 'cors',
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    console.log(data);
   };
 
   return (
@@ -157,10 +174,12 @@ export function SignInUser() {
             <div class="row">
               <div class="col-12">
                 <input
-                   type="password"
-                   className={`form-control ${password !== confirmPassword ? 'is-invalid' : ''}`}
-                   id="cofPassword"
-                   placeholder="Confirm your password"
+                  type="password"
+                  className={`form-control ${
+                    password !== confirmPassword ? "is-invalid" : ""
+                  }`}
+                  id="cofPassword"
+                  placeholder="Confirm your password"
                   value={confirmPassword}
                   onChange={(event) => setConfirmPassword(event.target.value)}
                 />
