@@ -1,0 +1,9 @@
+main {
+    position: relative;
+  }
+  
+  .sidebar {
+    top: 0;
+    height: 100%;
+  }
+  

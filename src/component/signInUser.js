@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 
 export function SignInUser() {
   const [firstName, setFirstName] = useState("");

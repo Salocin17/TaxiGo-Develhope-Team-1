@@ -70,10 +70,14 @@ export function SignUpUser() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
+
+        <Link to="/homeUser">
+         
         <button type="submit" class="btn btn-success">
           {" "}
           Sign Up{" "}
         </button>
+        </Link>
       </form>
     </div>
     </div>
