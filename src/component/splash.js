@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export function Splash() {
   return (
+    <div className="wrapper-splash">
     <div className="splash-container">
       <div className="container-logo"></div>
       <div className="container-button">
@@ -20,6 +21,7 @@ export function Splash() {
           </button>
         </Link>
       </div>
+    </div>
     </div>
   );
 }

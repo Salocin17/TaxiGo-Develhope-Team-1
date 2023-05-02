@@ -1,0 +1,155 @@
+.wrapper-navbar{
+    height: 4rem;
+    background-color: #333;
+}
+
+.wrapper-navbar-container{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.wrapper-navbar-container-logo{
+    height: 100%;
+    width: 17rem;
+    background-image: url("../Images/logo.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+   padding: 0.3rem;
+    
+}
+
+.wrapper-navbar-container-sidebar{
+    width: auto;
+    visibility:visible;
+}
+
+.link-web{
+    visibility:visible;
+}
+
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  nav li {
+    padding: 10px;
+  }
+  
+  nav li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav li a:hover {
+    color: yellow;
+  }
+  
+  
+nav li {
+    padding: 10px;
+  }
+  
+  nav li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav li a:hover {
+    color: yellow;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-menu li {
+    padding: 10px;
+  }
+  
+  .dropdown-menu li a {
+    color: white;
+  }
+  
+  .dropdown-menu li a:hover {
+    color: yellow;
+  }
+
+  .navbar-toggler {
+    visibility: hidden;
+  }
+
+  /* navbar mobile */
+@media (max-width: 1059px) {
+    .link-web{
+        visibility:hidden;
+    }
+
+    .wrapper-navbar-container-sidebar{
+        width: 5rem;
+    }
+    
+    .navbar {
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background-color: #333;
+      transition: all 0.3s ease;
+    }
+  
+    .navbar.show {
+      left: 0;
+    }
+  
+    .navbar ul {
+      flex-direction: column;
+      margin-top: 50px;
+    }
+  
+    .navbar li {
+      padding: 10px;
+      border-bottom: 1px solid white;
+    }
+  
+    .navbar li:last-child {
+      border-bottom: none;
+    }
+  
+    .navbar-toggler {
+      display: block;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      color: white;
+      background-color: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      visibility: visible;
+    }
+  }

@@ -1,6 +1,12 @@
-body{
-    position: relative;
+.wrapper{
+    height: 100vh;
+    width: 100%;
+    background-image: url("../Images/splash.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
 }
+
 .wrapper-sign-in {
     display: flex;
     flex-direction: column;

@@ -4,6 +4,8 @@ import { SignUpTaxi } from './component/signUpTaxi';
 import { SignInTaxi } from './component/signInTaxi';
 import { SignInUser } from './component/signInUser';
 import { SignUpUser } from './component/signUpUser';
+import { HomeUser } from './component/homeUser';
+import { History } from './component/history';
 
 export default function App() {
   return (
@@ -15,6 +17,8 @@ export default function App() {
           <Route exact path="/signInTaxi" element={<SignInTaxi />} />
           <Route exact path="/signInUser" element={<SignInUser />} />
           <Route exact path="/signUpUser" element={<SignUpUser />} />
+          <Route exact path="/homeUser" element={<HomeUser />} />
+          <Route exact path="/history" element={<History />} />
         </Routes>
       </div>
     </Router>
