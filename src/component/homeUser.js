@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
-import {Sidebar} from './sidebar';
+import React from 'react';
 import { MapBox } from './mapBox';
+import { Navbar } from './navBar';
 import "../css/homeUser.css";
 
 
 export function HomeUser() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  function toggleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
-  }
-
-  function closeSidebar() {
-    setIsSidebarOpen(false);
-  }
 
   return (
-    <div>
-      <header>
-        <nav>
-          <button onClick={toggleSidebar}>Apri barra laterale</button>
-        </nav>
-      </header>
+    <div className='wrapper-home'>
+      <Navbar/>
       <main>
-        <h1>Benvenuti nella pagina Home</h1>
         <MapBox/>
       </main>
-      <Sidebar isSidebarOpen={isSidebarOpen} closeSidebar={closeSidebar} />
     </div>
   );
 }

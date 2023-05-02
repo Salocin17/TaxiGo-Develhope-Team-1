@@ -1,9 +1,17 @@
 import "../css/sidebar.css";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 export function Sidebar({ isSidebarOpen, closeSidebar }) {
   return (
-    <aside className={classNames('sidebar', { 'closed': !isSidebarOpen })}>
+    <aside className={classNames("sidebar", { closed: !isSidebarOpen })}>
+      <div className="sidebar-header">
+        <div className="sidebar-header-logo">
+          
+        </div>
+        <div className="sidebar-user-info">
+          <span className="sidebar-username">Nome Utente</span>
+        </div>
+      </div>
       <button className="close-button" onClick={closeSidebar}>
         <svg viewBox="0 0 24 24" width="24" height="24">
           <path
@@ -12,13 +20,32 @@ export function Sidebar({ isSidebarOpen, closeSidebar }) {
           />
         </svg>
       </button>
-      <nav>
-        <ul>
-          <li>Link 1</li>
-          <li>Link 2</li>
-          <li>Link 3</li>
-        </ul>
-      </nav>
+      <ul>
+        <li>
+          <i className="fa fa-home"></i>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <i className="fa fa-wallet"></i>
+          <a href="#">Wallet</a>
+        </li>
+        <li>
+          <i className="fa fa-history"></i>
+          <a href="#">Storico</a>
+        </li>
+        <li>
+          <i className="fa fa-bell"></i>
+          <a href="#">Notifiche</a>
+        </li>
+        <li>
+          <i className="fa fa-cog"></i>
+          <a href="#">Impostazioni</a>
+        </li>
+        <li>
+          <i className="fa fa-sign-out"></i>
+          <a href="#">Esci</a>
+        </li>
+      </ul>
     </aside>
   );
 }

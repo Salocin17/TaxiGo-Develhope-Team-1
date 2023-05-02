@@ -23,11 +23,11 @@ export function SignUpUser() {
   };
 
   return (
+    <div className="wrapper">
     <div className="container-sign-up">
     <div className="container-logo-sign-up">
       <div className="img-sign-up"></div>
     </div>
-    <div className="wrapper">
       <div className="wrapper-header">
         <Link to="/signUpUser">
         <a href="Sign Up" className="underline-link">Sign Up</a>
@@ -73,7 +73,7 @@ export function SignUpUser() {
 
         <Link to="/homeUser">
          
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn btn-success" style={{width: '100%'}}>
           {" "}
           Sign Up{" "}
         </button>
