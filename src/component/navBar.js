@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Sidebar } from './sidebar';
 import "../css/navBar.css";
+import { Link } from "react-router-dom";
 
 export function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -21,13 +22,22 @@ export function Navbar() {
           <nav>
             <ul className="link-web">
               <li>
-                <a href="#">Home</a>
+              <Link to="/homeUser">
+              <a href="Home" className="underline-link">
+                Home
+              </a>
+            </Link>
               </li>
               <li>
                 <a href="#">Wallet</a>
               </li>
               <li>
-                <a href="#">Storico</a>
+              <Link to="/history">
+              <a href="History" className="underline-link">
+                Storico
+              </a>
+            </Link>
+                
               </li>
               <li>
                 <a href="#">Notifiche</a>

@@ -1,5 +1,6 @@
 import "../css/sidebar.css";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 export function Sidebar({ isSidebarOpen, closeSidebar }) {
   return (
@@ -23,27 +24,50 @@ export function Sidebar({ isSidebarOpen, closeSidebar }) {
       <ul>
         <li>
           <i className="fa fa-home"></i>
-          <a href="#">Home</a>
+          <Link to="/homeUser">
+              <a href="Home" >
+                Home
+              </a>
+            </Link>
         </li>
         <li>
           <i className="fa fa-wallet"></i>
-          <a href="#">Wallet</a>
+          <Link to="/">
+              <a href="Wallet" >
+                Wallet
+              </a>
+            </Link>
         </li>
         <li>
           <i className="fa fa-history"></i>
-          <a href="#">Storico</a>
+          <Link to="/history">
+              <a href="History">
+                Storico
+              </a>
+            </Link>
         </li>
         <li>
           <i className="fa fa-bell"></i>
-          <a href="#">Notifiche</a>
+          <Link to="/">
+              <a href="Notifiche" >
+                Notifiche
+              </a>
+            </Link>
         </li>
         <li>
           <i className="fa fa-cog"></i>
-          <a href="#">Impostazioni</a>
-        </li>
+          <Link to="/">
+              <a href="Impostazioni" >
+                Impostazioni
+              </a>
+            </Link>        </li>
         <li>
           <i className="fa fa-sign-out"></i>
-          <a href="#">Esci</a>
+          <Link to="/">
+              <a href="Esci" >
+                Esci
+              </a>
+            </Link>
         </li>
       </ul>
     </aside>
