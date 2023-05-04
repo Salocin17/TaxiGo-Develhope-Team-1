@@ -1,13 +1,9 @@
 .sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
+  min-width: 270px;
+  max-width: 270px;
   background-color: #31C48D;
-  z-index: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out;
+ height: 100vh;
 }
 
 .sidebar.closed {
@@ -23,7 +19,7 @@
   flex-direction: column;
 }
 
-.sidebar-header-logo{
+.sidebar-header-logo {
   height: 10rem;
   width: 10rem;
   background-image: url("../Images/logo-color.svg");
