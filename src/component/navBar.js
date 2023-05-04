@@ -1,77 +1,32 @@
 import React, { useState } from "react";
-import { Sidebar } from './sidebar';
 import "../css/navBar.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faCaretDown, faSignOut } from "@fortawesome/free-solid-svg-icons";
 
 export function Navbar() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    function toggleSidebar() {
-      setIsSidebarOpen(!isSidebarOpen);
-    }
-  
-    function closeSidebar() {
-      setIsSidebarOpen(false);
-    }
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
-    <div className="wrapper-navbar">
-      <div className="wrapper-navbar-container">
-        <div className="wrapper-navbar-container-logo"></div>
-        <div className="wrapper-navbar-container-sidebar">
-          <nav>
-            <ul className="link-web">
-              <li>
-              <Link to="/homeUser">
-              <a href="Home" className="underline-link">
-                Home
-              </a>
-            </Link>
-              </li>
-              <li>
-                <a href="#">Wallet</a>
-              </li>
-              <li>
-              <Link to="/history">
-              <a href="History" className="underline-link">
-                Storico
-              </a>
-            </Link>
-                
-              </li>
-              <li>
-                <a href="#">Notifiche</a>
-              </li>
-              <li className="dropdown">
-                <a href="#" >
-                  Account
-                  <i className="fa fa-caret-down" style={{margin:'0 0 0 0.8rem'}}></i>
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a href="#">Mio profilo</a>
-                  </li>
-                  <li>
-                    <a href="#">Impostazioni</a>
-                  </li>
-                  <li>
-                    <a href="#">Esci</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-            
-              </li>
-            </ul>
-          </nav>
-          <button className="navbar-toggler" onClick={toggleSidebar} style={{padding: "0.5rem"}}>
-              <i className="fa fa-bars" style={{color: "white"}}></i>
-            </button>
-          
+      <div className="navbar-wrapper">
+        <div className="navbar-wrapper-link">
+          <div className="user-dropdown">
+          <div className="user-icon-wrapper" onClick={toggleDropdown}>
+            <div>Nome utente</div>
+            <div><FontAwesomeIcon icon={faCaretDown} /></div>
+          </div>
+          {dropdownOpen && (
+            <div className="user-dropdown__menu">
+              <a href="#"><FontAwesomeIcon icon={faUser} /> Il mio profilo</a>
+              <a href="#"><FontAwesomeIcon icon={faSignOut} /> Esci</a>
+            </div>
+          )}
+          </div>
         </div>
-       
-          <Sidebar isSidebarOpen={isSidebarOpen} closeSidebar={closeSidebar} />
       </div>
-    </div>
   );
 }
