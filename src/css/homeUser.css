@@ -1,24 +1,33 @@
-body{
+body {
+  background: #fafafa;
+  font-family: poppins, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
   margin: 0;
-  overflow: hidden;
-  padding: 0;
+
 }
 
-.wrapper-home{
-    height: 100vh;
-    width: 100%;
-    background-image: url("../Images/splash.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+.container {
+  min-width: 100%;
+  display: flex !important;
+  min-height: 100vh;
+  justify-content: center;
+  margin: 0 0 0 -1rem;
+  flex-direction: row;
 }
 
-main {
-    position: relative;
-  }
-  
-  .sidebar {
-    top: 0;
-    height: 100%;
-  }
-  
+.container-right {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  width: 100%;
+  margin: 0 0rem 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-box{
+  min-width: 100%;
+}
