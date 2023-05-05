@@ -6,20 +6,22 @@ import SideNav, {
   NavText,
 } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import { Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   return (
     <SideNav
       onSelect={(selected) => {
         console.log(selected);
+        navigate('/'+selected)
       }}
       className='sidenav'
     >
 
       <Toggle/>
       <SideNav.Nav defaultSelected="home">
-        <NavItem eventKey="home">
+        <NavItem eventKey="homeUser">
           <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Home</NavText>
         </NavItem>
@@ -31,7 +33,7 @@ export default function Sidebar() {
           <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Storico</NavText>
         </NavItem>
-        <NavItem eventKey="logout">
+        <NavItem eventKey="account">
           <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Profilo</NavText>
         </NavItem>  
