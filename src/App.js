@@ -6,6 +6,7 @@ import { SignInUser } from './component/signInUser';
 import { SignUpUser } from './component/signUpUser';
 import { HomeUser } from './component/homeUser';
 import { History } from './component/history';
+import './css/App.css';
 
 export default function App() {
   return (
