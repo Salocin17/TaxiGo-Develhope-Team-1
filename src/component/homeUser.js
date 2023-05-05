@@ -14,7 +14,6 @@ export function HomeUser() {
       <div><Sidebar /></div>
       <div className="container-right">
         <Navbar />
-        <SearchCard />
         <div className="container-map">
           <MapBox />
         </div>

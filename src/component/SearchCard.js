@@ -5,12 +5,16 @@ import '../css/SearchCard.css'
 const SearchCard = () => {
   return (
     <Card className="fixed-bottom search-card">
+      <div className="rounded-bar" />
       <Card.Body>
-        <div className="rounded-bar"/>
         <p className="search-title">Dove vuoi andare?</p>
         <Form className="search-form">
           <Form.Group controlId="search">
-            <Form.Control type="text" placeholder="La tua destinazione" className="search-bar"/>
+            <Form.Control
+              type="text"
+              placeholder="La tua destinazione"
+              className="search-bar"
+            />
           </Form.Group>
           <Button variant="success" type="submit" className="btn-search">
             Vai!
