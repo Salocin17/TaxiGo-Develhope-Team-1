@@ -1,6 +1,5 @@
-import { MapBox } from "./mapBox";
 import { Navbar } from "./navBar";
-import { Sidebar } from "./sidebar";
+import Sidebar from "./sidebar";
 import GoogleFonts from "google-fonts";
 
 import React from "react";
@@ -16,13 +15,11 @@ export function HomeUser() {
 
   return (
     <div className="container">
-      <div><Sidebar /></div>
+      <Sidebar />
+
       <div className="container-right">
-          <Navbar />
-          <div className="container-map">
-          <MapBox/>
-            </div>
-        
+        <Navbar />
+        <div className="container-map"></div>
       </div>
     </div>
   );
