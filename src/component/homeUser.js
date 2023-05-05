@@ -4,8 +4,6 @@ import { Sidebar } from "./sidebar";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
-import SearchCard from "./SearchCard";
-import TaxiList from "./TaxiList";
 
 export function HomeUser() {
   
@@ -15,7 +13,6 @@ export function HomeUser() {
       <div><Sidebar /></div>
       <div className="container-right">
         <Navbar />
-        <TaxiList/>
         <div className="container-map">
           <MapBox />
         </div>
