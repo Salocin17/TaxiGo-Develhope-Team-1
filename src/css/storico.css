@@ -1,0 +1,11 @@
+.card .storico{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: rgba(49, 196, 141, 0.3);
+    color: black;
+}
+
+h4{
+    color:rgb(215, 82, 82);
+    float: right !important;
+}

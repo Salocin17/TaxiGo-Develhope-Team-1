@@ -5,7 +5,7 @@ import { SignInTaxi } from './component/signInTaxi';
 import { SignInUser } from './component/signInUser';
 import { SignUpUser } from './component/signUpUser';
 import { HomeUser } from './component/homeUser';
-import { History } from './component/history';
+import { Storico } from './component/storico';
 import { Account } from './component/account';
 
 export default function App() {
@@ -19,8 +19,8 @@ export default function App() {
           <Route exact path="/signInUser" element={<SignInUser />} />
           <Route exact path="/signUpUser" element={<SignUpUser />} />
           <Route exact path="/homeUser" element={<HomeUser />} />
-          <Route exact path="/history" element={<History />} />
           <Route exact path="/account" element={<Account />} />
+          <Route exact path="/storico" element={<Storico />} />
         </Routes>
       </div>
     </Router>
