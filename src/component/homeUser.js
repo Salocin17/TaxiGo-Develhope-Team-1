@@ -1,17 +1,13 @@
 import { Navbar } from "./navBar";
 import Sidebar from "./sidebar";
-import GoogleFonts from "google-fonts";
-
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
+import SearchCard from "./SearchCard";
+import { MapBox } from "./mapBox";
 
 export function HomeUser() {
-  React.useEffect(() => {
-    GoogleFonts.add({
-      Poppins: ["400", "700"],
-    });
-  }, []);
+  
 
   return (
     <div className="container">
@@ -19,7 +15,10 @@ export function HomeUser() {
 
       <div className="container-right">
         <Navbar />
-        <div className="container-map"></div>
+        <SearchCard />
+        <div className="container-map">
+          <MapBox />
+        </div>
       </div>
     </div>
   );

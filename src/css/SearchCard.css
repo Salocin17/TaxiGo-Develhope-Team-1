@@ -1,0 +1,34 @@
+.search-card {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #31C48D;
+    font-weight: 700;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar {
+    width: 100%;
+}
+
+.btn-search {
+    width: 30%;
+    padding: 0.5rem 1rem;
+}

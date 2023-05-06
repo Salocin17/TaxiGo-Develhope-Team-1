@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../css/navBar.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEur, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import ProfilePicture from "./ProfileIcon";
 
 export function Navbar() {
   return (
@@ -10,8 +11,7 @@ export function Navbar() {
         <div className="navbar-wrapper-link">
             <div className="user-icon-wrapper">
             <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style={{width: "45px"}}/>
+            <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'}/>
           </div>
               <div>Nome utente</div>
           </div>
