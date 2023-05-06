@@ -1,3 +1,7 @@
+.wrapper{
+    position: relative;
+}
+
 .wrapper-header {
     background-color: white;
     border-top-right-radius: 0.5rem;
@@ -76,6 +80,7 @@
     background-repeat: no-repeat;
     height: 12rem;
 }
+
 
 
 @media (max-width: 767px) {

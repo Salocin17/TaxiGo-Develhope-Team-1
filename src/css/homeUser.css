@@ -1,0 +1,33 @@
+body {
+  background: #fafafa;
+  font-family: poppins, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  margin: 0;
+
+}
+
+.container {
+  min-width: 100%;
+  display: flex !important;
+  min-height: 100vh;
+  justify-content: center;
+  margin: 0 0 0 -1rem;
+  flex-direction: row;
+}
+
+.container-right {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  width: 100%;
+  margin: 0 0rem 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container-box{
+  min-width: 100%;
+}
