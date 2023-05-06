@@ -6,11 +6,15 @@ import { useState } from "react";
 
 export function SignInTaxi() {
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [licence, setLicence] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [date, setDate] = useState("");
+  const [licenza, setLicenza] = useState("");
+  const [prov, setProv] = useState("");
+  const [indirizzo, setIndirizzo] = useState("");
+  const [gender, setGender] = useState("");
+  const [cellulare, setCellulare] = useState("");
+  const [cap, setCap] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -23,12 +27,15 @@ export function SignInTaxi() {
     }
 
     console.log(`
-      First Name: ${firstName}
-      Last Name: ${lastName}
-      Date of Birth: ${dateOfBirth}
+      Licenza: ${licenza}
+      Nome: ${nome}
+      Cognome: ${cognome}
+      Data di nascita: ${date}
+      Sesso: ${gender}
+      Indirizzo: ${indirizzo}
+      CAP: ${cap}
+      Cellullare: ${cellulare}
       Email: ${email}
-      N. licence: ${licence}
-      Phone Number: ${phoneNumber}
       Password: ${password}
       Confirm Password: ${confirmPassword}
     `);
@@ -36,10 +43,12 @@ export function SignInTaxi() {
   };
 
   return (
+    <div className="wrapper">
+
     <div className="container-sign-in">
       <div className="container-logo-sign-in">
         <div className="img-sign-in"></div>
-      </div>
+
       <div className="wrapper-sign-in">
         <div className="wrapper-header-sign-in">
           <Link to="/signUpTaxi">
@@ -51,108 +60,151 @@ export function SignInTaxi() {
             </a>
           </Link>
         </div>
+        <form onSubmit={handleSubmit}>
 
-        <form className="wrapper-form-sign-in" onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col">
+        <div className="wrapper-form-sign-in">
+        <div class="row">
+            <div class="col-4">
+            <label for="licenza"><b style={{color: "red"}}>*</b> N. Licenza</label>
+              <input
+                type="text"
+                class="form-control"
+                id="licenza"
+                value={licenza}
+                onChange={(event) => setLicenza(event.target.value)}
+              />
+            </div>
+          </div>
+          <div class="row">
+          <div class="col">
+          <label for="nome"><b style={{color: "red"}}>*</b> Nome</label>
               <input
                 type="name"
-                className="form-control"
-                id="firstName"
-                placeholder="First name"
-                value={firstName}
-                onChange={(event) => setFirstName(event.target.value)}
+                class="form-control"
+                id="nome"
+                value={nome}
+                onChange={(event) => setNome(event.target.value)}
               />
             </div>
-            <div className="col">
+            <div class="col">
+            <label for="cognome"><b style={{color: "red"}}>*</b> Cognome</label>
               <input
-                type="lastName"
-                className="form-control"
-                id="lastName"
-                placeholder="Last name"
-                value={lastName}
-                onChange={(event) => setLastName(event.target.value)}
+                type="cognome"
+                class="form-control"
+                id="cognome"
+                value={cognome}
+                onChange={(event) => setCognome(event.target.value)}
               />
+            </div>
+            <div className="col-3">
+            <label for="gender"><b style={{color: "red"}}>*</b> Sesso</label>
+              <select class="form-select" aria-label="Default select example" onChange={(event) => setGender(event.target.value)} value={gender}>
+                <option value="female">Femmina</option>
+                <option value="male">Maschio</option>
+              </select>
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-12">
+          <div class="row">
+            <div class="col-8">
+            <label for="date"><b style={{color: "red"}}>*</b> Data di nascita</label>
+              <input type="date" class="form-control" id="date" value={date} onChange={(event) => setDate(event.target.value)} />
+            </div>
+            <div class="col-4">
+            <label for="prov"><b style={{color: "red"}}>*</b> Provincia</label>
               <input
-                type="date"
-                className="form-control"
-                id="date"
-                placeholder="Date of birth"
-                value={dateOfBirth}
-                onChange={(event) => setDateOfBirth(event.target.value)}
+                type="text"
+                class="form-control"
+                id="prov"
+                value={prov}
+                onChange={(event) => setProv(event.target.value)}
               />
             </div>
           </div>
-
-          <div className="row">
-            <div className="col-12">
+          <div class="row">
+            <div class="col">
+            <label for="inidirizzo">Inidirizzo</label>
+              <input
+                type="name"
+                class="form-control"
+                id="inidirizzo"
+                value={indirizzo}
+                onChange={(event) => setIndirizzo(event.target.value)}
+              />
+            </div>
+            <div class="col-2">
+            <label for="cognome">CAP</label>
+              <input
+                type="name"
+                class="form-control"
+                id="via"
+                value={cap}
+                onChange={(event) => setCap(event.target.value)}
+              />
+            </div>
+            <div class="col">
+            <label for="cognome">Cellulare</label>
+              <input
+                type="telephone"
+                class="form-control"
+                id="tel"
+                value={cellulare}
+                onChange={(event) => setCellulare(event.target.value)}
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+            <label for="email"><b style={{color: "red"}}>*</b> Email</label>
               <input
                 type="email"
-                className="form-control"
+                class="form-control"
                 id="email"
-                placeholder="Your account email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
               />
             </div>
           </div>
-
-          <div className="row">
-            <div className="col">
-              <input
-                type="name"
-                className="form-control"
-                id="licence"
-                placeholder="Valid licence"
-                value={licence}
-                onChange={(event) => setLicence(event.target.value)}
-              />
-            </div>
-            <div className="col">
-              <input
-                type="telephone"
-                className="form-control"
-                id="tel"
-                placeholder="Phone number"
-                value={phoneNumber}
-                onChange={(event) => setPhoneNumber(event.target.value)}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
+          <div class="row">
+            <div class="col">
+            <label for="prov"><b style={{color: "red"}}>*</b> Password</label>
               <input
                 type="password"
-                className="form-control"
+                class="form-control"
                 id="password"
                 placeholder="Password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
               />
             </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
+            <div class="col">
+            <label for="prov"><b style={{color: "red"}}>*</b> Conferma password</label>
               <input
                 type="password"
+                class="form-control"
                 className={`form-control ${password !== confirmPassword ? 'is-invalid' : ''}`}
                 id="cofPassword"
-                placeholder="Confirm password"
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
               />
-            </div>
           </div>
-          <button type="submit" className="btn btn-success">
+          </div>
+          <label for="prov" style={{color: "red", fontSize: "0.7rem"}}>* I campi contrassegnati sono obbligatori</label>
+
+          <button type="submit" class="btn btn-success">
             Sign In
           </button>
+        </div>
         </form>
+
+        <button type="submit" class="btn btn-danger">
+          <i class="fab fa-google"></i> Connect with Google
+        </button>
       </div>
+
+      </div>
+  
+    </div>
     </div>
   );
 }
