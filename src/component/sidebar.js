@@ -12,6 +12,10 @@ import { useNavigate } from "react-router-dom";
 export default function Sidebar() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState('homeUser');
+  /* if (selected !== selected) {
+        setSelected(selected);
+        navigate('/'+selected)
+      }*/
   return (
     <SideNav
       onSelect={(selected) => {
@@ -20,6 +24,8 @@ export default function Sidebar() {
         navigate('/'+selected)
       }}
       className='sidenav'
+
+      
     >
 
       <Toggle/>
