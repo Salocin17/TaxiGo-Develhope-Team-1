@@ -2,10 +2,18 @@ import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import '../css/taxiprofilecard.css';
 import { FaTaxi } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const UserProfileCard = () => {
 
-const handleConfirm = () => {}
+const handleConfirm = () => {
+  Swal.fire({
+    title: "Prenotazione Confermata",
+    text: "Il tuo Taxi saràa presto da te",
+    icon: "success",
+    confirmButtonText: "Ottimo!",
+  });
+}
 
   return (
     <div className="fixed-bottom ">
