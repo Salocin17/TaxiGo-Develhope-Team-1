@@ -6,7 +6,7 @@ import "../css/homeUser.css";
 import SearchCard from "./SearchCard";
 import { MapBox } from "./mapBox";
 import TaxiList from './TaxiList'
-import UserProfileCard from "./TaxiProfileCard";
+import TaxiProfileCard from "./TaxiProfileCard";
 
 
 export function HomeUser() {
@@ -18,7 +18,7 @@ export function HomeUser() {
 
       <div className="container-right">
         <Navbar />  
-        <UserProfileCard />  
+        <SearchCard />  
         <div className="container-map">
           <MapBox />
         </div>

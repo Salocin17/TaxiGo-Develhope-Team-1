@@ -4,7 +4,7 @@ import '../css/taxiprofilecard.css';
 import { FaTaxi } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const UserProfileCard = () => {
+const TaxiProfileCard = () => {
 
 const handleConfirm = () => {
   Swal.fire({
@@ -53,4 +53,4 @@ const handleConfirm = () => {
   );
 };
 
-export default UserProfileCard;
+export default TaxiProfileCard;
