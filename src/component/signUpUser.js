@@ -28,6 +28,9 @@ export function SignUpUser() {
     <div className="container-logo-sign-up">
       <div className="img-sign-up"></div>
     </div>
+    <Link to="/"  style={{textDecoration:"none",color:"white"}}>
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i><b> Back</b>
+        </Link>
       <div className="wrapper-header">
         <Link to="/signUpUser">
         <a href="Sign Up" className="underline-link">Sign Up</a>

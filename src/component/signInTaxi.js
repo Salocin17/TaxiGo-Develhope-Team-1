@@ -50,6 +50,9 @@ export function SignInTaxi() {
         <div className="img-sign-in"></div>
 
       <div className="wrapper-sign-in">
+      <Link to="/"  style={{textDecoration:"none",color:"white"}}>
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i><b> Back</b>
+        </Link>
         <div className="wrapper-header-sign-in">
           <Link to="/signUpTaxi">
             <a href="Sign Up">Sign Up</a>

@@ -97,7 +97,6 @@
     .container-sign-in {
         width: 90%;
         left: 50%;
-        top: 40%;
         transform: translate(-50%, -50%);
     }
 }

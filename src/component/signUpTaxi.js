@@ -23,11 +23,15 @@ export function SignUpTaxi() {
   };
 
   return (
+    <div className="wrapper">
+
     <div className="container-sign-up">
       <div className="container-logo-sign-up">
         <div className="img-sign-up"></div>
       </div>
-      <div className="wrapper">
+      <Link to="/"  style={{textDecoration:"none",color:"white"}}>
+        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i><b> Back</b>
+        </Link>
         <div className="wrapper-header">
           <Link to="/signUpTaxi">
             <a href="Sign Up" className="underline-link">
