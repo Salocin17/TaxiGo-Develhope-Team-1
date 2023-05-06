@@ -17,8 +17,7 @@ export function HomeUser() {
       <Sidebar />
 
       <div className="container-right">
-        <Navbar />  
-        <UserProfileCard />   
+        <Navbar />    
         <div className="container-map">
           <MapBox />
         </div>
