@@ -75,13 +75,14 @@ body{
 
 .container-logo-sign-in {
     align-self: center;
-    width: 11rem;
 }
 
 .img-sign-in {
     background-image: url("../Images/logo-color.svg");
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
     height: 12rem;
 }
 
