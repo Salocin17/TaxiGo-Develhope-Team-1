@@ -15,9 +15,9 @@ export function Navbar() {
           </div>
               <div>Nome utente</div>
           </div>
+          <Link to="/" style={{textDecoration: "none", color: "black", fontSize: "1.2rem"}}>
           <div  className="user-icon-wrapper"> Esci <FontAwesomeIcon icon={faSignOut} /></div>
-
-           
+          </Link>
         </div>
       </div>
   );

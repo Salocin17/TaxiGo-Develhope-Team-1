@@ -6,22 +6,22 @@ import { Link } from "react-router-dom";
 export function Splash() {
   return (
     <div className="wrapper-splash">
-    <div className="splash-container">
-      <div className="container-logo"></div>
-      <div className="container-button">
-        <Link to="/signUpTaxi">
-          <button type="button" class="btn btn-success">
-          <i class="fa-sharp fa-solid fa-taxi"></i>
-          </button>
-        </Link>
+      <div className="splash-container">
+        <div className="container-logo"></div>
+        <div className="container-button">
+          <Link to="/signUpTaxi">
+            <button type="button" class="btn btn-success">
+              <i class="fa-sharp fa-solid fa-taxi"></i>
+            </button>
+          </Link>
 
-        <Link to="/signUpUser">
-          <button type="button" class="btn btn-success">
-          <i class="fa-solid fa-user"></i>          
-          </button>
-        </Link>
+          <Link to="/signUpUser">
+            <button type="button" class="btn btn-success">
+              <i class="fa-solid fa-user"></i>
+            </button>
+          </Link>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

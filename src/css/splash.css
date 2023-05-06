@@ -1,6 +1,5 @@
 .wrapper-splash {
     height: 100vh;
-    width: 100%;
     background-image: url("../Images/splash.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,11 +17,14 @@
     transform: translate(-50%, -50%);
     width:25rem;
     justify-content: center;
+    overflow-x: hidden;
   }
 
   .container-logo{
     height:22rem;
     background-image: url("../Images/logo-color.svg");
+    background-position: center center;
+    background-origin: content-box;
     background-size: cover;
     background-repeat: no-repeat
 
@@ -47,4 +49,20 @@
   .container-button button:hover{
     background-color: #1F7E5B;
     border-color: #1F7E5B;
+  }
+
+  @media (max-width: 576px) {
+    .container-logo {
+      height: 20rem;
+      background-size: contain;
+    }
+    .wrapper-splash{
+      width: 100%;
+    }
+    .splash-container{
+      width: 14rem;
+    }
+    .container-button{
+      margin-top: -4rem;
+    }
   }
