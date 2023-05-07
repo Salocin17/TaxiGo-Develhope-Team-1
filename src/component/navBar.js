@@ -10,8 +10,8 @@ export function Navbar() {
       <div className="navbar-wrapper">
         <div className="navbar-wrapper-link">
             <div className="user-icon-wrapper">
-            <div class="card-body text-center">
-            <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} style={{marginRight:"0.5rem"}}/>
+            <div class="card-body text-center" style={{marginRight:"0.5rem"}}>
+            <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
           </div>
               <div>Nome utente</div>
           </div>
