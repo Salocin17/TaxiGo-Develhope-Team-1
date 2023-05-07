@@ -5,6 +5,27 @@
     color: black;
 }
 
+.completata{
+    float: right !important;
+}
+
+.container-box{
+    width: 100%;
+    margin-top: 5rem;
+}
+
+.container-box-nav{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.react-datepicker-wrapper {
+    width: auto !important;
+}
+
 h4{
     color:rgb(215, 82, 82);
     float: right !important;

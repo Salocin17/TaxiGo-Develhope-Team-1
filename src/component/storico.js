@@ -4,12 +4,20 @@ import Sidebar from "./sidebar";
 import "../css/homeUser.css";
 import "../css/storico.css";
 import { PaymentHistory } from './paymentHistory';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export function Storico() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+function handleDateChange(date) {
+  setSelectedDate(date);
+}
+
   const [payments, setPayments] = useState([
-    { date: '01-04-2022', taxiCompany: 'Yellow Cab', origin: 'JFK Airport', destination: 'Manhattan', price: '$50.00', departureTime: '10:00 a.m', arrivalTime: '13:09 p.m' },
-    { date: '12-09-2021', taxiCompany: 'Uber', origin: 'LaGuardia Airport', destination: 'Brooklyn', price: '$35.00', departureTime: '04:00 a.m', arrivalTime: '10:34 p.m'  },
-    { date: '23-12-2019', taxiCompany: 'Lyft', origin: 'Newark Airport', destination: 'Jersey City', price: '$45.00' , departureTime: '15:00 p.m', arrivalTime: '22:15 p.m' },
+    { date: '2023-05-07', taxiCompany: 'Yellow Cab', origin: 'JFK Airport', destination: 'Manhattan', price: '50.00', departureTime: '10:00 a.m', arrivalTime: '13:09 p.m' },
+    { date: '2023-04-22', taxiCompany: 'Uber', origin: 'LaGuardia Airport', destination: 'Brooklyn', price: '35.00', departureTime: '04:00 a.m', arrivalTime: '10:34 p.m'  },
+    { date: '2023-03-10', taxiCompany: 'Lyft', origin: 'Newark Airport', destination: 'Jersey City', price: '45.00' , departureTime: '15:00 p.m', arrivalTime: '22:15 p.m' },
   ]);
 
   return (
@@ -19,7 +27,17 @@ export function Storico() {
     <div className="container-right">
       <Navbar />
     <div className="container-box">
-      <PaymentHistory payments={payments} />
+    <div className="container-box-nav">
+  <h2>Storico</h2>
+  <DatePicker
+    selected={selectedDate}
+    onChange={handleDateChange}
+    dateFormat="yyyy-MM-dd"
+    isClearable
+    placeholderText="Select a date"
+   />
+</div>
+<PaymentHistory payments={payments} selectedDate={selectedDate} />
     </div>
     </div>
 </div>

@@ -19,7 +19,7 @@ export function HomeUser() {
       <div className="container-right">
         <Navbar />  
         <SearchCard />  
-        <div className="container-map">
+        <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
           <MapBox />
         </div>
       </div>
