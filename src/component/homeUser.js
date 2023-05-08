@@ -7,6 +7,8 @@ import SearchCard from "./SearchCard";
 import { MapBox } from "./mapBox";
 import TaxiList from './TaxiList'
 import TaxiProfileCard from "./TaxiProfileCard";
+import RideTimer from "./RideTimer";
+import FeedbackCard from "./FeedbackCard";
 
 
 export function HomeUser() {
@@ -18,7 +20,6 @@ export function HomeUser() {
 
       <div className="container-right">
         <Navbar />  
-        <TaxiList />  
         <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
           <MapBox />
         </div>
