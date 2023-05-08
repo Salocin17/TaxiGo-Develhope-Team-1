@@ -18,7 +18,7 @@ export function HomeUser() {
 
       <div className="container-right">
         <Navbar />  
-        <SearchCard />  
+        <TaxiList />  
         <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
           <MapBox />
         </div>

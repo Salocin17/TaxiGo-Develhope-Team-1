@@ -7,6 +7,9 @@ import { SignUpUser } from './component/signUpUser';
 import { HomeUser } from './component/homeUser';
 import { Storico } from './component/storico';
 import { Account } from './component/account';
+import { HomeTaxi } from './component/HomeTaxi';
+import { TaxiStorico } from './component/TaxiStorico';
+import {TaxiAccount} from './component/TaxiAccount';
 
 export default function App() {
   return (
@@ -19,8 +22,11 @@ export default function App() {
           <Route exact path="/signInUser" element={<SignInUser />} />
           <Route exact path="/signUpUser" element={<SignUpUser />} />
           <Route exact path="/homeUser" element={<HomeUser />} />
+          <Route exact path="/homeTaxi" element={<HomeTaxi />} />
           <Route exact path="/account" element={<Account />} />
           <Route exact path="/storico" element={<Storico />} />
+          <Route exact path="/TaxiStorico" element={<TaxiStorico />} />
+          <Route exact path="/TaxiAccount" element={<TaxiAccount/>} />
         </Routes>
       </div>
     </Router>
