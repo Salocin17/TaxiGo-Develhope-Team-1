@@ -37,14 +37,12 @@ body {
   height: auto;
   justify-content: space-between;
 }
-.main__logos__icons__bnb-icon {
-  width: 2.5rem;
-}
-.main__logos__icons__mobile-rabbit-icon {
-  width: 1.7rem;
-}
-.main__logos__icons__purple-rabbit {
-  width: 1.8rem;
+.main__logos__contenent{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:1rem;
+  align-items: center;
 }
 .main__logos__mainlogo {
   align-self: center;
@@ -213,6 +211,13 @@ body {
   padding: 1rem;
   width: 23rem;
   flex-direction: column;
+}
+.main__buttons__content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:1rem;
+  flex-wrap: wrap;
 }
 
 .main__element {
