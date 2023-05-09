@@ -42,7 +42,7 @@ export default function SidebarTaxi() {
           <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Storico</NavText>
         </NavItem>
-        <NavItem eventKey="account" selected={selected === 'account'}>
+        <NavItem eventKey="TaxiAccount" selected={selected === 'account'}>
           <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Profilo</NavText>
         </NavItem>  

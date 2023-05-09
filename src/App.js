@@ -7,15 +7,9 @@ import { SignUpUser } from './component/signUpUser';
 import { HomeUser } from './component/homeUser';
 import { Storico } from './component/storico';
 import { Account } from './component/account';
-<<<<<<< HEAD
-import { HomeTaxi } from './component/homeTaxi';
-import { StoricoTaxi } from './component/storicoTaxi';
-
-=======
 import { HomeTaxi } from './component/HomeTaxi';
-import { TaxiStorico } from './component/TaxiStorico';
+import { StoricoTaxi } from './component/storicoTaxi';
 import {TaxiAccount} from './component/TaxiAccount';
->>>>>>> 36b4bdbda13d7ec621848e4a85482dcbeb61b978
 
 export default function App() {
   return (
@@ -31,13 +25,8 @@ export default function App() {
           <Route exact path="/homeTaxi" element={<HomeTaxi />} />
           <Route exact path="/account" element={<Account />} />
           <Route exact path="/storico" element={<Storico />} />
-<<<<<<< HEAD
-          <Route exact path="/homeTaxi" element={<HomeTaxi />} />
           <Route exact path="/storicoTaxi" element={<StoricoTaxi />} />
-=======
-          <Route exact path="/TaxiStorico" element={<TaxiStorico />} />
           <Route exact path="/TaxiAccount" element={<TaxiAccount/>} />
->>>>>>> 36b4bdbda13d7ec621848e4a85482dcbeb61b978
         </Routes>
       </div>
     </Router>

@@ -1,5 +1,5 @@
 import { Navbar } from "./navBar";
-import TaxiSidebar from "./TaxiSidebar";
+import SidebarTaxi from "./sidebarTaxi";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
@@ -9,7 +9,7 @@ import { MapBox } from "./mapBox";
 export function HomeTaxi() {
     return (
         <div className="container">
-            <TaxiSidebar />
+            <SidebarTaxi />
 
             <div className="container-right">
                 <Navbar />

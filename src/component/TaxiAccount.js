@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "./navBar";
-import TaxiSidebar from "./TaxiSidebar";
+import TaxiSidebar from "./sidebarTaxi";
 
 export const TaxiAccount = () => {
   return (
