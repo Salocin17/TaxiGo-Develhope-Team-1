@@ -234,9 +234,6 @@ export function SignInUser() {
             </div>
             </form>
 
-            <button type="submit" class="btn btn-danger">
-              <i class="fab fa-google"></i> Connect with Google
-            </button>
           </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ export function SignUpTaxi() {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper-signUp">
 
     <div className="container-sign-up">
       <div className="container-logo-sign-up">
@@ -32,7 +32,7 @@ export function SignUpTaxi() {
       <Link to="/"  style={{textDecoration:"none",color:"white"}}>
         <i class="fa fa-chevron-circle-left" aria-hidden="true"></i><b> Back</b>
         </Link>
-        <div className="wrapper-header">
+        <div className="wrapper-header-sign-up">
           <Link to="/signUpTaxi">
             <a href="Sign Up" className="underline-link">
               Sign Up
@@ -43,7 +43,7 @@ export function SignUpTaxi() {
           </Link>
         </div>
 
-        <form className="wrapper-form" onSubmit={handleSubmit}>
+        <form className="wrapper-form-sign-up" onSubmit={handleSubmit}>
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
