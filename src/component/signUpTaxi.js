@@ -77,10 +77,13 @@ export function SignUpTaxi() {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-success">
+          
+        <Link to="/homeTaxi">
+          <button type="submit" className="btn btn-success" style={{width: '100%'}}>
             {" "}
             Sign Up{" "}
           </button>
+          </Link>
         </form>
       </div>
     </div>
