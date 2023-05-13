@@ -26,22 +26,29 @@ export function SignInTaxi() {
       return;
     }
 
-    console.log(`
-      Licenza: ${licenza}
-      Nome: ${nome}
-      Cognome: ${cognome}
-      Data di nascita: ${date}
-      Sesso: ${gender}
-      Indirizzo: ${indirizzo}
-      CAP: ${cap}
-      Cellullare: ${cellulare}
-      Email: ${email}
-      Password: ${password}
-      Confirm Password: ${confirmPassword}
-    `);
-  
-  };
+    const data = {
+      email,
+      password,
+      first_name: nome,
+      last_name: cognome,
+      birth: date,
+      city: indirizzo,
+      province: cap,
+      number: cellulare,
+      license: licenza
+    }
 
+    fetch("http://federicov.ddns.net:3300/api/taxiDrivers", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'}, 
+      body: JSON.stringify(data)
+    }).then(res => {
+        console.log(res)
+    })
+
+  };
+ 
+ 
   return (
     <div className="wrapper">
 

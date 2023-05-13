@@ -3,22 +3,7 @@ import { Card, ListGroup } from "react-bootstrap";
 import { FaTaxi } from "react-icons/fa";
 import '../css/TaxiList.css'
 
-const itemList = [
-  {
-    name: "Mario",
-    distance: "0.2 Km",
-    price: "25.00",
-    time: "5 min",
-  },
-  {
-    name: "Mario",
-    distance: "0.2 Km",
-    price: "25.00",
-    time: "5 min",
-  },
-];
-
-const TaxiList = () => {
+const TaxiList = (List) => {
 
     const handleSelect = () => {
         console.log('hello');
@@ -30,7 +15,7 @@ const TaxiList = () => {
       <Card.Body>
         <Card.Title>Taxi disponibili</Card.Title>
         <ListGroup variant="flush">
-          {itemList.map((item, index) => (
+          {List.map((item, index) => (
             <ListGroup.Item key={index} className="taxi-list" onClick={handleSelect} style={{cursor: 'pointer'}}>
               <FaTaxi size={30} className="mr-3" />
               <div>

@@ -13,13 +13,17 @@ import FeedbackCard from "./FeedbackCard";
 
 export function HomeUser() {
   
-
   return (
     <div className="container">
       <Sidebar />
 
       <div className="container-right">
         <Navbar />  
+        {/* <SearchCard /> */}
+        {/* <TaxiList /> */}
+        {/* <TaxiProfileCard/> */}
+        {/* <RideTimer/> */}
+        {/* <FeedbackCard/> */}
         <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
           <MapBox />
         </div>

@@ -4,6 +4,9 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
 import { MapBox } from "./mapBox";
+import UserList from "./UserList";
+import UserRequest from "./UserRequest";
+import TaxiRideTimer from "./TaxiRideTimer";
 
 
 export function HomeTaxi() {

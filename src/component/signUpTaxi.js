@@ -14,7 +14,26 @@ export function SignUpTaxi() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formValues);
+    
+    const data = {
+      type: false,
+      email: formValues.email,
+      password: formValues.password,
+    }
+
+    fetch("http://federicov.ddns.net:3300/api/auth/login", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(res => {
+      res.json().then(json => {
+        localStorage.setItem("token", json.token);
+      })
+    })
+
+
+    
+
   };
 
   const handleChange = (event) => {
@@ -78,12 +97,12 @@ export function SignUpTaxi() {
             />
           </div>
           
-        <Link to="/homeTaxi">
+        {/* <Link to="/homeTaxi"> */}
           <button type="submit" className="btn btn-success" style={{width: '100%'}}>
             {" "}
             Sign Up{" "}
           </button>
-          </Link>
+          {/* </Link> */}
         </form>
       </div>
     </div>

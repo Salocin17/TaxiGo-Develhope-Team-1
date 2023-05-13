@@ -1,15 +1,18 @@
 import { Navbar } from "./navBar";
-import SidebarTaxi from "./sidebarTaxi";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
 import { MapBox } from "./mapBox";
+import UserList from "./UserList";
+import UserRequest from "./UserRequest";
+import TaxiRideTimer from "./TaxiRideTimer";
+import SidebarTaxi from "./sidebarTaxi";
 
 
 export function HomeTaxi() {
     return (
         <div className="container">
-            <SidebarTaxi />
+            <SidebarTaxi/>
 
             <div className="container-right">
                 <Navbar />
