@@ -1,0 +1,35 @@
+const express = require("express");
+const app = express.Router();
+const Joi = require("joi");
+const { User, Request } = require("../../db");
+const { outError } = require("../../utility/errors");
+const { authUser } = require("../../middleware/authUser");
+
+
+app.post("/", authUser(), async (req, res)=>{ 
+    const schema = Joi.object().keys({
+        destination: Joi.string().required(),
+        id: Joi.string().required(),
+    });
+
+    try{
+        const {destination, id} = await schema.validateAsync(req.body);
+
+        const {_id, street} = await User.findOne({_id : req.user._id})
+
+        const departure = street
+        const user = _id
+        const taxiDriver = id
+
+        const data = {departure, destination, taxiDriver, user }
+
+        const request = await Request.create(data);
+
+        return res.status(201).json({ request });
+
+    }catch(error){
+        outError(error)(req, res)
+    }
+})
+
+module.exports = app
