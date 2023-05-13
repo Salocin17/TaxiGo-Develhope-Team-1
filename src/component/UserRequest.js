@@ -5,7 +5,19 @@ import '../css/taxiprofilecard.css';
 const UserRequest = () => {
 
     const handleConfirm = () => {
-        
+        const token = localStorage.getItem("token")
+
+        fetch("http://federicov.ddns.net:3300/api/route", {
+            method: "POST",
+            body: {
+                id: "_id",
+            },
+            headers: {
+                'authorization': `Bearer ${token}`,
+            }
+           
+        }).then(res => res.json())
+            .then(json => console.log(json))
     }
 
     return (

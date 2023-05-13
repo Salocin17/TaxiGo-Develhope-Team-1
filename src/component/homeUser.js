@@ -4,7 +4,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
 import SearchCard from "./SearchCard";
-import { MapBox } from "./mapBox";
 import TaxiList from './TaxiList'
 import TaxiProfileCard from "./TaxiProfileCard";
 import RideTimer from "./RideTimer";
@@ -12,6 +11,7 @@ import FeedbackCard from "./FeedbackCard";
 
 
 export function HomeUser() {
+
   
   return (
     <div className="container">
@@ -25,7 +25,6 @@ export function HomeUser() {
         {/* <RideTimer/> */}
         {/* <FeedbackCard/> */}
         <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
-          <MapBox />
         </div>
       </div>
     </div>

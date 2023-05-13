@@ -5,6 +5,7 @@ export function MapBox() {
   const mapContainer = useRef(null);
   const [map, setMap] = useState(null);
   const [key, setKey] = useState(Date.now());
+ 
 
   useEffect(() => {
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg';
@@ -25,11 +26,12 @@ export function MapBox() {
     setKey(Date.now());
   }
 
+
   useEffect(() => {
     regenerateMap();
   }, []);
 
   return (
-    <div key={key} ref={mapContainer} style={{ height: '100vh', width: '100vh', overflow: 'hidden'}} />
+    <div key={key} ref={mapContainer} style={{ height: '100vh', width: '100vh', overflow: 'hidden' }} />
   );
 }
