@@ -16,7 +16,6 @@ export function SignInUser() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [emailExists, setEmailExists] = useState(false);
 
   /* useEffect(() => {
     if (email !== "") {
@@ -31,30 +30,31 @@ export function SignInUser() {
   }, [email]);*/
 
   const handleSubmit = (event) => {
-    /*event.preventDefault();
-    if (!emailExists) {
-      // Invia i dati di registrazione al server
-    } else {
-      // Visualizza un messaggio di errore
-    }*/
     event.preventDefault();
     if (password !== confirmPassword) {
       console.log("Passwords do not match");
       return;
     }
 
-    console.log(`
-    Nome: ${nome}
-    Cognome: ${cognome}
-    Data di nascita: ${date}
-    Sesso: ${gender}
-    Indirizzo: ${indirizzo}
-    CAP: ${cap}
-    Cellullare: ${cellulare}
-    Email: ${email}
-    Password: ${password}
-    Confirm Password: ${confirmPassword}
-  `);
+    const data = {
+      email,
+      password,
+      first_name: nome,
+      last_name: cognome,
+      birth: date,
+      city: indirizzo,
+      province: cap,
+      number: cellulare,
+    }
+
+    fetch("http://federicov.ddns.net:3300/api/users", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'}, 
+      body: JSON.stringify(data)
+    }).then(res => {
+        console.log(res)
+    })
+
 
   };
 
