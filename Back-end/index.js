@@ -21,6 +21,6 @@ app.use("/api", require("./api"));
 
 db.connect();
 
-app.listen(process.env.SERVER_PORT, "10.0.0.21" , () => {
+app.listen(process.env.SERVER_PORT, () => {
     console.log(`Server listen on port ${process.env.SERVER_PORT}`);
 });
