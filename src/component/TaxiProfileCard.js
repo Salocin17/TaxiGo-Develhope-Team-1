@@ -13,6 +13,22 @@ const handleConfirm = () => {
     icon: "success",
     confirmButtonText: "Ottimo!",
   });
+
+  const token = localStorage.getItem("token")
+    
+  fetch("http://federicov.ddns.net:3300/api/request", {
+    method: "POST",
+    headers: {
+        'authorization': `Bearer ${token}`,
+    },
+    body: {
+      destination: "destinazione",
+      _id: "taxi id"
+    }
+   
+  }).then(res => res.json())
+      .then(json => console.log(json))
+
 }
 
   return (
