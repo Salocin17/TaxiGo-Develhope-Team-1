@@ -28,4 +28,5 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  overflow: hidden;
 }

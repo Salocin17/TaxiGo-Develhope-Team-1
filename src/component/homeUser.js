@@ -45,7 +45,7 @@ export function HomeUser() {
         <TaxiProfileCard/>
         {/* <RideTimer/> */}
         {/* <FeedbackCard/> */}
-        <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
+        <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem", width:"100%"}}>
           <MapBox />
         </div>
       </div>

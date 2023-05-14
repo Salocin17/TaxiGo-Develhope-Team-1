@@ -32,6 +32,6 @@ export function MapBox() {
   }, []);
 
   return (
-    <div key={key} ref={mapContainer} style={{ height: '100vh', width: '100vh', overflow: 'hidden' }} />
+    <div key={key} ref={mapContainer} style={{ height: '100vh', width: '100%', overflow: 'hidden' }} />
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../css/paymentCard.css";
 import {
   faEye,
   faEyeSlash,
@@ -19,69 +20,43 @@ export function PaymentCard({ payment }) {
     <Card
       style={{
         marginTop: "2rem",
-        marginBottom: "2rem",
         color: "black",
-        backgroundColor: "rgba(49, 196, 141, 0.3)",
+        boxShadow: "1px 1px 3px rgba(0,0,0,.1)",
+        border: "none",
       }}
     >
-      <Card.Body>
-        <div
-          className="d-flex justify-content-between"
-          style={{ flexWrap: "wrap" }}
-        >
-          <div>
-            <Card.Title style={{ textAlign: "left" }}>
-              {payment.date}
-            </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              <FontAwesomeIcon icon={faTaxi} size="sm"style={{marginRight:"0.3rem"}}/>
-               {payment.taxiCompany}
-            </Card.Subtitle>
-          </div>
-          {showDetails ? (
-            <div
-              className="d-flex align-items-center"
-              onClick={closeClick}
-              style={{ gap: "0.5rem" }}
-            >
-              <FontAwesomeIcon icon={faEyeSlash} size="lg" className="mr-2" />
-              <span>Close</span>
-            </div>
-          ) : (
-            <div
-              className="d-flex align-items-center"
-              onClick={handleClick}
-              style={{ gap: "0.5rem" }}
-            >
-              <FontAwesomeIcon icon={faEye} size="lg" className="mr-2" />
+      <Card.Body
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          padding: "1rem 0rem 0rem 1rem",
+        }}
+      >
+        <div className="img"></div>
 
-              <span>Details</span>
-            </div>
-          )}
+        <div className="viewDetails">
+          <p>
+            {payment.origin} {payment.departureTime}
+          </p>
+          <p>
+            {payment.destination} {payment.arrivalTime}
+          </p>
         </div>
-        {showDetails && (
-          <div className="viewDetails">
-            <hr />
-            <p>
-              <FontAwesomeIcon icon={faStopCircle} size="sm" /> Origin
-              <br />
-              <strong>
-                {payment.origin} {payment.departureTime}
-              </strong>
-            </p>
-            <p>
-              <FontAwesomeIcon icon={faMapMarker} size="sm" /> Destination
-              <br />
-              <strong>
-                {payment.destination} {payment.arrivalTime}
-              </strong>
-            </p>
-            <h4>
-              <strong>Price:</strong> {payment.price}
-            </h4>
-          </div>
-        )}
       </Card.Body>
+      <div className="container-group">
+        <div className="containerCard">
+          <div className="img2"></div>
+          <h5 style={{ fontSize: "1.2rem" }}>
+            {" "}
+            $ <strong>{payment.price}</strong>
+          </h5>
+        </div>
+        <div className={`confermato ${payment.state}`}>
+          <strong>
+            <h5>{payment.state}</h5>
+          </strong>
+        </div>
+      </div>
     </Card>
   );
 }
