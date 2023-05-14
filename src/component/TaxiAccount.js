@@ -1,11 +1,11 @@
 import React from "react";
 import { Navbar } from "./navBar";
-import Sidebar from "./sidebar";
+import TaxiSidebar from "./sidebarTaxi";
 
-export const Account = () => {
+export const TaxiAccount = () => {
   return (
     <div className="container">
-      <Sidebar />
+      <TaxiSidebar />
 
       <div className="container-right">
         <Navbar />

@@ -7,7 +7,7 @@ import { PaymentHistory } from './paymentHistory';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export function Storico() {
+export function StoricoTaxi() {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
 function handleDateChange(date) {

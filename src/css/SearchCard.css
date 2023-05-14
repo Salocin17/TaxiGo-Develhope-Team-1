@@ -1,0 +1,41 @@
+.search-card {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.search-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #31C48D;
+    font-weight: 700;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar {
+    width: 100%;
+}
+
+.btn-search {
+    width: 30%;
+    padding: 0.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+    .search-card {
+        width: 50%;
+        }
+}

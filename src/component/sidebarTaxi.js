@@ -9,9 +9,9 @@ import SideNav, {
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useNavigate } from "react-router-dom";
 
-export default function Sidebar() {
+export default function SidebarTaxi() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState('homeUser');
+  const [selected, setSelected] = useState('homeTaxi');
   /* if (selected !== selected) {
         setSelected(selected);
         navigate('/'+selected)
@@ -30,7 +30,7 @@ export default function Sidebar() {
 
       <Toggle/>
       <SideNav.Nav defaultSelected="/">
-        <NavItem eventKey="homeUser" selected={selected === 'homeUser'}>
+        <NavItem eventKey="homeTaxi" selected={selected === 'homeTaxi'}>
           <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Home</NavText>
         </NavItem>
@@ -38,11 +38,11 @@ export default function Sidebar() {
           <NavIcon> <i className="fa fa-wallet" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Wallet</NavText>
         </NavItem>        
-        <NavItem eventKey="storico" selected={selected === 'storico'}>
+        <NavItem eventKey="storicoTaxi" selected={selected === 'storicoTaxi'}>
           <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Storico</NavText>
         </NavItem>
-        <NavItem eventKey="account" selected={selected === 'account'}>
+        <NavItem eventKey="TaxiAccount" selected={selected === 'account'}>
           <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em"}}></i></NavIcon>
           <NavText>Profilo</NavText>
         </NavItem>  

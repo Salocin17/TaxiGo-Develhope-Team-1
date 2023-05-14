@@ -1,0 +1,233 @@
+:root {
+  --colors-white: #fff;
+  --colors-primary: #31C48D;
+  --colors-secondary: #1F7E5B;
+  --colors-text: #111111;
+  --colors-border: #fafafa;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: Poppins, sans-serif;
+}
+
+.main__logos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+}
+.main__logos__title {
+  align-self: flex-start;
+  color: var(--colors-secondary);
+}
+.main__logos__title p {
+  margin: auto auto auto;
+  font-weight: 700;
+}
+.main__logos__icons {
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+.main__logos__contenent{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:1rem;
+  align-items: center;
+}
+.main__logos__mainlogo {
+  align-self: center;
+}
+.main__logos__mainlogo__icon {
+  width: 11rem;
+}
+.main__icons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+}
+.main__icons .boxheader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 17rem;
+}
+.main__icons p {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--colors-secondary);
+}
+.main__icons__socials, .main__icons__utils, .main__icons__other {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.main__forms {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+  gap: 1.5rem;
+}
+
+.main__typography {
+  font-family: Poppins, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+}
+.main__typography__header {
+  align-self: flex-start;
+  color: var(--colors-secondary);
+}
+.main__typography__header p {
+  margin: auto auto auto;
+  font-weight: 700;
+}
+.main__typography__title64 h1 {
+  margin: 0 0;
+  color: var(--colors-primary);
+}
+.main__typography__title64 p {
+  margin: 0 0;
+  color: var(--colors-text);
+}
+.main__typography__title40 h2 {
+  margin: 0 0;
+  color: var(--colors-secondary);
+}
+.main__typography__title40 p {
+  margin: 0 0;
+  color: var(--colors-text);
+}
+.main__typography__subtitle20 h3 {
+  margin: 0 0;
+  color: var(--colors-secondary);
+}
+.main__typography__subtitle20 p {
+  margin: 0 0;
+  color: var(--colors-text);
+}
+.main__typography__parag16 p {
+  margin: 0 0;
+  color: var(--colors-text);
+}
+.main__typography__parag16 p {
+  margin: 0 0;
+  color: var(--colors-text);
+}
+.main__brandColors {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+  flex-direction: column;
+}
+.main__brandColors__colorContainer {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.main__brandColors__colorContainer__square {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--colors-text);
+}
+.main__brandColors__colorContainer__square .color-1 {
+  background-color: white;
+  border: 1px solid var(--colors-text);
+
+}
+.main__brandColors__colorContainer__square .color-2 {
+  background-color: #fafafa;
+  border: 1px solid var(--colors-text);
+}
+.main__brandColors__colorContainer__square .color-3 {
+  background-color: #CFD2D5;
+}
+.main__brandColors__colorContainer__square .color-4 {
+  background-color: #31C48D;
+}
+.main__brandColors__colorContainer__square .color-5 {
+  background-color: #1F7E5B;
+}
+.main__brandColors__colorContainer__square .color-6 {
+  background-color: #111111;
+}
+.main__brandColors__colorContainer__square .color-7 {
+  background-color: #7BD9B6;
+}
+.main__brandColors__colorContainer__square div {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+  background-color: blue;
+}
+
+.principal__container {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.main__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+  flex-direction: column;
+}
+.main__buttons__content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:1rem;
+  flex-wrap: wrap;
+}
+
+.main__element {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid var(--colors-secondary);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 23rem;
+  gap: 1.5rem;
+}
