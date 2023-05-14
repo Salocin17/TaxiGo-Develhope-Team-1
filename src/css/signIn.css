@@ -1,15 +1,24 @@
 .wrapper{
+    background-color: #31C48D;
+    height: 20.5rem;
+    background-image: url("../Images/citta1.png");
     width: 100%;
-    background-image: url("../Images/splash.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    padding: 2rem;
+    animation:  animazione 10s linear infinite;
+}
+
+@keyframes animazione {
+    0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
 }
 
 .wrapper-sign-in {
     display: flex;
     flex-direction: column;
+    width: 70%;
 }
 
 .wrapper-header-sign-in {
@@ -32,7 +41,7 @@
     font-weight: 900;
 }
 
-.wrapper-header-sign-in a[href='Sign Up'] {
+.wrapper-header-sign-in a[href='Sign In'] {
     color: #C8C7CC;
     text-decoration: none !important;
 }
@@ -55,10 +64,6 @@
     justify-content: flex-end;
 }
 
-.btn-danger {
-    margin: 1rem 0rem 0 0rem;
-}
-
 .input-group-prepend {
     align-self: center;
 }
@@ -71,9 +76,8 @@
 .container-sign-in {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
     align-items: center;
+    padding: 6rem;
 }
 
 .container-logo-sign-in {
@@ -81,10 +85,25 @@
 }
 
 .img-sign-in {
-    background-image: url("../Images/logo-color.svg");
+    background-image: url("../Images/logo2.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     background-origin: content-box;
-    height: 12rem;
+    height: 8rem;
+    width: 8rem;
+}
+
+@media (max-width: 768px) {
+    .wrapper-header-sign-in{
+        justify-content: center;
+    }
+    .container-sign-in{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .wrapper-sign-up {
+        width: 100%;
+    }
 }

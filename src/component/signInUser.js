@@ -2,32 +2,30 @@ import "../css/signIn.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Snackbar } from "react-bootstrap";
 
 export function SignInUser() {
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
   const [date, setDate] = useState("");
   const [prov, setProv] = useState("");
-  const [indirizzo, setIndirizzo] = useState("");
+  const [citta, setCitta] = useState("");
   const [gender, setGender] = useState("");
   const [cellulare, setCellulare] = useState("");
   const [cap, setCap] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  /* useEffect(() => {
-    if (email !== "") {
-      //API
-        .then(response => {
-          setEmailExists(response.data.exists);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
     }
-  }, [email]);*/
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,44 +40,55 @@ export function SignInUser() {
       first_name: nome,
       last_name: cognome,
       birth: date,
-      city: indirizzo,
+      city: citta,
       province: cap,
       number: cellulare,
-    }
+    };
 
     fetch("http://federicov.ddns.net:3300/api/users", {
       method: "POST",
-      headers: {'Content-Type': 'application/json'}, 
-      body: JSON.stringify(data)
-    }).then(res => {
-        console.log(res)
-    })
-
-
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }).then((res) => {
+      if (res.status === 500) {
+        const snackbar = document.createElement("div");
+        snackbar.className = "alert alert-danger";
+        snackbar.role = "alert";
+        snackbar.textContent = "L'utente è già registrato.";
+        document.body.appendChild(snackbar);
+      } else if (res.status === 200) {
+        window.location.href = "/signInUser";
+      }
+    });
   };
 
   return (
     <div className="wrapper">
-
-    <div className="container-sign-in">
-      <div className="container-logo-sign-in">
+      <div className="container-sign-in">
         <div className="img-sign-in"></div>
-          <div className="wrapper-sign-in">
-          <Link to="/"  style={{textDecoration:"none",color:"white"}}>
-        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i><b> Back</b>
-        </Link>
-            <div className="wrapper-header-sign-in">
-              <Link to="/signUpUser">
-                <a href="Sign Up">Sign Up</a>
-              </Link>
-              <Link to="/signInUser">
-                <a href="Sign In" className="underline-link">
-                  Sign In
-                </a>
-              </Link>
-            </div>
-            <form onSubmit={handleSubmit}>
-
+        <div className="wrapper-sign-in">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+            <b> Back</b>
+          </Link>
+          <div className="wrapper-header-sign-in">
+            <Link to="/signInUser">
+              <a href="Sign Up" className="underline-link">
+                Registrati
+              </a>
+            </Link>
+            <Link to="/signUpUser">
+              <a
+                href="Sign In"
+                style={{
+                  display: windowWidth <= 768 ? "none" : "inline-block",
+                }}
+              >
+                Accedi
+              </a>
+            </Link>
+          </div>
+          <form onSubmit={handleSubmit}>
             <div className="wrapper-form-sign-in">
               <div class="row">
                 <div class="col">
@@ -92,6 +101,7 @@ export function SignInUser() {
                     id="nome"
                     value={nome}
                     onChange={(event) => setNome(event.target.value)}
+                    required
                   />
                 </div>
                 <div class="col">
@@ -104,6 +114,7 @@ export function SignInUser() {
                     id="cognome"
                     value={cognome}
                     onChange={(event) => setCognome(event.target.value)}
+                    required
                   />
                 </div>
                 <div className="col-3">
@@ -115,6 +126,7 @@ export function SignInUser() {
                     aria-label="Default select example"
                     onChange={(event) => setGender(event.target.value)}
                     value={gender}
+                    required
                   >
                     <option value="female">Femmina</option>
                     <option value="male">Maschio</option>
@@ -133,6 +145,7 @@ export function SignInUser() {
                     id="date"
                     value={date}
                     onChange={(event) => setDate(event.target.value)}
+                    required
                   />
                 </div>
                 <div class="col-4">
@@ -145,18 +158,19 @@ export function SignInUser() {
                     id="prov"
                     value={prov}
                     onChange={(event) => setProv(event.target.value)}
+                    required
                   />
                 </div>
               </div>
               <div class="row">
                 <div class="col">
-                  <label for="inidirizzo">Inidirizzo</label>
+                  <label for="citta">Comune residenza</label>
                   <input
                     type="name"
                     class="form-control"
-                    id="inidirizzo"
-                    value={indirizzo}
-                    onChange={(event) => setIndirizzo(event.target.value)}
+                    id="citta"
+                    value={citta}
+                    onChange={(event) => setCitta(event.target.value)}
                   />
                 </div>
                 <div class="col-2">
@@ -191,6 +205,7 @@ export function SignInUser() {
                     id="email"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -206,6 +221,7 @@ export function SignInUser() {
                     placeholder="Password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
+                    required
                   />
                 </div>
                 <div class="col">
@@ -221,6 +237,7 @@ export function SignInUser() {
                     id="cofPassword"
                     value={confirmPassword}
                     onChange={(event) => setConfirmPassword(event.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -229,15 +246,12 @@ export function SignInUser() {
               </label>
 
               <button type="submit" class="btn btn-success">
-                Sign In
+                Registrati
               </button>
             </div>
-            </form>
-
-          </div>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
-
