@@ -1,50 +1,96 @@
 .wrapper-splash {
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  background-color: #31C48D;
+
+}
+
+.wrapper-splash-animation {
+  background-image: url("../Images/citta1.png");
+  animation: animazione 50s linear infinite;
+  height: 25rem;
+  background-position:bottom;
+}
+
+.wrapper-splash-animation-2 {
+  background-image: url("../Images/citta2.png");
+  animation: animazione 20s linear infinite;
+  height: 25rem;
+  background-position:bottom;
+}
+
+@keyframes animazione {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  flex-wrap: nowrap;
+  top: 30%;
+  left: 50%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.container-logo {
+  height: 22rem;
+  background-image: url("../Images/logo-color.svg");
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.container-button {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-self: center;
+}
+
+.container-button button {
+  margin-top: 2rem;
+  width: 5rem;
+  height: 3rem;
+  background-color: white;
+  border-color: white;
+  color: #1F7E5B;
+}
+
+.container-button button:hover {
+  background-color: #1F7E5B;
+  border-color: #1F7E5B;
+}
+
+@media (max-width: 576px) {
+  .container-logo {
+    height: 18rem;
+    background-size: contain;
+  }
+
+  .wrapper-splash {
     width: 100%;
-    background-image: url("../Images/splash.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
   }
 
-  .splash-container{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    flex-wrap: nowrap;
-    top: 30%;
-    left: 50%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    width:25rem;
-    justify-content: center;
+  .splash-container {
+    width: 14rem;
   }
 
-  .container-logo{
-    height:22rem;
-    background-image: url("../Images/logo-color.svg");
-    background-size: cover;
-    background-repeat: no-repeat
-
+  .container-button {
+    margin-top: -4rem;
   }
-
-  .container-button{
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    align-self: center;
-  }
-
-  .container-button button{
-    margin-top: 2rem;
-    width: 5rem;
-    height: 3rem;
-    background-color: white;
-    border-color: white;
-    color: #1F7E5B;
-  }
-
-  .container-button button:hover{
-    background-color: #1F7E5B;
-    border-color: #1F7E5B;
-  }
+}
