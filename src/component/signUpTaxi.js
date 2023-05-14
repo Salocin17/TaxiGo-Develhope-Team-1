@@ -21,7 +21,7 @@ export function SignUpTaxi() {
       password: formValues.password,
     }
 
-    fetch("http://federicov.ddns.net:3300/api/auth/login", {
+    fetch("http://localhost:3300/api/auth/login", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Card, Form, Button } from "react-bootstrap";
 import '../css/SearchCard.css'
 
-const SearchCard = () => {
+const SearchCard = ({onValueChange}) => {
+
+  function changeCard() {
+    onValueChange(1);
+  }
+
   return (
+    
     <Card className="fixed-bottom search-card">
       <Card.Body>
         <div className="rounded-bar"/>
@@ -12,12 +18,13 @@ const SearchCard = () => {
           <Form.Group controlId="search">
             <Form.Control type="text" placeholder="La tua destinazione" className="search-bar"/>
           </Form.Group>
-          <Button variant="success" type="submit" className="btn-search">
+          <Button variant="success" className="btn-search" onClick={changeCard}>
             Vai!
           </Button>
         </Form>
       </Card.Body>
     </Card>
+   
   );
 };
 

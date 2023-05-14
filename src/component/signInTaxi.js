@@ -38,7 +38,7 @@ export function SignInTaxi() {
       license: licenza
     }
 
-    fetch("http://federicov.ddns.net:3300/api/taxiDrivers", {
+    fetch("http://localhost:3300/api/taxiDrivers", {
       method: "POST",
       headers: {'Content-Type': 'application/json'}, 
       body: JSON.stringify(data)

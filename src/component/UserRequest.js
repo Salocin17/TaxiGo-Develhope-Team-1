@@ -2,12 +2,12 @@ import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import '../css/taxiprofilecard.css';
 
-const UserRequest = () => {
+const UserRequest = ({onValueChange}) => {
 
     const handleConfirm = () => {
         const token = localStorage.getItem("token")
 
-        fetch("http://federicov.ddns.net:3300/api/route", {
+        fetch("http://localhost:3300/api/route", {
             method: "POST",
             body: {
                 id: "_id",
@@ -18,6 +18,11 @@ const UserRequest = () => {
            
         }).then(res => res.json())
             .then(json => console.log(json))
+        onValueChange(2);
+    }
+
+    const handleReject = () => {
+        onValueChange(0);
     }
 
     return (
@@ -25,13 +30,13 @@ const UserRequest = () => {
             <Card className="taxi-profile-card">
                 <Card.Body>
                     <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
-                        <span className="fs-3 fw-bold">Hai una nuova richiesta!</span>
+                        <span className="fs-3 fw-bold">La tua richiesta!</span>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
                         <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
                         <div>
                             <div>
-                                <h6 className="mb-1">Indirizzo</h6>
+                                <h6 className="mb-1">Destinazione</h6>
                                 <span className="ml-2 fs-5 fw-semibold">Via Roma</span>
                             </div>
                         </div>
@@ -44,7 +49,7 @@ const UserRequest = () => {
                     </div>
                     <div className="d-flex mt-4 align-items-center justify-content-center gap-3">
                         <Button variant="success" onClick={handleConfirm}>Accetta</Button>
-                        <Button variant="danger">Rifiuta</Button>
+                        <Button variant="danger" onClick={handleReject}>Rifiuta</Button>
                     </div>
                 </Card.Body>
             </Card>

@@ -20,14 +20,14 @@ const itemList = [
 
 
 
-const UserList = () => {
+const UserList = ({onValueChange}) => {
     
     useEffect(() => {
 
         const token = localStorage.getItem("token")
 
         // setInterval(() => {
-            fetch("http://federicov.ddns.net:3300/api/request", {
+        fetch("http://localhost:3300/api/request", {
                 method: "GET",
                 headers: {
                     'authorization': `Bearer ${token}`,
@@ -40,7 +40,7 @@ const UserList = () => {
     },[])
 
     const handleSelect = () => {
-        console.log('hello');
+        onValueChange(1);
     }
 
 
