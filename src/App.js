@@ -7,7 +7,7 @@ import { SignUpUser } from './component/signUpUser';
 import { HomeUser } from './component/homeUser';
 import { Storico } from './component/storico';
 import { Account } from './component/account';
-import { HomeTaxi } from './component/HomeTaxi';
+import { HomeTaxi } from './component/homeTaxi';
 import { StoricoTaxi } from './component/storicoTaxi';
 import {TaxiAccount} from './component/TaxiAccount';
 
