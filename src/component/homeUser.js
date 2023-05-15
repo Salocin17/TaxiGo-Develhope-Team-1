@@ -13,7 +13,7 @@ import { MapBox } from "./mapBoxUser";
 
 export function HomeUser() {
 
-    const [active, setActive] = useState(2)
+    const [active, setActive] = useState(0)
 
   const street = "San Cataldo"
 
@@ -56,7 +56,7 @@ export function HomeUser() {
         {active === 3 && <RideTimer onValueChange={handleValueChange} street={street} /> }
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} /> }
         
-        <div className="container-map" style={{paddingTop:"3rem", paddingBottom:"3rem"}}>
+        <div className="container-map" >
           <MapBox />
         </div>
       </div>
