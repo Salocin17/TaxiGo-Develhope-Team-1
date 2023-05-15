@@ -1,7 +1,7 @@
 import "../css/signUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faLock, faClose } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -10,6 +10,7 @@ export function SignUpUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -18,6 +19,16 @@ export function SignUpUser() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    let timeout;
+    if (showSnackbar) {
+      timeout = setTimeout(() => {
+        setShowSnackbar(false);
+      }, 2000);
+    }
+    return () => clearTimeout(timeout);
+  }, [showSnackbar]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,7 +39,7 @@ export function SignUpUser() {
       password,
     };
 
-    fetch("http://federicov.ddns.net:3300/api/auth/login", {
+    fetch("http://localhost:3300/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -38,19 +49,30 @@ export function SignUpUser() {
           localStorage.setItem("token", json.token);
         });
         window.location.href = "/homeUser";
-      }else{
-        const snackbar = document.createElement("div");
-        snackbar.className = "alert alert-danger";
-        snackbar.role = "alert";
-        snackbar.textContent = "Credenziali errate";
-        document.body.appendChild(snackbar);
+      } else {
+        setShowSnackbar(true);
       }
     });
-  }
+  };
 
   return (
     <div className="wrapper-signUp">
       <div className="container-sign-up">
+        {showSnackbar && (
+          <div
+            className={`alert alert-danger alert-dismissible fade show${showSnackbar ? ' slide-down'  : ' hidden'}`}
+            role="alert" style={{width:"53%", position: 'fixed', top: "2rem", zIndex: 9999 }}
+          >
+            Credenziali errate
+            <FontAwesomeIcon icon={faClose}  style={{float:"right", marginTop:"0.3rem"}}
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setShowSnackbar(false)}
+            />
+          </div>
+        )}
         <div className="img-sign-up"></div>
         <div className="wrapper-sign-up">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
