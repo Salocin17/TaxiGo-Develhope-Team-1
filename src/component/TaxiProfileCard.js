@@ -3,8 +3,11 @@ import ProfilePicture from "./ProfileIcon";
 import '../css/taxiprofilecard.css';
 import { FaTaxi } from "react-icons/fa";
 import Swal from "sweetalert2";
+import React, {useEffect, useState} from 'react';
 
-const TaxiProfileCard = () => {
+const TaxiProfileCard = ({onValueChange}) => {
+
+  
 
 const handleConfirm = () => {
   Swal.fire({
@@ -16,7 +19,7 @@ const handleConfirm = () => {
 
   const token = localStorage.getItem("token")
     
-  fetch("http://federicov.ddns.net:3300/api/request", {
+  fetch("http://localhost:3300/api/request", {
     method: "POST",
     headers: {
         'authorization': `Bearer ${token}`,
@@ -29,9 +32,12 @@ const handleConfirm = () => {
   }).then(res => res.json())
       .then(json => console.log(json))
 
+
+  onValueChange(3);
 }
 
   return (
+    
     <div className="fixed-bottom ">
       <Card className="taxi-profile-card">
         <Card.Body>

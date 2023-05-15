@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { MdPlace } from "react-icons/md";
 import '../css/ridetimer.css'
 
-function RideTimer({ via }) {
+function RideTimer({ street, onValueChange }) {
     const [time, setTime] = useState(0);
 
     useEffect(() => {
@@ -13,23 +13,30 @@ function RideTimer({ via }) {
         return () => clearInterval(interval);
     }, []);
 
+    
+
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
 
+    function changeCard() {
+        onValueChange(4);
+    }
 
     return (
+        
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body >
                 <Card.Title className='ride-timer-title fs-3'>A breve sarai a destinazione!</Card.Title>
                 <div className='ride-timer-container'>
-                    <Card.Text className='fs-3 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{via}</Card.Text>
-                    <Button className='align-self-center' variant="success">{`${formatTime(time)}`}</Button>
+                    <Card.Text className='fs-3 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{street}</Card.Text>
+                    <Button onClick={changeCard} className='align-self-center' variant="success">{`${formatTime(time)}`}</Button>
                 </div>
             </Card.Body>
         </Card>
+    
     );
 }
 

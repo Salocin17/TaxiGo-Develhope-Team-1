@@ -1,11 +1,13 @@
 import { Card, Button, Form } from 'react-bootstrap';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ProfilePicture from './ProfileIcon';
 import '../css/Feedback.css';
 import Swal from "sweetalert2"
 
-function FeedbackCard({nome}) {
+function FeedbackCard({ nome, onValueChange }) {
     const [rating, setRating] = useState(null);
+
+    
 
     const handleRatingChange = (event) => {
         setRating(Number(event.target.value));
@@ -19,9 +21,12 @@ function FeedbackCard({nome}) {
             icon: "success",
             confirmButtonText: "Chiudi",
         });
+
+        onValueChange(0);
     };
 
     return (
+       
         <Card className='fixed-bottom feedback-card'>
             <Card.Body className='d-flex-column feedback-container'>
                 <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
@@ -46,6 +51,7 @@ function FeedbackCard({nome}) {
                 </Form>
             </Card.Body>
         </Card>
+        
     );
 }
 
