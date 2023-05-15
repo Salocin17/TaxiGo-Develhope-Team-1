@@ -13,7 +13,7 @@ import { MapBox } from "./mapBoxUser";
 
 export function HomeUser() {
 
-    const [active, setActive] = useState(2)
+    const [active, setActive] = useState(0)
 
   const street = "San Cataldo"
 
