@@ -1,44 +1,37 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import '../css/mapBox.css';
-import "mapbox-gl/dist/mapbox-gl.css"
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg';
 
 export function MapBox() {
   const mapContainer = useRef(null);
   const [map, setMap] = useState(null);
+  const [key, setKey] = useState(Date.now());
+ 
 
   useEffect(() => {
-    const initializeMap = ({ setMap, mapContainer }) => {
-      const map = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: "mapbox://styles/mapbox/streets-v12",
-        center: [9.1859243, 45.4654219],
-        zoom: 15,
-        containerStyle: {
-          position: "absolute",
-          width: '100%',
-          height: '100%'
-        },
-      });
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg';
 
-      const marker = new mapboxgl.Marker()
-        .setLngLat([9.1859243, 45.4654219])
-        .addTo(map);
+    const newMap = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [9.1859243, 45.4654219],
+      zoom: 15,
+      containerStyle: {
+        position: "absolute",
+      },
+    });
+    setMap(newMap);
+  }, [key]);
 
-      map.on("load", () => {
-        setMap(map);
-      });
-    };
+  function regenerateMap() {
+    setKey(Date.now());
+  }
 
-    if (!map) initializeMap({ setMap, mapContainer });
+
+  useEffect(() => {
+    regenerateMap();
   }, []);
 
   return (
-    <div
-      ref={mapContainer}
-      className='mapbox-map'
-    />
+    <div key={key} ref={mapContainer} style={{ height: '100vh', width: '100vh', overflow: 'hidden' }} />
   );
 }
