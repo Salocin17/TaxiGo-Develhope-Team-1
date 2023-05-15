@@ -1,7 +1,7 @@
 import "../css/signUp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock, faClose } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -20,7 +20,7 @@ export function SignUpUser() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
+ /* useEffect(() => {
     let timeout;
     if (showSnackbar) {
       timeout = setTimeout(() => {
@@ -28,7 +28,7 @@ export function SignUpUser() {
       }, 2000);
     }
     return () => clearTimeout(timeout);
-  }, [showSnackbar]);
+  }, [showSnackbar]);*/
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -49,30 +49,18 @@ export function SignUpUser() {
           localStorage.setItem("token", json.token);
         });
         window.location.href = "/homeUser";
-      } else {
+      } else if(res.status === 500){
         setShowSnackbar(true);
+
       }
     });
   };
+  /**/
 
   return (
     <div className="wrapper-signUp">
       <div className="container-sign-up">
-        {showSnackbar && (
-          <div
-            className={`alert alert-danger alert-dismissible fade show${showSnackbar ? ' slide-down'  : ' hidden'}`}
-            role="alert" style={{width:"53%", position: 'fixed', top: "2rem", zIndex: 9999 }}
-          >
-            Credenziali errate
-            <FontAwesomeIcon icon={faClose}  style={{float:"right", marginTop:"0.3rem"}}
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
-              onClick={() => setShowSnackbar(false)}
-            />
-          </div>
-        )}
+ 
         <div className="img-sign-up"></div>
         <div className="wrapper-sign-up">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -111,6 +99,7 @@ export function SignUpUser() {
                 placeholder="Enter email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                onClick={() => setShowSnackbar(false)}
               />
             </div>
 
@@ -127,8 +116,13 @@ export function SignUpUser() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                onClick={() => setShowSnackbar(false)}
               />
+                
             </div>
+            {showSnackbar && (
+              <p className="error-message" style={{color:"red", marginLeft:"0.5rem"}}>Credenziali errate</p>
+            )}
             <button
               type="submit"
               class="btn btn-success"

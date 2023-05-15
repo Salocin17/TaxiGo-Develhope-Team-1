@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Snackbar } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 export function SignInUser() {
   const [nome, setNome] = useState("");
@@ -18,6 +19,8 @@ export function SignInUser() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showSuccessSnackbar, setShowSuccessSnackbar] = useState(false);
+  const [showErrorSnackbar, setShowErrorSnackbar] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -45,19 +48,27 @@ export function SignInUser() {
       number: cellulare,
     };
 
+ /* useEffect(() => {
+      let timeout;
+      if (showSuccessSnackbar || showErrorSnackbar ) {
+        timeout = setTimeout(() => {
+          setShowErrorSnackbar(false);
+          setShowSuccessSnackbar(false);
+        }, 2000);
+      }
+      return () => clearTimeout(timeout);
+    }, [showSuccessSnackbar, showErrorSnackbar]);*/
+
     fetch("http://localhost:3300/api/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     }).then((res) => {
       if (res.status === 500) {
-        const snackbar = document.createElement("div");
-        snackbar.className = "alert alert-danger";
-        snackbar.role = "alert";
-        snackbar.textContent = "L'utente è già registrato.";
-        document.body.appendChild(snackbar);
-      } else if (res.status === 200) {
-        window.location.href = "/signInUser";
+        setShowErrorSnackbar(true);
+      } else if (res.status === 201) {
+        setShowSuccessSnackbar(true);
+        window.location.href = "/signUpUser";
       }
     });
   };
@@ -65,6 +76,57 @@ export function SignInUser() {
   return (
     <div className="wrapper">
       <div className="container-sign-in">
+        {showSuccessSnackbar && (
+          <div
+            className={`alert alert-success alert-dismissible fade show${
+              showSuccessSnackbar ? " slide-down" : " hidden"
+            }`}
+            role="alert"
+            style={{
+              width: "53%",
+              position: "fixed",
+              top: "2rem",
+              zIndex: 9999,
+            }}
+          >
+            Registrazione completata con successo!
+            <FontAwesomeIcon
+              icon={faClose}
+              style={{ float: "right", marginTop: "0.3rem" }}
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setShowSuccessSnackbar(false)}
+            />
+          </div>
+        )}
+
+        {showErrorSnackbar && (
+          <div
+            className={`alert alert-danger alert-dismissible fade show${
+              showErrorSnackbar ? " slide-down" : " hidden"
+            }`}
+            role="alert"
+            style={{
+              width: "53%",
+              position: "fixed",
+              top: "2rem",
+              zIndex: 9999,
+            }}
+          >
+            Si è verificato un errore durante la registrazione, utente già presente
+            <FontAwesomeIcon
+              icon={faClose}
+              style={{ float: "right", marginTop: "0.3rem" }}
+              type="button"
+              className="close"
+              data-dismiss="alert"
+              aria-label="Close"
+              onClick={() => setShowErrorSnackbar(false)}
+            />
+          </div>
+        )}
         <div className="img-sign-in"></div>
         <div className="wrapper-sign-in">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>

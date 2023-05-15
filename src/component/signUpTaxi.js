@@ -10,6 +10,7 @@ export function SignUpTaxi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
     function handleResize() {
@@ -38,12 +39,9 @@ export function SignUpTaxi() {
           localStorage.setItem("token", json.token);
         });
         window.location.href = "/homeTaxi";
-      } else {
-        const snackbar = document.createElement("div");
-        snackbar.className = "alert alert-danger";
-        snackbar.role = "alert";
-        snackbar.textContent = "Credenziali errate";
-        document.body.appendChild(snackbar);
+      }else if(res.status === 500){
+        setShowSnackbar(true);
+
       }
     });
   };
@@ -90,7 +88,8 @@ export function SignUpTaxi() {
                 placeholder="Enter email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-              />
+                onClick={() => setShowSnackbar(false)}
+             />
             </div>
 
             <div className="input-group">
@@ -107,8 +106,12 @@ export function SignUpTaxi() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                onClick={() => setShowSnackbar(false)}
               />
             </div>
+            {showSnackbar && (
+              <p className="error-message" style={{color:"red", marginLeft:"0.5rem"}}>Credenziali errate</p>
+            )}
             <button
               type="submit"
               class="btn btn-success"

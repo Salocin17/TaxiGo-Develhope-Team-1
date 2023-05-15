@@ -15,20 +15,6 @@
       }
 }
 
-.slide-down {
-    animation-name: slideDown;
-    animation-duration: 0.5s;
-  }
-  
-  @keyframes slideDown {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
 .container-sign-up {
     position: relative;
     display: flex;
@@ -112,6 +98,3 @@
     }
 }
 
-.hidden {
-    visibility: hidden;
-  }
