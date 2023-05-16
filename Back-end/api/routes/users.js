@@ -15,7 +15,6 @@ app.post("/", async (req, res) => {
         password: Joi.string().required(),
         first_name: Joi.string().required(),
         last_name: Joi.string().required(),
-        first_name: Joi.string().required(),
         birth: Joi.string().required(),
         city: Joi.string().required(),
         province: Joi.string().required(),

@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "./navBar";
 import Sidebar from "./sidebar";
 
 export const Account = () => {
+  const [id, setId] = useState("");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [date, setDate] = useState("");
+  const [citta, setCitta] = useState("");
+  const [cellulare, setCellulare] = useState("");
+  const [cap, setCap] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/api/user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      setId(data._id);
+      setNome(data.first_name);       
+      setCognome(data.last_name);
+      setEmail(data.email);  
+      setCellulare(data.number);
+      setCitta(data.city)
+      setCap(data.province)
+      setDate(data.birth)
+
+    })
+  }, []);
+
   return (
     <div className="container">
       <Sidebar />
 
       <div className="container-right">
-        <Navbar />
+        <Navbar name={nome} username={cognome} />
         <div className="container-account" style={{ width: "100%" }}>
           <section>
             <div class="container-profile py-2" style={{ minHeight: "0%" }}>
@@ -27,10 +58,10 @@ export const Account = () => {
                           class="rounded-circle img-fluid"
                           style={{ width: "150px" }}
                         />
-                        <h5 class="my-3">John Smith</h5>
-                        <p class="text-muted mb-1">ID User</p>
+                        <h5 class="my-3">{nome}</h5>
+                        <p class="text-muted mb-1">ID: {id}</p>
                         <p class="text-muted mb-4">
-                          Bay Area, San Francisco, CA
+                          {citta} - {cap}
                         </p>
                       </div>
                     </div>
@@ -43,7 +74,7 @@ export const Account = () => {
                             <p class="mb-0">Full Name</p>
                           </div>
                           <div class="col-sm-9">
-                            <p class="text-muted mb-0">Johnatan Smith</p>
+                            <p class="text-muted mb-0">{nome} {cognome}</p>
                           </div>
                         </div>
                         <hr />
@@ -52,7 +83,7 @@ export const Account = () => {
                             <p class="mb-0">Email</p>
                           </div>
                           <div class="col-sm-9">
-                            <p class="text-muted mb-0">example@example.com</p>
+                            <p class="text-muted mb-0">{email}</p>
                           </div>
                         </div>
                         <hr />
@@ -61,7 +92,7 @@ export const Account = () => {
                             <p class="mb-0">Phone</p>
                           </div>
                           <div class="col-sm-9">
-                            <p class="text-muted mb-0">(097) 234-5678</p>
+                            <p class="text-muted mb-0">{cellulare}</p>
                           </div>
                         </div>
                         <hr />
@@ -70,7 +101,7 @@ export const Account = () => {
                             <p class="mb-0">Date of birth</p>
                           </div>
                           <div class="col-sm-9">
-                            <p class="text-muted mb-0">01/01/2000</p>
+                            <p class="text-muted mb-0">{date}</p>
                           </div>
                         </div>
                         <hr />
@@ -98,17 +129,8 @@ export const Account = () => {
                           </div>
                           <div class="col-sm-9">
                             <p class="text-muted mb-0">
-                              Bay Area, San Francisco, CA
+                              {citta}, {cap}
                             </p>
-                          </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <p class="mb-0">Password</p>
-                          </div>
-                          <div class="col-sm-9">
-                            <p class="text-muted mb-0">Password00!</p>
                           </div>
                         </div>
                       </div>

@@ -61,7 +61,7 @@ export function SignInTaxi() {
         setShowErrorSnackbar(true);
       } else if (res.status === 201) {
         setShowSuccessSnackbar(true);
-        window.location.href = "/signInTaxi";
+        window.location.href = "/signUpTaxi";
       }
     });
   };

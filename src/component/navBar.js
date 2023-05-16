@@ -5,17 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import ProfilePicture from "./ProfileIcon";
 
-export function Navbar() {
-  const [username, setUsername] = useState("");
-
-  const getUsernameFromToken = () => {
-    const token = localStorage.getItem("token"); 
-    setUsername("Nome utente dal token");
-  };
-
-  useEffect(() => {
-    getUsernameFromToken();
-  }, []);  
+export function Navbar({name, username}) { 
 
   return (
       <div className="navbar-wrapper">
@@ -24,7 +14,7 @@ export function Navbar() {
             <div class="card-body text-center" style={{marginRight:"0.5rem"}}>
             <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
           </div>
-              <div>{username}</div>
+              <div>{name} {username}</div>
           </div>
           <Link to="/" style={{textDecoration: "none", color: "black", fontSize: "1.2rem"}}>
           <div  className="user-icon-wrapper"> Esci <FontAwesomeIcon icon={faSignOut} /></div>

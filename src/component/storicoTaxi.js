@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import { Navbar } from "./navBar";
 import Sidebar from "./sidebar";
 import "../css/homeUser.css";
@@ -9,6 +9,25 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export function StoricoTaxi() {
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/api/user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((response) => response.json())
+    .then((data) => {
+      setUsername(data.last_name);       
+      setName(data.first_name); 
+
+    })
+  }, []);
 
 function handleDateChange(date) {
   setSelectedDate(date);
@@ -25,7 +44,7 @@ function handleDateChange(date) {
     <Sidebar />
 
     <div className="container-right">
-      <Navbar />
+      <Navbar name={name} username={username} />
     <div className="container-box">
     <div className="container-box-nav">
   <h2>Storico</h2>
