@@ -21,6 +21,8 @@ app.use("/route", require("./routes/route"));
  * @path /api/driver -> "/api/routes/getDriver.js"
  */
 
+app.use("/update", require("./routes/update"));
+
 app.use("/driver", require("./routes/getDriver"));
 
 app.use("/location", require("./routes/location"));

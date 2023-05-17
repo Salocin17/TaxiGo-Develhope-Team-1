@@ -1,10 +1,8 @@
-const { Street } = require("../db");
 const { outError } = require("../utility/errors");
 
-const location = async (User, req, res) =>{    
+const update = async (User, req, res) =>{    
 
     try{
-        if(!req.params.street) return res.status(403).json({ message: "Not found"});
 
         const _street = await Street.findOne({name: req.params.street})
         console.log(_street._doc)
@@ -18,7 +16,7 @@ const location = async (User, req, res) =>{
 }
 
 module.exports = {
-    location,
+    update,
 }
 
 
