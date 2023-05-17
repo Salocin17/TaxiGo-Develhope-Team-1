@@ -11,13 +11,10 @@ const { location } = require("../../utility/location");
 
 
 app.patch("/user/:street", authUser(), async (req, res) =>{  
-    console.log(res)  
-    console.log(res.params.street)
     location(User, req, res)
 })
 
 app.patch("/taxiDriver/:street", authDriver(), async (req, res) =>{    
-    console.log(req.params.street)  
     location(TaxiDriver, req, res)
 })
 
