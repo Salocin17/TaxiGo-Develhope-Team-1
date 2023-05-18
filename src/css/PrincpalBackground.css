@@ -1,5 +1,6 @@
 .principal-background {
-    background-image: url("../Images/citta1.png");
+    background-color: green;
+    background-image: url("../Images/splash.png");
     width: 100vw;
     height: 100vh;
     position: absolute;

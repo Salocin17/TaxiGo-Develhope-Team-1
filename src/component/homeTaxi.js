@@ -71,7 +71,7 @@ export function HomeTaxi() {
         {active === 1 && <UserRequest onValueChange={handleValueChange} />}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} />}
         <div className="container-map">
-        {active === 1 && <MapBox />}
+        {active && <MapBox /> }
         </div>
       </div>
     </div>

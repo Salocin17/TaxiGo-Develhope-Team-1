@@ -23,9 +23,9 @@ function TaxiRideTimer({ address }) {
     return (
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body >
-                <Card.Title className='ride-timer-title fs-3'>Porta Alessio a destinazione!</Card.Title>
+                <Card.Title className='ride-timer-title fs-4'>Porta Alessio a destinazione!</Card.Title>
                 <div className='ride-timer-container'>
-                    <Card.Text className='fs-3 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{address}</Card.Text>
+                    <Card.Text className='fs-4 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{address}</Card.Text>
                     <Button className='align-self-center' variant="success">{`${formatTime(time)}`}</Button>
                 </div>
             </Card.Body>
