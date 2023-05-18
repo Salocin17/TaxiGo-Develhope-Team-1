@@ -6,6 +6,14 @@
     border-bottom: 0.5px solid gray;
 }
 
+.taxi-list-title {
+     border-bottom: 0.5px solid gray;
+}
+
+.taxi-list{
+    border-bottom: 0.5px solid gray;
+}
+
 .taxi-list > div{
     text-align: center;
 }
@@ -13,7 +21,6 @@
 .list-card {
     width: 90%;
     margin: 1rem auto;
-    bottom: 1rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 

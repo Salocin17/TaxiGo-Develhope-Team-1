@@ -48,9 +48,10 @@ const UserList = ({onValueChange}) => {
 
     return (
         <Card className="fixed-bottom list-card">
-            <div className="rounded-bar" />
             <Card.Body>
-                <Card.Title className="fs-3 fw-bold">Richieste Disponibili</Card.Title>
+                <div className="d-flex align-items-center justify-content-center taxi-list-title taxi-list-title">
+                    <h3 className="fs-3 fw-bold align-self-center" style={{ color: 'green' }}>Richieste Disponibili</h3>
+                </div>
                 <ListGroup variant="flush">
                     {itemList.map((item, index) => (
                         <ListGroup.Item key={index} className="taxi-list" onClick={handleSelect} style={{ cursor: 'pointer' }}>

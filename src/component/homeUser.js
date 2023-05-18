@@ -12,6 +12,7 @@ import { MapBox } from "./mapBoxUser";
 
 export function HomeUser() {
   const [active, setActive] = useState(0);
+  const [activeSidebar, setActiveSidebar] = useState(0)
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
 
@@ -49,18 +50,22 @@ export function HomeUser() {
 
   function handleValueChange(newValue) {
     setActive(newValue);
+    console.log(newValue);
+  }
+
+  function handleShowSidebar(value) {
+    setActiveSidebar(value);
+    console.log(value);
   }
 
   return (
     <div className="container">
-      <Sidebar />
+      {activeSidebar === 0 && <Sidebar/>}
       <div className="container-right">
-        {active === 0 && <SearchCard onValueChange={handleValueChange} />}
+        {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange} />}
         {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} />}
-        {active === 3 && (
-          <RideTimer onValueChange={handleValueChange} street={street} />
-        )}
+        {active === 3 && (<RideTimer onValueChange={handleValueChange} street={street} />)}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
 
         <div className="container-map">

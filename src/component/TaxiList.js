@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import { FaTaxi } from "react-icons/fa";
+import { FaTaxi, FaArrowLeft } from "react-icons/fa";
 import '../css/TaxiList.css';
 
 const TaxiList = ({onValueChange}) => {
@@ -23,25 +23,22 @@ const TaxiList = ({onValueChange}) => {
 
     console.log(List);
 
-    const handleSelect = () => {
-      onValueChange(2);
-        
-    }
-
   
 
   return (
     <Card className="fixed-bottom list-card">
-      <div className="rounded-bar" />
       <Card.Body>
-        <Card.Title>Taxi disponibili</Card.Title>
+        <div className="d-flex align-items-center justify-content-center taxi-list-title" >
+        <FaArrowLeft size={20} className="ms-4 position-absolute start-0" onClick={() => onValueChange(0)}/>
+        <h3 className="align-self-center fw-bold" style={{color: 'green'}} >Taxi disponibili</h3>
+        </div>
         <ListGroup variant="flush">
           {List.map((item, index) => (
-            <ListGroup.Item key={index} className="taxi-list" onClick={handleSelect} style={{cursor: 'pointer'}}>
+            <ListGroup.Item key={index} className="taxi-list " onClick={() => onValueChange(2)} style={{cursor: 'pointer'}}>
               <FaTaxi size={30} className="mr-3" />
               <div>
                 <h6 className="mb-1 fs-5 fw-bold">{item.name}</h6>
-                <small className="text-muted">1km</small>
+                <small className="text-muted">1 Km</small>
               </div>
               <div>
                 <h6 className="fs-5 fw-bold">€15</h6>

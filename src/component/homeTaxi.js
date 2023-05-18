@@ -54,7 +54,6 @@ export function HomeTaxi() {
       <SidebarTaxi />
 
       <div className="container-right">
-        <Navbar name={name} username={username} />
         {active === 0 && <UserList onValueChange={handleValueChange} />}
         {active === 1 && <UserRequest onValueChange={handleValueChange} />}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} />}

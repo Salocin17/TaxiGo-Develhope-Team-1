@@ -29,9 +29,9 @@ function RideTimer({ street, onValueChange }) {
         
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body >
-                <Card.Title className='ride-timer-title fs-3'>A breve sarai a destinazione!</Card.Title>
+                <Card.Title className='ride-timer-title fs-4'>A breve sarai a destinazione!</Card.Title>
                 <div className='ride-timer-container'>
-                    <Card.Text className='fs-3 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{street}</Card.Text>
+                    <Card.Text className='fs-4 ride-timer-address d-flex align-items-center gap-2'><MdPlace size={20} className="mr-3"/>{street}</Card.Text>
                     <Button onClick={changeCard} className='align-self-center' variant="success">{`${formatTime(time)}`}</Button>
                 </div>
             </Card.Body>

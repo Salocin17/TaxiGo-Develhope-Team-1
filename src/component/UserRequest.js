@@ -1,4 +1,5 @@
 import { Card, Button } from "react-bootstrap";
+import { FaArrowLeft } from 'react-icons/fa';
 import ProfilePicture from "./ProfileIcon";
 import '../css/taxiprofilecard.css';
 
@@ -30,6 +31,7 @@ const UserRequest = ({onValueChange}) => {
             <Card className="taxi-profile-card">
                 <Card.Body>
                     <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
+                        <FaArrowLeft size={20} className="ms-4 position-absolute start-0" onClick={() => onValueChange(0)} />
                         <span className="fs-3 fw-bold">La tua richiesta!</span>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">

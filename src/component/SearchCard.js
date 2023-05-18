@@ -5,10 +5,14 @@ import { MdPlace } from "react-icons/md";
 import { FaSearch } from 'react-icons/fa';
 import ProfilePicture from './ProfileIcon.js'
 
-const SearchCard = ({onValueChange}) => {
+const SearchCard = ({onValueChange, onShowSidebar}) => {
 
   function changeCard() {
     onValueChange(1);
+  }
+
+  function showSidebar() {
+    onShowSidebar(1);
   }
 
   return (
@@ -28,7 +32,7 @@ const SearchCard = ({onValueChange}) => {
         </Form>
       </Card.Body>
     </Card>
-      <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+      <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onClick={showSidebar} />
    </div>
     
    
