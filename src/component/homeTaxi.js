@@ -9,6 +9,7 @@ import TaxiRideTimer from "./TaxiRideTimer";
 import SidebarTaxi from "./sidebarTaxi";
 import NewNavbar from "./NewNavbar";
 import ProfilePicture from "./ProfileIcon";
+import '../css/PrincpalBackground.css'
 
 export function HomeTaxi() {
   const [active, setActive] = useState(0);
@@ -58,6 +59,8 @@ export function HomeTaxi() {
 
   return (
     <div className="container">
+      {active === 0 && <div className="principal-background">
+      </div>}
       <NewNavbar/>
       {activeSidebar === 1 && <SidebarTaxi />}
       <div style={{ position: 'absolute', top: '8rem', right: '1rem', 'z-index': '999' }}>
@@ -68,7 +71,7 @@ export function HomeTaxi() {
         {active === 1 && <UserRequest onValueChange={handleValueChange} />}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} />}
         <div className="container-map">
-          <MapBox />
+        {active === 1 && <MapBox />}
         </div>
       </div>
     </div>

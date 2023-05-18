@@ -50,8 +50,8 @@ const UserRequest = ({onValueChange}) => {
                         </div>
                     </div>
                     <div className="d-flex mt-4 align-items-center justify-content-center gap-3">
-                        <Button variant="success" onClick={handleConfirm}>Accetta</Button>
                         <Button variant="danger" onClick={handleReject}>Rifiuta</Button>
+                        <Button variant="success" onClick={handleConfirm}>Accetta</Button>
                     </div>
                 </Card.Body>
             </Card>

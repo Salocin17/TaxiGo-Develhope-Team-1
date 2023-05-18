@@ -1,0 +1,6 @@
+.principal-background {
+    background-image: url("../Images/citta1.png");
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
