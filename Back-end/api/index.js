@@ -29,6 +29,8 @@ app.use("/location", require("./routes/location"));
 
 app.use("/requests", require("./routes/requests"));
 app.use("/request", require("./routes/request"));
+app.use("/getRoute", require("./routes/getRoute"));
+
 
 
 /**
