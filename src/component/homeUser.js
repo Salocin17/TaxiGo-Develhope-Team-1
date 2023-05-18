@@ -54,10 +54,7 @@ export function HomeUser() {
   return (
     <div className="container">
       <Sidebar />
-
       <div className="container-right">
-        <Navbar username={username} name={name} />
-
         {active === 0 && <SearchCard onValueChange={handleValueChange} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange} />}
         {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} />}

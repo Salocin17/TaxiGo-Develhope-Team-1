@@ -5,7 +5,7 @@ import '../css/TaxiList.css';
 
 const TaxiList = ({onValueChange}) => {
 
-    const [List, setList] = useState([])
+    const [List, setList] = useState([{name: 'Mario'}])
   
     useEffect(()=>{
         const token = localStorage.getItem("token")
@@ -17,7 +17,6 @@ const TaxiList = ({onValueChange}) => {
           }
          
       }).then(res => res.json())
-            .then(data => setList(data))
           .then(data => console.log(data))
    
     },[])

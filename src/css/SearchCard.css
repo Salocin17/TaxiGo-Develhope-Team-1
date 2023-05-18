@@ -1,20 +1,18 @@
 .search-card {
-    width: 90%;
-    margin: 1rem auto;
+    width: 80%;
+    border-radius: 50px;
+    padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.search-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #31C48D;
-    font-weight: 700;
-}
-
-.card-title {
-    text-align: center;
+.search-card-container {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .search-form {
@@ -27,11 +25,26 @@
 
 .search-bar {
     width: 100%;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    border-style: none;
+    background-color: rgba(128, 128, 128, 0.091);
+}
+
+.search-bar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .btn-search {
-    width: 30%;
-    padding: 0.5rem 1rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 15px;
+    
 }
 
 @media (min-width: 768px) {
