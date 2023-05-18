@@ -9,6 +9,8 @@ import TaxiProfileCard from "./TaxiProfileCard";
 import RideTimer from "./RideTimer";
 import FeedbackCard from "./FeedbackCard";
 import { MapBox } from "./mapBoxUser";
+import NewNavbar from "./NewNavbar";
+import ProfilePicture from "./ProfileIcon";
 
 export function HomeUser() {
   const [active, setActive] = useState(0);
@@ -54,18 +56,21 @@ export function HomeUser() {
   }
 
   function handleShowSidebar(value) {
-    setActiveSidebar(value);
-    console.log(value);
+    activeSidebar === 0 ? setActiveSidebar(1) : setActiveSidebar(0)
   }
 
   return (
     <div className="container">
-      {activeSidebar === 0 && <Sidebar/>}
+      <NewNavbar/>
+      <div style={{ position: 'absolute', top: '8rem', right: '1rem', 'z-index': '999' }}>
+        <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onShowSidebar={handleShowSidebar} />
+      </div>
+      {activeSidebar === 1 && <Sidebar/>}
       <div className="container-right">
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange} />}
         {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} />}
-        {active === 3 && (<RideTimer onValueChange={handleValueChange} street={street} />)}
+        {active === 3 && <RideTimer onValueChange={handleValueChange} street={street} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
 
         <div className="container-map">
