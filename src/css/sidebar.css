@@ -17,3 +17,16 @@
 .sidebar.open {
   transform: translateX(0);
 }
+
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+  visibility: visible;
+  opacity: .9 !important;
+  color: white !important;
+  -ms-filter: none;
+  filter: none;
+  transition: opacity 0.2s linear;
+}
+
+.sidenav---navicon---3gCRo{
+  opacity: .9 !important;
+}

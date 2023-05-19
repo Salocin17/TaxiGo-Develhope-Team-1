@@ -26,19 +26,19 @@ export default function Sidebar() {
       <Toggle/>
       <SideNav.Nav defaultSelected="/">
         <NavItem eventKey="homeUser" selected={selected === 'homeUser'}>
-          <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Home</NavText>
         </NavItem>
         <NavItem eventKey="wallet" selected={selected === 'wallet'}>
-          <NavIcon> <i className="fa fa-wallet" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon> <i className="fa fa-wallet" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Wallet</NavText>
         </NavItem>        
         <NavItem eventKey="storico" selected={selected === 'storico'}>
-          <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Storico</NavText>
         </NavItem>
         <NavItem eventKey="account" selected={selected === 'account'}>
-          <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Profilo</NavText>
         </NavItem>  
       </SideNav.Nav>
