@@ -27,7 +27,37 @@
     width: auto !important;
 }
 
-h4{
-    color:rgb(215, 82, 82);
-    float: right !important;
+.wrapper-storico{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-nav-storico{
+    height: 14rem !important;
+    background-color:#31C48D;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title-storico{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.dataPicker{
+    border-radius: 2rem;
+    border-color: transparent;
+    opacity: .4;
+    color: black;
+}
+
+.container-storico{
+    width: 100%;
+    padding: 1rem;
+    align-self: center;
+    margin-top: -9rem;
 }
