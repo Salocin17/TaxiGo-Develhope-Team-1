@@ -25,8 +25,13 @@
   -ms-filter: none;
   filter: none;
   transition: opacity 0.2s linear;
+  z-index: 99999 !important;
 }
 
 .sidenav---navicon---3gCRo{
   opacity: .9 !important;
+}
+
+.sidenav---sidenav---_2tBP {
+  z-index: 99999 !important;
 }

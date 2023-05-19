@@ -40,7 +40,11 @@ export default function Sidebar() {
         <NavItem eventKey="account" selected={selected === 'account'}>
           <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Profilo</NavText>
-        </NavItem>  
+        </NavItem>
+        <NavItem eventKey="signUpUser" selected={selected === 'signUpUser'} style={{backgroundColor:"red", marginTop:"40rem"}}>
+          <NavIcon> <i className="fa fa-sign-out" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
+          <NavText>Esci</NavText>
+        </NavItem>        
       </SideNav.Nav>
     </SideNav>
   );

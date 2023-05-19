@@ -63,7 +63,7 @@ export function HomeTaxi() {
       </div>}
       <NewNavbar/>
       {activeSidebar === 1 && <SidebarTaxi />}
-      <div style={{ position: 'absolute', top: '8rem', left: '1rem', 'z-index': '999' }}>
+      <div style={{ position: 'absolute', top: '2rem', left: '95%', 'z-index': '999' }}>
       <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onShowSidebar={handleShowSidebar} />
       </div>
       {active != 0 && <div style={{ position: 'absolute', top: '12rem', left: '1rem', 'z-index': '999' }}>

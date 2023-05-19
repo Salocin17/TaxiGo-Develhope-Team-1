@@ -29,23 +29,27 @@ export default function SidebarTaxi() {
     >
 
       <Toggle/>
-      <SideNav.Nav defaultSelected="/">
+      <SideNav.Nav>
         <NavItem eventKey="homeTaxi" selected={selected === 'homeTaxi'}>
-          <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon><i className="fa fa-fw fa-home" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Home</NavText>
         </NavItem>
-        <NavItem eventKey="wallet" selected={selected === 'wallet'}>
-          <NavIcon> <i className="fa fa-wallet" style={{fontSize: "1.5em"}}></i></NavIcon>
+       {/* <NavItem eventKey="wallet" selected={selected === 'wallet'}>
+          <NavIcon> <i className="fa fa-wallet" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Wallet</NavText>
-        </NavItem>        
-        <NavItem eventKey="storicoTaxi" selected={selected === 'storicoTaxi'}>
-          <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em"}}></i></NavIcon>
+        </NavItem>  */}      
+        {/* <NavItem eventKey="storicoTaxi" selected={selected === 'storicoTaxi'}>
+          <NavIcon><i className="fa fa-history" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Storico</NavText>
-        </NavItem>
+        </NavItem>*/}  
         <NavItem eventKey="TaxiAccount" selected={selected === 'account'}>
-          <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em"}}></i></NavIcon>
+          <NavIcon> <i className="fa fa-user" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
           <NavText>Profilo</NavText>
-        </NavItem>  
+        </NavItem> 
+        <NavItem eventKey="signUpTaxi" selected={selected === 'signUpTaxi'} style={{backgroundColor:"red",marginTop:"40rem"}}>
+          <NavIcon> <i className="fa fa-sign-out" style={{fontSize: "1.5em", color:"white"}}></i></NavIcon>
+          <NavText>Esci</NavText>
+        </NavItem>    
       </SideNav.Nav>
 
     </SideNav>
