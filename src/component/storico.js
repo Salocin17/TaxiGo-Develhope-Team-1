@@ -75,8 +75,8 @@ export function Storico() {
           </Link>
         </div>
         <div className="nav-title-storico">
-          <div className="nav-text">
-            <h3>Storico</h3>
+          <div className="nav-text-storico">
+            Storico
           </div>
           <div className="nav-icon">
             <DatePicker
