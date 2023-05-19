@@ -12,6 +12,13 @@ import NewNavbar from "./NewNavbar";
 import ProfilePicture from "./ProfileIcon";
 import { FaArrowLeft } from "react-icons/fa";
 
+
+const slideInVariants = {
+  hidden: { opacity: 0, y: 100 },
+  visible: { opacity: 1, y: 0 }
+};
+
+
 export function HomeUser() {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0)
@@ -68,7 +75,7 @@ export function HomeUser() {
       {active != 0 && <div style={{ position: 'absolute', top: '12rem', left: '1rem', 'z-index': '999' }}>
         <div
           className="d-flex justify-content-center align-items-center rounded-circle bg-white propic shadow"
-          style={{ width: "50px", height: "50px", 'box-shadow': 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px' }}
+          style={{ width: "50px", height: "50px" }}
           onClick={() => setActive(active - 1)}
         >
           <FaArrowLeft size={20} />

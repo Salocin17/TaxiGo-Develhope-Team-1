@@ -34,13 +34,15 @@ const TaxiList = ({onValueChange}) => {
         <ListGroup variant="flush">
           {List.map((item, index) => (
             <ListGroup.Item key={index} className="taxi-list " onClick={() => onValueChange(2)} style={{cursor: 'pointer'}}>
-              <FaTaxi size={30} className="mr-3" />
-              <div>
-                <h6 className="mb-1 fs-5 fw-bold">{item.name}</h6>
+                <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>
+                  <FaTaxi size={20} className="mr-3" />
+                </div>
+                <div>
+                <h6 className="mb-1 fs-6 fw-bold">{item.name}</h6>
                 <small className="text-muted">1 Km</small>
-              </div>
+                </div>    
               <div>
-                <h6 className="fs-5 fw-bold">€15</h6>
+                <h6 className="fs-6 fw-bold">€15</h6>
                 <small className="text-muted">2 min</small>
               </div>
             </ListGroup.Item>

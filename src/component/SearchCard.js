@@ -15,9 +15,9 @@ const SearchCard = ({onValueChange}) => {
         <div className="rounded-bar"/>
         <Form className="search-form">
           <Form.Group controlId="search" className="search-bar-container">
-            <MdPlace size={40} className="mr-3" style={{color: 'green'}}/>
+            <MdPlace size={45} className="mr-3" style={{color: 'gray'}}/>
             <Form.Control type="text" placeholder="Dove vuoi andare?" className="search-bar"></Form.Control>
-            <Button variant="success" className="btn-search" onClick={() => onValueChange(1)}>
+            <Button variant="success" className="btn btn-search rounded-circle" onClick={() => onValueChange(1)}>
               <FaSearch className="search-icon" style={{ color: 'white' }} />
             </Button>
           </Form.Group>

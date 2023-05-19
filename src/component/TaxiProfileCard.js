@@ -47,23 +47,25 @@ const handleConfirm = () => {
               <span>John Doe</span>
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <FaTaxi size={40} className="mr-3"/>
+            <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>
+              <FaTaxi size={20} className="mr-3" />
+            </div>
             <div>
               <div>
-                <h6 className="mb-1 fs-5 fw-bold">Distanza</h6>
-                <span className="ml-2">0.2 Km</span>
+                <h6 className="mb-1 fs-6 text-muted">Distanza</h6>
+                <span className="ml-2 fs-6 fw-semibold">0.2 Km</span>
               </div>
             </div>
             <div>
               <div>
-                <h6 className="mb-1 fs-5 fw-bold">Tempo</h6>
-                <span className="ml-2">2 min</span>
+                <h6 className="mb-1 fs-6 text-muted">Tempo</h6>
+                <span className="ml-2 fs-6 fw-semibold">2 min</span>
               </div>
             </div>
             <div>
               <div>
-                <h6 className="mb-1 fs-5 fw-bold">Prezzo</h6>
-                <span className="ml-2">€25.00</span>
+                <h6 className="mb-1 fs-6 text-muted">Prezzo</h6>
+                <span className="ml-2 fs-6 fw-semibold">€25.00</span>
               </div>
             </div>
           </div>
