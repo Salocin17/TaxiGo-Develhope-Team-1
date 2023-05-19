@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import { FaTaxi, FaArrowLeft } from "react-icons/fa";
+import { FaTaxi } from "react-icons/fa";
 import '../css/TaxiList.css';
 
 const TaxiList = ({onValueChange}) => {
@@ -26,10 +26,9 @@ const TaxiList = ({onValueChange}) => {
   
 
   return (
-    <Card className="fixed-bottom list-card">
+    <Card className="fixed-bottom list-card ">
       <Card.Body>
         <div className="d-flex align-items-center justify-content-center taxi-list-title" >
-        <FaArrowLeft size={20} className="ms-4 position-absolute start-0" onClick={() => onValueChange(0)}/>
         <h3 className="align-self-center fw-bold" style={{color: 'green'}} >Taxi disponibili</h3>
         </div>
         <ListGroup variant="flush">

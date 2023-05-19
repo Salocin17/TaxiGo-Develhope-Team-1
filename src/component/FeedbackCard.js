@@ -20,6 +20,7 @@ function FeedbackCard({ nome, onValueChange }) {
             text: "La tua opinione è importante.",
             icon: "success",
             confirmButtonText: "Chiudi",
+            confirmButtonColor: '#31C48D'
         });
 
         onValueChange(0);

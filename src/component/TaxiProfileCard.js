@@ -1,7 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import '../css/taxiprofilecard.css';
-import { FaTaxi, FaArrowLeft } from "react-icons/fa";
+import { FaTaxi } from "react-icons/fa";
 import Swal from "sweetalert2";
 import React, {useEffect, useState} from 'react';
 
@@ -15,6 +15,7 @@ const handleConfirm = () => {
     text: "Il tuo Taxi saràa presto da te",
     icon: "success",
     confirmButtonText: "Ottimo!",
+    confirmButtonColor: '#31C48D'
   });
 
   const token = localStorage.getItem("token")
@@ -42,7 +43,6 @@ const handleConfirm = () => {
       <Card className="taxi-profile-card">
         <Card.Body>
           <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
-              <FaArrowLeft size={20} className="ms-4 position-absolute start-0" onClick={() => onValueChange(1)} /> 
               <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'}/>
               <span>John Doe</span>
           </div>
