@@ -62,7 +62,7 @@ export function HomeUser() {
   return (
     <div className="container">
       <NewNavbar/>
-      <div style={{ position: 'absolute', top: '8rem', right: '1rem', 'z-index': '999' }}>
+      <div style={{ position: 'absolute', top: '8rem', left: '1rem', 'z-index': '999' }}>
         <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onShowSidebar={handleShowSidebar} />
       </div>
       {activeSidebar === 1 && <Sidebar/>}
