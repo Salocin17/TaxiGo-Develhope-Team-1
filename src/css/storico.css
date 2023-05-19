@@ -1,63 +1,46 @@
-.card .storico{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    background-color: rgba(49, 196, 141, 0.3);
-    color: black;
-}
-
-.completata{
-    float: right !important;
-}
-
-.container-box{
-    width: 100%;
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-}
-
-.container-box-nav{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.react-datepicker-wrapper {
-    width: auto !important;
-}
-
-.wrapper-storico{
+.wrapper-storico {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.container-nav-storico{
+.container-nav-storico {
     height: 14rem !important;
-    background-color:#31C48D;
+    background-color: #31C48D;
     color: white;
     padding: 1rem;
 }
 
-.nav-title-storico{
+.nav-title-storico {
     display: flex;
     flex-direction: row;
     color: white;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1.5rem;
     justify-content: space-between;
-    margin-top: 2rem;
 }
 
-.dataPicker{
+.dataPicker {
     border-radius: 2rem;
     border-color: transparent;
     opacity: .4;
     color: black;
+    width: 100%;
 }
 
-.container-storico{
+.react-datepicker-wrapper{
+    width: 100% !important;
+}
+
+.container-storico {
     width: 100%;
     padding: 1rem;
     align-self: center;
     margin-top: -9rem;
+}
+
+.nav-text-storico{
+    font-size: 34px;
+    font-weight: 700;
 }

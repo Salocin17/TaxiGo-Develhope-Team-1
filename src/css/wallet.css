@@ -1,0 +1,130 @@
+.wrapper-wallet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-nav-wallet {
+    height: 14rem !important;
+    background-color: #31C48D;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title-wallet {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.nav-text-wallet {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.nav-icon-wallet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    padding: 0.2rem;
+    font-size: 20px;
+    font-weight: 700;
+    height: fit-content;
+}
+
+.container-wallet {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 12rem;
+    padding: 1rem;
+    align-self: center;
+    margin-top: -5rem;
+    background-color: white;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    align-items: center;
+}
+
+.container-wallet-title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #EFEFF4;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.container-wallet-text {
+    margin-left: 0.9rem;
+}
+
+.container-wallet-text p:first-of-type {
+    margin-bottom: 0;
+    margin-top: 0.1rem;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 17px;
+}
+
+.container-wallet-text p:nth-of-type(2) {
+    color: #C8C7CC;
+}
+
+.container-wallet-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container-wallet-footer p:first-of-type {
+    margin-bottom: 0;
+    margin-top: 0.9rem;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 13px;
+    color: #C8C7CC;
+}
+
+.container-wallet-footer p:nth-of-type(2) {
+    margin-bottom: 0;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 30px;
+    color: #F52D56;
+}
+
+.pointer {
+    margin-top: 1rem;
+}
+
+.wrapper-wallet-footer{
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8F8;
+    gap: 1rem;
+}
+
+.wallet-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #EFEFF4;
+    height: 2rem;
+}
+
+.wallet-input p{
+    margin-bottom: 0;
+}

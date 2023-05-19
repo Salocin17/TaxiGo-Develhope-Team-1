@@ -43,15 +43,15 @@ export const Account = () => {
   }, []);
 
   const saveChanges = () => {
-    setNome(modifiedNome);
-    setCognome(modifiedCognome);
-    setEmail(modifiedEmail);
-    setDate(modifiedCompleanno);
-    setCellulare(modifiedTelefono);
+    setNome(modifiedNome?modifiedNome:nome);
+    setCognome(modifiedCognome?modifiedCognome:cognome);
+    setEmail(modifiedEmail?modifiedEmail:email);
+    setDate(modifiedCompleanno?modifiedCompleanno:date);
+    setCellulare(modifiedTelefono?modifiedTelefono:cellulare);
 
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3300/api/update/user`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
@@ -64,7 +64,6 @@ export const Account = () => {
       .then((data) => {
         console.log(data);
       });
-
     setModifiedNome("");
     setModifiedCognome("");
     setModifiedEmail("");
@@ -84,8 +83,8 @@ export const Account = () => {
           </Link>
         </div>
         <div className="nav-title">
-          <div className="nav-text">
-            <h3>Il mio account</h3>
+          <div className="nav-text-account">
+            <h3><b>Il mio account</b></h3>
           </div>
           <div className="nav-icon">
             <ProfilePicture
