@@ -1,0 +1,23 @@
+.wrapper-account{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-nav{
+    height: 7rem;
+    background-color:#31C48D;
+    margin-bottom: 2rem;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,25 +1,31 @@
-import React, { useState, useEffect } from "react";
-import "../css/navBar.css";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut, faBars } from "@fortawesome/free-solid-svg-icons";
 import ProfilePicture from "./ProfileIcon";
+import Sidebar from "./sidebar";
 
-export function Navbar({name, username}) { 
+export function Navbar({ name, username }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleLogout = () => {
+    console.log("Logout");
+  };
 
   return (
-      <div className="navbar-wrapper">
-        <div className="navbar-wrapper-link">
-            <div className="user-icon-wrapper">
-            <div class="card-body text-center" style={{marginRight:"0.5rem"}}>
-            <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
-          </div>
-              <div>{name} {username}</div>
-          </div>
-          <Link to="/" style={{textDecoration: "none", color: "black", fontSize: "1.2rem"}}>
-          <div  className="user-icon-wrapper"> Esci <FontAwesomeIcon icon={faSignOut} /></div>
-          </Link>
+    <div className="navbar-wrapper">
+      <div className="navbar-wrapper-link">
+        <div className="user-icon-wrapper" onClick={toggleSidebar}>
+          <ProfilePicture Propic={"https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"} />
+        </div>
+        <div className="user-icon-wrapper" onClick={handleLogout}>
+          Esci <FontAwesomeIcon icon={faSignOut} />
         </div>
       </div>
+      {isSidebarOpen && <Sidebar />}
+    </div>
   );
 }

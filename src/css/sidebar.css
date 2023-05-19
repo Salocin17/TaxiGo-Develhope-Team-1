@@ -3,3 +3,17 @@
   position: relative !important;
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px; /* Imposta la larghezza desiderata */
+  background-color: #f1f1f1;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
