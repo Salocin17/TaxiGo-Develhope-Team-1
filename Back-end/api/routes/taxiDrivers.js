@@ -12,7 +12,6 @@ const { outError } = require("../../utility/errors");
 app.post("/", async (req, res) => {
     const schema = Joi.object().keys({
         email: Joi.string().required(),
-        password: Joi.string().required(),
         first_name: Joi.string().required(),
         last_name: Joi.string().required(),
         birth: Joi.string().required(),
