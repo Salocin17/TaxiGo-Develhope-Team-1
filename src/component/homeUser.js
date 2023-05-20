@@ -12,21 +12,20 @@ import NewNavbar from "./NewNavbar";
 import ProfilePicture from "./ProfileIcon";
 import { FaArrowLeft } from "react-icons/fa";
 
-
 const slideInVariants = {
   hidden: { opacity: 0, y: 100 },
   visible: { opacity: 1, y: 0 }
 };
 
-
 export function HomeUser() {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0)
+  const [destination, setDestination] = useState(0);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
 
-
   const street = "San Cataldo";
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     fetch(`http://federicov.ddns.net:3300/api/location/user/${street}`, {
@@ -41,6 +40,7 @@ export function HomeUser() {
       console.log(res);
     });
   }, []);
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -66,6 +66,9 @@ export function HomeUser() {
     activeSidebar === 0 ? setActiveSidebar(1) : setActiveSidebar(0)
   }
 
+  function handleSetDestination(value) {
+    setDestination(value)
+  }
   return (
     <div className="container">
       <NewNavbar/>
@@ -83,8 +86,8 @@ export function HomeUser() {
       </div>}
       {activeSidebar === 1 && <Sidebar/>}
       <div className="container-right">
-        {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} />}
-        {active === 1 && <TaxiList onValueChange={handleValueChange} />}
+        {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
+        {active === 1 && <TaxiList onValueChange={handleValueChange} destination={destination}/>}
         {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} />}
         {active === 3 && <RideTimer onValueChange={handleValueChange} street={street} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}

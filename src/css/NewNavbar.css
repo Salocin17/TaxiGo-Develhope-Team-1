@@ -9,9 +9,10 @@
 
 .logo-image {
   width: 100px;
-  height: auto;
-  background-image: url("../Images/logo-white.svg");
-  z-index: 999;
+  height: 100px;
+  background-image: url("../Images/logo.png");
+  top: 1rem;
+  left: 50%;
 }
 
 .navbar {
