@@ -8,11 +8,14 @@
 }
 
 .logo-image {
-  width: 100px;
-  height: 100px;
-  background-image: url("../Images/logo.png");
-  top: 1rem;
-  left: 50%;
+  width: 132px;
+  height: 26px;
+  background-image: url("../Images/taxigo-logo-3.svg");
+  background-repeat: none;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 
 .navbar {
