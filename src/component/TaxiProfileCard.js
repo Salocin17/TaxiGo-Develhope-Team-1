@@ -11,10 +11,10 @@ const TaxiProfileCard = ({onValueChange}) => {
 
 const handleConfirm = () => {
   Swal.fire({
-    title: "Prenotazione Confermata",
-    text: "Il tuo Taxi saràa presto da te",
-    icon: "success",
-    confirmButtonText: "Ottimo!",
+    title: "Prenotazione in attesa",
+    text: "Attendi la conferma di Mario ",
+    icon: "info",
+    confirmButtonText: "Ok",
     confirmButtonColor: '#31C48D'
   });
 
@@ -44,7 +44,7 @@ const handleConfirm = () => {
         <Card.Body>
           <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
               <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'}/>
-              <span>John Doe</span>
+              <span>Mario</span>
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>
@@ -53,7 +53,7 @@ const handleConfirm = () => {
             <div>
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Distanza</h6>
-                <span className="ml-2 fs-6 fw-semibold">0.2 Km</span>
+                <span className="ml-2 fs-6 fw-semibold">0.5 Km</span>
               </div>
             </div>
             <div>

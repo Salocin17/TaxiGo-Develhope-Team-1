@@ -1,7 +1,7 @@
 import { Card, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { MdPlace } from "react-icons/md";
-import '../css/ridetimer.css'
+import '../css/ridetimer.css';
 
 function TaxiRideTimer({ address }) {
     const [time, setTime] = useState(0);

@@ -11,6 +11,7 @@ import { MapBox } from "./mapBoxUser";
 import NewNavbar from "./NewNavbar";
 import ProfilePicture from "./ProfileIcon";
 import { FaArrowLeft } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const slideInVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -23,8 +24,25 @@ export function HomeUser() {
   const [destination, setDestination] = useState(0);
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [TaxiConfirm, setTaxiConfirm] = useState(false)
 
   const street = "San Cataldo";
+
+  if (active === 3) {
+    const startAfterTenSeconds = () => {
+      setTimeout(() => {
+        setTaxiConfirm(true)
+        Swal.fire({
+          title: "Prenotazione Confermata",
+          text: "A breve sarai a destinazione",
+          icon: "success",
+          confirmButtonText: "Ottimo!",
+          confirmButtonColor: '#31C48D'
+        });
+      }, 10000);
+ };
+    startAfterTenSeconds();
+}
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -89,7 +107,7 @@ export function HomeUser() {
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange} destination={destination}/>}
         {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} />}
-        {active === 3 && <RideTimer onValueChange={handleValueChange} street={street} />}
+        {active === 3 && TaxiConfirm && <RideTimer onValueChange={handleValueChange} street={street} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
 
         <div className="container-map">
