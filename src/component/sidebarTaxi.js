@@ -11,21 +11,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function SidebarTaxi() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState('homeTaxi');
-  /* if (selected !== selected) {
-        setSelected(selected);
-        navigate('/'+selected)
-      }*/
+  const [selected, setSelected] = useState("homeTaxi");
+
   return (
     <SideNav
       onSelect={(selected) => {
         console.log(selected);
-        setSelected(selected);
-        navigate('/'+selected)
+        navigate("/" + selected);
       }}
-      className='sidenav'
-
-      
+      className="sidenav"
     >
 
       <Toggle/>

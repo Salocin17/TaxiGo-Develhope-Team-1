@@ -48,7 +48,7 @@ export function SignUpUser() {
         res.json().then((json) => {
           localStorage.setItem("token", json.token);
         });
-        window.location.href = "/homeUser";
+        window.location.href = "/setupUser";
       } else if(res.status === 500){
         setShowSnackbar(true);
 

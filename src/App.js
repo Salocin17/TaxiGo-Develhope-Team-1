@@ -11,6 +11,8 @@ import { HomeTaxi } from './component/homeTaxi';
 import { StoricoTaxi } from './component/storicoTaxi';
 import {TaxiAccount} from './component/TaxiAccount';
 import {Wallet} from './component/wallet';
+import {SetupGpsUser} from './component/setupgpsUser';
+
 
 export default function App() {
   return (
@@ -29,6 +31,7 @@ export default function App() {
           <Route exact path="/storicoTaxi" element={<StoricoTaxi />} />
           <Route exact path="/TaxiAccount" element={<TaxiAccount/>} />
           <Route exact path="/wallet" element={<Wallet/>} />
+          <Route exact path="/setupUser" element={<SetupGpsUser/>} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,41 @@
+.container-gps-user{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.container-gps-user-header {
+    background-image: url("../Images/setupGps.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+    width: 100%;
+}
+
+.container-gps-user-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonGps{
+    width: 97%;
+    background-color: white ;
+    border: 2px solid #31C48D;
+    color: #31C48D;
+    height: 3rem;
+    margin: 3rem 1rem 5rem 1rem;
+}
+
+.buttonGps>p{
+   font-size: 1rem;
+   margin-bottom: 0;
+   font-weight: 900;
+}
+
+.buttonGps>p>svg{
+    margin-right: 2rem;
+ }
+ 

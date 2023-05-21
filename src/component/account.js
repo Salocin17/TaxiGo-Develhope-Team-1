@@ -57,7 +57,11 @@ export const Account = () => {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        nome: modifiedNome,
+        first_name: modifiedNome,
+        last_name: modifiedCognome,
+        email: modifiedEmail,
+        number: modifiedTelefono,
+        birth: modifiedCompleanno,
       }),
     })
       .then((response) => response.json())
