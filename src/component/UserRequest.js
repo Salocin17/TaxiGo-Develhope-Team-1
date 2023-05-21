@@ -21,9 +21,7 @@ const UserRequest = ({onValueChange}) => {
         onValueChange(2);
     }
 
-    const handleReject = () => {
-        onValueChange(0);
-    }
+    
 
     return (
         <div className="fixed-bottom ">
@@ -48,7 +46,7 @@ const UserRequest = ({onValueChange}) => {
                         </div>
                     </div>
                     <div className="d-flex mt-4 align-items-center justify-content-center gap-3">
-                        <Button variant="danger" onClick={handleReject}>Rifiuta</Button>
+                        <Button variant="danger" onClick={() => onValueChange(0)}>Rifiuta</Button>
                         <Button variant="success" onClick={handleConfirm}>Accetta</Button>
                     </div>
                 </Card.Body>

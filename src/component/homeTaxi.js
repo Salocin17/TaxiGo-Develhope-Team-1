@@ -6,6 +6,7 @@ import { MapBox } from "./mapBoxTaxi";
 import UserList from "./UserList";
 import UserRequest from "./UserRequest";
 import TaxiRideTimer from "./TaxiRideTimer";
+import TaxiRideTimer2 from "./TaxiRideTimer2";
 import SidebarTaxi from "./sidebarTaxi";
 import NewNavbar from "./NewNavbar";
 import ProfilePicture from "./ProfileIcon";
@@ -78,7 +79,8 @@ export function HomeTaxi() {
       <div className="container-right">
         {active === 0 && <UserList onValueChange={handleValueChange} />}
         {active === 1 && <UserRequest onValueChange={handleValueChange} />}
-        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} />}
+        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={'Via Roma'}/>}
+        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={'Via Delia'}/>}
         <div className="container-map">
         {active && <MapBox /> }
         </div>
