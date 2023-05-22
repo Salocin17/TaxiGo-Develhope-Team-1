@@ -3,6 +3,7 @@
     flex-direction: column;
     height: 100%;
     align-items: center;
+    gap: 3rem;
 }
 
 .container-gps-user-header {
@@ -21,7 +22,6 @@
 }
 
 .buttonGps{
-    width: 97%;
     background-color: white ;
     border: 2px solid #31C48D;
     color: #31C48D;
@@ -32,10 +32,10 @@
 .buttonGps>p{
    font-size: 1rem;
    margin-bottom: 0;
-   font-weight: 900;
+   font-weight: 800;
 }
 
 .buttonGps>p>svg{
-    margin-right: 2rem;
+    margin-right: 1rem;
  }
  

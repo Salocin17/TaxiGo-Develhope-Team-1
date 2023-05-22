@@ -12,17 +12,24 @@ import { useNavigate } from "react-router-dom";
 export default function Sidebar() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("homeUser");
+  const [expanded, setExpanded] = useState(false);
+
+  const handleToggle = () => {
+    setExpanded(!expanded);
+  };
 
   return (
+    <div className="container-sidebar">
+    <Toggle style={{width:"4rem", height:"4rem", backgroundColor:"red", zIndex:"1"}} onClick={handleToggle}/>
     <SideNav
+      expanded={expanded}
       onSelect={(selected) => {
         console.log(selected);
         navigate("/" + selected);
       }}
       className="sidenav"
     >
-      <Toggle />
-      <SideNav.Nav defaultSelected="homeUser">
+  <SideNav.Nav defaultSelected="homeUser">
         <NavItem eventKey="homeUser" selected={selected === "homeUser"}>
           <NavIcon>
             <i
@@ -77,5 +84,6 @@ export default function Sidebar() {
         </NavItem>
       </SideNav.Nav>
     </SideNav>
+    </div>
   );
 }

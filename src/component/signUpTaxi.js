@@ -38,7 +38,7 @@ export function SignUpTaxi() {
         res.json().then((json) => {
           localStorage.setItem("token", json.token);
         });
-        window.location.href = "/homeTaxi";
+        window.location.href = "/setupTaxi";
       }else if(res.status === 500){
         setShowSnackbar(true);
 
