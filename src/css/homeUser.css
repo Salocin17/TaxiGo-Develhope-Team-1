@@ -15,7 +15,7 @@ body {
   justify-content: flex-start;
   margin: 0;
   padding: 0;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .container-right {

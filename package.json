@@ -19,6 +19,7 @@
     "framer-motion": "^10.12.12",
     "google-fonts": "^1.0.0",
     "mapbox-gl": "^2.14.1",
+    "mdb-react-ui-kit": "^6.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-datepicker": "^4.11.0",
