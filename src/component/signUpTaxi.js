@@ -59,9 +59,7 @@ export function SignUpTaxi() {
             <Link to="/signInTaxi">
               <a
                 href="Sign Up"
-                style={{
-                  display: windowWidth <= 768 ? "none" : "inline-block",
-                }}
+               
               >
                 Registrati
               </a>

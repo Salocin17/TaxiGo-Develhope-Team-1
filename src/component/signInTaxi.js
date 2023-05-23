@@ -131,9 +131,7 @@ export function SignInTaxi() {
                 <a href="Sign Up"  className="underline-link">Registrati</a>
               </Link>
               <Link to="/signUpTaxi">
-                <a href="Sign In" style={{
-                  display: windowWidth <= 768 ? "none" : "inline-block",
-                }}>
+                <a href="Sign In" >
                   Accedi
                 </a>
               </Link>
@@ -141,7 +139,7 @@ export function SignInTaxi() {
             <form onSubmit={handleSubmit}>
               <div className="wrapper-form-sign-in">
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-auto">
                     <label for="licenza">
                       <b style={{ color: "red" }}>*</b> N. Licenza
                     </label>
@@ -155,7 +153,7 @@ export function SignInTaxi() {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="nome">
                       <b style={{ color: "red" }}>*</b> Nome
                     </label>
@@ -167,7 +165,7 @@ export function SignInTaxi() {
                       onChange={(event) => setNome(event.target.value)} required
                     />
                   </div>
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="cognome">
                       <b style={{ color: "red" }}>*</b> Cognome
                     </label>
@@ -179,7 +177,7 @@ export function SignInTaxi() {
                       onChange={(event) => setCognome(event.target.value)} required
                     />
                   </div>
-                  <div className="col-3">
+                  <div className="col-auto">
                     <label for="gender">
                       <b style={{ color: "red" }}>*</b> Sesso
                     </label>
@@ -196,7 +194,7 @@ export function SignInTaxi() {
                 </div>
 
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-auto">
                     <label for="date">
                       <b style={{ color: "red" }}>*</b> Data di nascita
                     </label>
@@ -208,9 +206,9 @@ export function SignInTaxi() {
                       onChange={(event) => setDate(event.target.value)} required
                     />
                   </div>
-                  <div class="col-4">
+                  <div class="col-auto">
                     <label for="prov">
-                      <b style={{ color: "red" }}>*</b> Provincia
+                      <b style={{ color: "red" }}>*</b> Prov
                     </label>
                     <input
                       type="text"
@@ -222,7 +220,7 @@ export function SignInTaxi() {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="citta">Città di residenza</label>
                     <input
                       type="name"
@@ -232,7 +230,7 @@ export function SignInTaxi() {
                       onChange={(event) => setCitta(event.target.value)} required
                     />
                   </div>
-                  <div class="col-2">
+                  <div class="col-auto">
                     <label for="cognome">CAP</label>
                     <input
                       type="name"
@@ -242,7 +240,7 @@ export function SignInTaxi() {
                       onChange={(event) => setCap(event.target.value)}
                     />
                   </div>
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="cognome">Cellulare</label>
                     <input
                       type="telephone"
@@ -254,7 +252,7 @@ export function SignInTaxi() {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-auto">
                     <label for="email">
                       <b style={{ color: "red" }}>*</b> Email
                     </label>
@@ -268,7 +266,7 @@ export function SignInTaxi() {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="prov">
                       <b style={{ color: "red" }}>*</b> Password
                     </label>
@@ -281,7 +279,7 @@ export function SignInTaxi() {
                       onChange={(event) => setPassword(event.target.value)} required
                     />
                   </div>
-                  <div class="col">
+                  <div class="col-auto">
                     <label for="prov">
                       <b style={{ color: "red" }}>*</b> Conferma password
                     </label>
