@@ -20,7 +20,6 @@ export const TaxiAccount = () => {
   const [modifiedCompleanno, setModifiedCompleanno] = useState("");
   const [modifiedTelefono, setModifiedTelefono] = useState("");
 
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3300/api/user`, {
@@ -57,7 +56,11 @@ export const TaxiAccount = () => {
         authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        nome: modifiedNome,
+        first_name: modifiedNome,
+        last_name: modifiedCognome,
+        email: modifiedEmail,
+        number: modifiedTelefono,
+        birth: modifiedCompleanno,
       }),
     })
       .then((response) => response.json())

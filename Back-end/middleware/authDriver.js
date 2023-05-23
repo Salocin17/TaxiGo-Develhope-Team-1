@@ -14,22 +14,23 @@ const authDriver = (options = { ...defaultOptions.addUser }) => async (req, res,
         :
         req.headers.authorization || req.headers["authorization"] || null;
 
-    if (!bearerToken) return res.status(403).json({ message: "Not authorized"});
+    if (!bearerToken) return res.status(403).json({ message: "Not authorized 1"});
 
-    if (!options.enableQueryToken && !bearerToken.startsWith("Bearer ")) return res.status(403).json({ message: "Not authorized"});
+    if (!options.enableQueryToken && !bearerToken.startsWith("Bearer ")) return res.status(403).json({ message: "Not authorized 2"});
 
     const token = bearerToken.startsWith("Bearer ") ? bearerToken.split(" ")[1].trim() : bearerToken; // Bearer {TOKEN}
 
-    if (!token) return res.status(403).json({ message: "Not authorized"});
+    if (!token) return res.status(403).json({ message: "Not authorized 3"});
     
     try {
         const decoded_token = verifyUserToken(token);
 
-        if (!decoded_token) return res.status(403).json({ message: "Not authorized"});
+        if (!decoded_token) return res.status(403).json({ message: "Not authorized 4"});
 
         const user = await TaxiDriver.findOne({ _id: decoded_token._id }, '-__v -password', { lean: true });
+        console.log(user, decoded_token)
 
-        if (user == null) return res.status(403).json({ message: "Not authorized"});
+        if (user == null) return res.status(403).json({ message: "Not authorized 5"});
 
         req.user = user;
         return next();
