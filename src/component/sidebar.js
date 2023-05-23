@@ -43,8 +43,8 @@ export default function Sidebar() {
         <Toggle />
 
         <SideNav.Nav defaultSelected="homeUser">
-          <NavItem className="sidenav-header">
-            <NavIcon>
+          <NavItem className="sidenav-header" >
+            <NavIcon >
               <ProfilePicture
                 Propic={
                   "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
