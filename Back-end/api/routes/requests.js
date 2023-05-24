@@ -13,10 +13,12 @@ app.post("/", authUser(), async (req, res)=>{
     });
 
     try{
+        console.log(req.body)
         const {destination, id} = await schema.validateAsync(req.body);
 
         const {_id, street} = await User.findOne({_id : req.user._id})
 
+        console.log(destination)
         const departure = street
         const user = _id
         const taxiDriver = id

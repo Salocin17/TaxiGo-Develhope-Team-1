@@ -36,7 +36,7 @@ export function SignUpTaxi() {
     }).then((res) => {
       if (res.status === 200) {
         res.json().then((json) => {
-          localStorage.setItem("token", json.token);
+          localStorage.setItem("token1", json.token);
         });
         window.location.href = "/setupTaxi";
       }else if(res.status === 500){

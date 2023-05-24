@@ -13,13 +13,19 @@ app.use("/taxiDrivers", require("./routes/taxiDrivers"));
 
 app.use("/taxi", require("./routes/taxi"));
 
+app.use("/status", require("./routes/status"));
+
 app.use("/zone", require("./routes/zone"));
 
 app.use("/street", require("./routes/street"));
+
+app.use("/getStreet", require("./routes/getStreet"));
+
 app.use("/route", require("./routes/route"));
 /**
  * @path /api/driver -> "/api/routes/getDriver.js"
  */
+app.use("/aStreet", require("./routes/streets"));
 
 app.use("/update", require("./routes/update"));
 

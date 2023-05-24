@@ -25,6 +25,7 @@ const authUser = (options = { ...defaultOptions.addUser }) => async (req, res, n
     try {
         const decoded_token = verifyUserToken(token);
 
+    
         if (!decoded_token) return res.status(403).json({ message: "Not authorized"});
 
         const user = await User.findOne({ _id: decoded_token._id }, '-__v -password', { lean: true });

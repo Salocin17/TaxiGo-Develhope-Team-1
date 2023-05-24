@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/homeUser.css";
-import { MapBox } from "./mapBoxTaxi";
+import { MapBoxTaxi } from "./mapBoxTaxi";
 import UserList from "./UserList";
 import UserRequest from "./UserRequest";
 import TaxiRideTimer from "./TaxiRideTimer";
 import TaxiRideTimer2 from "./TaxiRideTimer2";
 import SidebarTaxi from "./sidebarTaxi";
 import NewNavbar from "./NewNavbar";
-import "../css/PrincpalBackground.css";
+import ProfilePicture from "./ProfileIcon";
+import '../css/PrincpalBackground.css'
+import { useParams } from "react-router-dom";
 
 export function HomeTaxi() {
   const [active, setActive] = useState(0);
-  const [activeSidebar, setActiveSidebar] = useState(0);
+  const [activeSidebar, setActiveSidebar] = useState(0)
+  const [request, setRequest] = useState()
+  const [destination, setDestination] = useState("");
 
-  const street = "Palermo";
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+
+  const { street } = useParams()
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    fetch(`http://federicov.ddns.net:3300/api/location/taxiDriver/${street}`, {
+    const token = localStorage.getItem("token1");
+    fetch(`http://localhost:3300/api/location/taxiDriver/${street}`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",
@@ -31,7 +38,32 @@ export function HomeTaxi() {
     });
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token1");
+
+    fetch(`http://localhost:3300/api/user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUsername(data.last_name);
+        setName(data.first_name);
+      });
+  }, []);
+
   function handleValueChange(newValue) {
+    setActive(newValue);
+  }
+  function handleValueChange2(newValue, data) {
+    setRequest(data)
+    setActive(newValue);
+  }
+  
+  function handleValueChange3(newValue, data) {
+    setDestination(data)
     setActive(newValue);
   }
 
@@ -61,21 +93,16 @@ export function HomeTaxi() {
       )}
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
-        {active === 0 && <UserList onValueChange={handleValueChange} />}
-        {active === 1 && <UserRequest onValueChange={handleValueChange} />}
-        {active === 2 && (
-          <TaxiRideTimer
-            onValueChange={handleValueChange}
-            startAddress={"Via Roma"}
-          />
-        )}
-        {active === 3 && (
-          <TaxiRideTimer2
-            onValueChange={handleValueChange}
-            endAddress={"Via Delia"}
-          />
-        )}
-        <div className="container-map">{active && <MapBox />}</div>
+        {active === 0 && <UserList onValueChange={handleValueChange2} />}
+        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request}/>}
+        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination}/>}
+        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination}/>}
+        <div className="container-map">
+        {active === 1 && <MapBoxTaxi center={street}/> }
+        {active === 2 && <MapBoxTaxi center={street} destination={destination}/> }
+        {active === 3 && <MapBoxTaxi center={destination} destination={request.destination}/> }
+
+        </div>
       </div>
     </div>
   );

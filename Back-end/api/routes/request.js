@@ -16,7 +16,7 @@ app.get("/", authDriver(), async (req, res) =>{
             data.push(rest)
         })
 
-        res.status(200).json({...data})
+        res.status(200).json(data)
 
     }catch(error){
         outError(error)(req, res)
