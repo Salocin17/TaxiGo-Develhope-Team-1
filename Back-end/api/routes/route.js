@@ -26,6 +26,8 @@ app.post("/", authDriver(), async(req, res) =>{
 
         const update = await TaxiDriver.updateOne({_id: taxiDriver}, {$set: {status: true}})
         console.log(update)
+        
+        const remove = await Request.findOneAndRemove({_id: data.id})
 
         return res.status(201).json({ rest });
 

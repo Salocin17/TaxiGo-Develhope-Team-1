@@ -5,14 +5,12 @@ import { FaTaxi } from "react-icons/fa";
 import Swal from "sweetalert2";
 import React, {useEffect, useState} from 'react';
 
-const TaxiProfileCard = ({onValueChange}) => {
-
-  
+const TaxiProfileCard = ({onValueChange, data, destination}) => {
 
 const handleConfirm = () => {
   Swal.fire({
     title: "Prenotazione in attesa",
-    text: "Attendi la conferma di Mario ",
+    text: `Attendi la conferma di ${data.first_name} `,
     icon: "info",
     confirmButtonText: "Ok",
     confirmButtonColor: '#31C48D'
@@ -20,21 +18,23 @@ const handleConfirm = () => {
 
   const token = localStorage.getItem("token")
     
-  fetch("http://localhost:3300/api/request", {
+  fetch("http://localhost:3300/api/requests", {
     method: "POST",
     headers: {
         'authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
     },
-    body: {
-      destination: "destinazione",
-      _id: "taxi id"
-    }
+    body: JSON.stringify({
+      destination: destination,
+      id: data._id
+    })
    
   }).then(res => res.json())
-      .then(json => console.log(json))
+    .then(json => {console.log(json)
+      onValueChange(3);})
 
 
-  onValueChange(3);
+
 }
 
   return (
@@ -44,7 +44,7 @@ const handleConfirm = () => {
         <Card.Body>
           <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
               <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'}/>
-              <span>Mario</span>
+              <span>{data.first_name+" "+data.last_name}</span>
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>

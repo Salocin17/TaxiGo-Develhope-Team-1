@@ -19,7 +19,6 @@ function TaxiRideTimer({ startAddress, onValueChange }) {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
 
-
     return (
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body >

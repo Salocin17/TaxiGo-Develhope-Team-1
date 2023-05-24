@@ -1,6 +1,6 @@
 const { outError } = require("../utility/errors");
 
-const location = async (User, req, res, data) =>{    
+const update = async (User, req, res, data) =>{    
 
     try{
         const update = await User.update({_id: req.user._id}, {$set: {
@@ -25,7 +25,7 @@ const location = async (User, req, res, data) =>{
 }
 
 module.exports = {
-    location,
+    update,
 }
 
 

@@ -22,15 +22,19 @@ export default function App() {
           <Route exact path="/" element={<Splash />} />
           <Route exact path="/signUpTaxi" element={<SignUpTaxi />} />
           <Route exact path="/signInTaxi" element={<SignInTaxi />} />
+
           <Route exact path="/signInUser" element={<SignInUser />} />
           <Route exact path="/signUpUser" element={<SignUpUser />} />
-          <Route exact path="/homeUser" element={<HomeUser />} />
-          <Route exact path="/homeTaxi" element={<HomeTaxi />} />
+
+          <Route exact path="/homeUser/:street" element={<HomeUser />} />
+          <Route exact path="/homeTaxi/:street" element={<HomeTaxi />} />
+
           <Route exact path="/account" element={<Account />} />
           <Route exact path="/storico" element={<Storico />} />
           <Route exact path="/storicoTaxi" element={<StoricoTaxi />} />
           <Route exact path="/TaxiAccount" element={<TaxiAccount/>} />
           <Route exact path="/wallet" element={<Wallet/>} />
+
           <Route exact path="/setupUser" element={<SetupGpsUser/>} />
           <Route exact path="/setupTaxi" element={<SetupGpsTaxi/>} />
         </Routes>

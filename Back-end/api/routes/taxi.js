@@ -16,7 +16,7 @@ app.get("/", authUser(), async (req, res) =>{
 
     const element = (streets) => {
         const promise = streets.map((el) => {
-            return TaxiDriver.find({street: el._id, status: false || undefined}).then(res => {
+            return TaxiDriver.find({street: el._id, status: false}).then(res => {
                 return res
             })
         });  
@@ -32,8 +32,11 @@ app.get("/", authUser(), async (req, res) =>{
             })
                
         }) 
-        res.status(200).send({...taxi})  
+        console.log(taxi)
+        res.status(200).send(taxi)  
     })
+    
+    res.status(200)  
 })
     
 

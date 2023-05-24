@@ -2,49 +2,30 @@ import React, { useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import '../css/TaxiList.css';
 import ProfilePicture from "./ProfileIcon";
-
-const itemList = [
-    {
-        name: "Mario",
-        address: "Via Roma",
-        person: "1",
-        time: "5 min",
-    },
-    {
-        name: "Giovanni",
-        address: "Via Delia",
-        person: "1",
-        time: "5 min",
-    },
-];
-
+import { useState } from "react";
 
 
 const UserList = ({onValueChange}) => {
+
+    const [list, setList] = useState();
     
     useEffect(() => {
-
-        const token = localStorage.getItem("token")
-
-        // setInterval(() => {
-        fetch("http://localhost:3300/api/request", {
+        const token = localStorage.getItem("token1")
+        setInterval(() => {
+            fetch("http://localhost:3300/api/request", {
                 method: "GET",
                 headers: {
                     'authorization': `Bearer ${token}`,
                 }
-
             }).then(res => res.json())
-                .then(json => console.log(json))
-        // }, 5000)
+                .then(json => setList(json))
+        }, 5000)
 
     },[])
 
-    const handleSelect = () => {
-        onValueChange(1);
+    const handleSelect = (e) => {
+        onValueChange(1, list[e]);
     }
-
-
-    // dati = nome , partenza e arrivo
 
     return (
         <Card className="fixed-bottom list-card">
@@ -53,8 +34,8 @@ const UserList = ({onValueChange}) => {
                     <h3 className="fs-3 fw-bold align-self-center" style={{ color: 'green' }}>Richieste Disponibili</h3>
                 </div>
                 <ListGroup variant="flush">
-                    {itemList.map((item, index) => (
-                        <ListGroup.Item key={index} className="taxi-list" onClick={handleSelect} style={{ cursor: 'pointer' }}>
+                    {list && list.map((item, index) => (
+                        <ListGroup.Item key={index} className="taxi-list" onClick={()=> handleSelect(index)} style={{ cursor: 'pointer' }}>
                             <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
                             <div>
                                 <h6 className="mb-1 fs-5 fw-bold">{item.name}</h6>
