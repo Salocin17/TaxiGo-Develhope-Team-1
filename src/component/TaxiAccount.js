@@ -22,7 +22,7 @@ export const TaxiAccount = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/user`, {
+    fetch(`http://localhost:3300/api/driver`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${token}`,

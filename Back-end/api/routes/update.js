@@ -37,14 +37,14 @@ app.patch("/user", authUser(), async (req, res) =>{
 
 app.patch("/driver", authDriver(), async (req, res) =>{    
     const schema = Joi.object().keys({
-        email: Joi.string().required(),
-        first_name: Joi.string().required(),
-        last_name: Joi.string().required(),
-        birth: Joi.string().required(),
-        city: Joi.string().required(),
-        province: Joi.string().required(),
-        number: Joi.number().required(),
-        license: Joi.string().required(),
+        email: Joi.string().allow(''),
+        first_name: Joi.string().allow(''),
+        last_name: Joi.string().allow(''),
+        birth: Joi.string().allow(''),
+        city: Joi.string().allow(''),
+        province: Joi.string().allow(''),
+        number: Joi.number().allow(''),
+        license: Joi.string().allow(''),
     }).min(1);
 
 

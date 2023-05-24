@@ -24,7 +24,7 @@ export function SignUpTaxi() {
     event.preventDefault();
 
     const data = {
-      type: true,
+      type: false,
       email: email,
       password,
     };

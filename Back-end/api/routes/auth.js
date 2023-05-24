@@ -14,7 +14,7 @@ app.post("/login", async (req, res) => {
     
     try {
         const data = await schema.validateAsync(req.body);
-
+console.log(data);
         const user = data.type ? 
            await User.findOne({ email: data.email }, "-__v", { lean: true }) : 
            await TaxiDriver.findOne({ email: data.email }, "-__v", { lean: true });
