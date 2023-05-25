@@ -68,6 +68,24 @@ export function HomeUser() {
     data()
   },[destination])
 
+
+  if (TaxiConfirm) {
+    const startAfterTenSeconds = () => {
+        Swal.fire({
+          title: "Prenotazione Confermata",
+          text: "A breve sarai a destinazione",
+          icon: "success",
+          confirmButtonText: "Ottimo!",
+          confirmButtonColor: '#31C48D'
+        });
+    };
+    startAfterTenSeconds();
+  }
+
+  const handleConfirm = () =>{
+    setTaxiConfirm(true)
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3300/api/user`, {
@@ -129,8 +147,8 @@ export function HomeUser() {
       <div className="container-right">
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
-        {active === 2 && <TaxiProfileCard onValueChange={handleValueChange} data={driver} destination={destination}/>}
-        {active === 3 && TaxiConfirm && <RideTimer onValueChange={handleValueChange} street={destination} />}
+        {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination}/>}
+        {TaxiConfirm && <RideTimer onValueChange={handleValueChange} street={destination} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
 
         {center && active < 1 && <div className="container-map"><MapBoxUser street={center}/></div>}

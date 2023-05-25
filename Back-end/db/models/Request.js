@@ -10,6 +10,10 @@ const RequestSchema = new Schema({
         type: String,
         required: true,
     },
+    status: {
+        type: String,
+        default: null
+    },
     taxiDriver: {
         type: Schema.Types.ObjectId,
         ref: "TaxiDriver",

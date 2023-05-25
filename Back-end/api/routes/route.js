@@ -24,10 +24,9 @@ app.post("/", authDriver(), async(req, res) =>{
         const _route = await Route.create(route);
         const { __v, ...rest } = _route._doc;
 
-        const update = await TaxiDriver.updateOne({_id: taxiDriver}, {$set: {status: true}})
-        console.log(update)
-        
-        const remove = await Request.findOneAndRemove({_id: data.id})
+        const updateRequest = await Request.updateOne({_id: data.id}, {$set: {status: "accept"}})
+
+        const updateDriver = await TaxiDriver.updateOne({_id: taxiDriver}, {$set: {status: true}})
 
         return res.status(201).json({ rest });
 
