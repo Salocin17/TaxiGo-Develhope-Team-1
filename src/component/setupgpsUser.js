@@ -37,7 +37,6 @@ export function SetupGpsUser() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setStreetInput(e.target.value);
     const data = [];
     streets.street.map((el) => {
