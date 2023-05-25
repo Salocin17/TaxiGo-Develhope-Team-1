@@ -8,9 +8,9 @@ import TaxiRideTimer from "./TaxiRideTimer";
 import TaxiRideTimer2 from "./TaxiRideTimer2";
 import SidebarTaxi from "./sidebarTaxi";
 import NewNavbar from "./NewNavbar";
-import ProfilePicture from "./ProfileIcon";
-import '../css/PrincpalBackground.css'
+import '../css/PrincpalBackground.css';
 import { useParams } from "react-router-dom";
+import { FaArrowLeft } from 'react-icons/fa'
 
 export function HomeTaxi() {
   const [active, setActive] = useState(0);
@@ -73,6 +73,7 @@ export function HomeTaxi() {
 
   return (
     <div className="container">
+      {active === 0 && <div className="principal-background"></div>}
       <NewNavbar onShowSidebar={handleShowSidebar} />
 
       {active != 0 && (
@@ -88,7 +89,9 @@ export function HomeTaxi() {
             className="d-flex justify-content-center align-items-center rounded-circle bg-white propic shadow"
             style={{ width: "50px", height: "50px" }}
             onClick={() => setActive(active - 1)}
-          ></div>
+          >
+            <FaArrowLeft size={20} />
+          </div>
         </div>
       )}
       {activeSidebar === 1 && <SidebarTaxi />}

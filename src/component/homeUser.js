@@ -11,6 +11,7 @@ import { MapBoxUser } from "./mapBoxUser";
 import NewNavbar from "./NewNavbar";
 import Swal from "sweetalert2";
 import { Routes, Route, useParams, createMemoryRouter } from 'react-router-dom';
+import { FaArrowLeft } from 'react-icons/fa'
 
 const slideInVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -67,23 +68,6 @@ export function HomeUser() {
     data()
   },[destination])
 
-
-  if (active === 3) {
-    const startAfterTenSeconds = () => {
-      setTimeout(() => {
-        setTaxiConfirm(true);
-        Swal.fire({
-          title: "Prenotazione Confermata",
-          text: "A breve sarai a destinazione",
-          icon: "success",
-          confirmButtonText: "Ottimo!",
-          confirmButtonColor: "#31C48D",
-        });
-      }, 10000);
-    };
-    startAfterTenSeconds();
-  }
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3300/api/user`, {
@@ -137,6 +121,7 @@ export function HomeUser() {
             style={{ width: "50px", height: "50px" }}
             onClick={() => setActive(active - 1)}
           >
+            <FaArrowLeft size={20}/>
           </div>
         </div>
       )}
