@@ -1,21 +1,24 @@
 import "../css/setupGps.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Link } from "react-router-dom";
-import { MdStreetview } from "react-icons/md";
-import SearchCard from "./SearchCard";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function SetupGpsTaxi() {
+  const [streets, setStreets] = useState();
+  const [street, setStreet] = useState([]);
+  const [isManualSelected, setIsManualSelected] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const [streetInput, setStreetInput] = useState("");
 
-  const [streets, setStreets] = useState()
-  const [street, setStreet] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3300/api/getStreet`).then(result => result.json()).then(json => setStreets(json))
+    fetch(`http://localhost:3300/api/getStreet`)
+      .then((result) => result.json())
+      .then((json) => setStreets(json));
 
     const token = localStorage.getItem("token1");
     fetch(`http://localhost:3300/api/status`, {
@@ -23,12 +26,12 @@ export function SetupGpsTaxi() {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    }).then((res) => res.json()).then(json => console.log(json));
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  }, []);
 
-  },[])
-
-
-  const handleClick = (e) =>{
+  const handleClick = (e) => {
     const token = localStorage.getItem("token1");
     fetch(`http://localhost:3300/api/location/user/${street[e.target.value]}`, {
       method: "PATCH",
@@ -38,21 +41,30 @@ export function SetupGpsTaxi() {
       headers: {
         authorization: `Bearer ${token}`,
       },
-    }).then((res) => {;
+    }).then((res) => {
       navigate(`/homeTaxi/${street[e.target.value]}`);
     });
-  }
+  };
 
+  const handleChange = (e) => {
+    setStreetInput(e.target.value);
+    const data = [];
+    streets.street.map((el) => {
+      if (el.name.includes(e.target.value)) {
+        data.push(el.name);
+      }
+    });
+    setStreet(data);
+    setIsInputFocused(true);
+  };
 
-  
+  const setInputClick = (e) => {
+    setStreetInput(e);
+  };
 
-  const handleChange = (e) =>{
-    const data = []
-    streets.street.map(el => {if(el.name.includes(e.target.value)){
-      data.push(el.name)
-    }}) 
-    setStreet(data)
-  }
+  const handleManualSelect = () => {
+    setIsManualSelected(true);
+  };
 
   return (
     <div className="container-gps-user">
@@ -82,23 +94,67 @@ export function SetupGpsTaxi() {
           </p>
         </button>
 
-        <div>
-          <button style={{ textDecoration: "none", color: "white", backgroundColor: "transparent", border: "0px", borderColor: "transparent" }}>
-            <u style={{ color: "#F52D56"}}>
-              {" "}
+        <div className="container-gps-user">
+          <button
+            style={{
+              textDecoration: "none",
+              color: "white",
+              backgroundColor: "transparent",
+              border: "0px",
+              borderColor: "transparent",
+              display: isManualSelected ? "none" : "block",
+            }}
+            onClick={handleManualSelect}
+          >
+            <u style={{ color: "#F52D56" }}>
               <h4 style={{ fontSize: "17px" }}>Seleziona manualmente</h4>
             </u>
           </button>
-          <input type="text" onChange={handleChange}></input>
-          
-          <select onChange={handleClick}>
-          {
-            street.map((el,index) => <option value={index}>{el}</option> )
-          }
-          </select>
+
+          {isManualSelected && (
+            <div className="container-manual">
+              <div className="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    🏠
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                  type="text"
+                  placeholder="Scegli la tua posizione"
+                  autoFocus
+                  onChange={handleChange}
+                  value={streetInput}
+                />
+                <FontAwesomeIcon
+                  icon={faArrowCircleRight}
+                  onClick={handleClick}
+                  style={{ height: "2rem", color: "#31C48D" }}
+                />
+              </div>
+              <div
+                style={{
+                  maxHeight: "200px",
+                  display: isInputFocused ? "block" : "none",
+                  overflowY: "auto",
+                }}
+              >
+                {street.map((el, index) => (
+                  <div
+                    className="input-hover"
+                    value={index}
+                    onClick={() => setInputClick(el)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {el}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
-
