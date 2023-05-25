@@ -121,6 +121,10 @@ export function HomeUser() {
     setDriver(data)
   }
 
+  function handleValueChange3(newValue, data) {
+    setTaxiConfirm(false);
+    setActive(newValue);
+  }
   return (
     <div className="container">
       <NewNavbar onShowSidebar={handleShowSidebar} />
@@ -148,7 +152,7 @@ export function HomeUser() {
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
         {active === 1 && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
         {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination}/>}
-        {TaxiConfirm && <RideTimer onValueChange={handleValueChange} street={destination} />}
+        {TaxiConfirm && <RideTimer onValueChange={handleValueChange3} street={destination} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
 
         {center && active < 1 && <div className="container-map"><MapBoxUser street={center}/></div>}

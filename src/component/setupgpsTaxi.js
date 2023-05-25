@@ -33,7 +33,7 @@ export function SetupGpsTaxi() {
 
   const handleClick = (e) => {
     const token = localStorage.getItem("token1");
-    fetch(`http://localhost:3300/api/location/user/${street[e.target.value]}`, {
+    fetch(`http://localhost:3300/api/location/user/${streetInput}`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",
@@ -42,7 +42,7 @@ export function SetupGpsTaxi() {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      navigate(`/homeTaxi/${street[e.target.value]}`);
+      navigate(`/homeTaxi/${streetInput}`);
     });
   };
 

@@ -32,13 +32,14 @@ export function SignUpUser() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    
     const data = {
       type: true,
       email: email,
       password,
     };
-
+    console.log(data)
+    
     fetch("http://localhost:3300/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

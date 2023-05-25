@@ -8,7 +8,7 @@ const { authDriver } = require("../../middleware/authDriver");
 app.get("/", authDriver(), async(req, res) =>{
 
     try{ 
-        console.log(req.user)
+        // console.log(req.user)
         const update = await TaxiDriver.updateOne({_id: req.user._id}, {$set: {status: false}})
         console.log(update)
 

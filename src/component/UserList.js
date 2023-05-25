@@ -10,7 +10,6 @@ const UserList = ({onValueChange}) => {
     const [list, setList] = useState();
 
     useEffect(() => {
-    
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
           method: "GET",
@@ -18,7 +17,6 @@ const UserList = ({onValueChange}) => {
             authorization: `Bearer ${token}`,
           },
         }).then((res) => res.json()).then(json => console.log(json));
-    
       },[])
     
     useEffect(() => {

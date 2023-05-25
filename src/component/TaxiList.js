@@ -9,9 +9,10 @@ import { MdDataArray } from "react-icons/md";
 const TaxiList = ({onValueChange}) => {
 
     const [list, setList] = useState([])
+    const [interval, setInterval] = useState()
   
     useEffect(()=>{
-      setTimeout(()=>{
+      const interval = setInterval(()=>{
 
         const token = localStorage.getItem("token")
     
@@ -21,7 +22,7 @@ const TaxiList = ({onValueChange}) => {
               'authorization': `Bearer ${token}`,
           }
           }).then(res => res.json()).then(data => {
-            console.log(data)
+            
             setList(data)})
             // data.map(el => {
             //   console.log(el.street)
@@ -39,11 +40,13 @@ const TaxiList = ({onValueChange}) => {
 
             // })
             
-      },5000)
+      },2000)
     },[])
 
   function handleChange(e){
+
     onValueChange(2, list[e])
+    clearInterval(interval)
   }
   
   return (

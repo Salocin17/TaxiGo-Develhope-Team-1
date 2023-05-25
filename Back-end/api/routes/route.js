@@ -14,7 +14,7 @@ app.post("/", authDriver(), async(req, res) =>{
        
         const data = await schema.validateAsync(req.body);
         const request = await Request.findOne({_id: data.id})
-        console.log(request)
+
         const {departure, destination, taxiDriver, user, createdAt } = request._doc
         const date = createdAt
         const price = Math.random() * 5;

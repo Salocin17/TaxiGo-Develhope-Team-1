@@ -12,7 +12,7 @@ export function StoricoTaxi() {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token1");
     fetch(`http://localhost:3300/api/user`, {
       method: "GET",
       headers: {

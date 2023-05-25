@@ -32,7 +32,7 @@ app.get("/", authUser(), async (req, res) =>{
             })
                
         }) 
-        console.log(taxi)
+        // console.log(taxi)
         res.status(200).send(taxi)  
     })
     

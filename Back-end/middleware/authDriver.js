@@ -28,7 +28,6 @@ const authDriver = (options = { ...defaultOptions.addUser }) => async (req, res,
         if (!decoded_token) return res.status(403).json({ message: "Not authorized 4"});
 
         const user = await TaxiDriver.findOne({ _id: decoded_token._id }, '-__v -password', { lean: true });
-        console.log(user, decoded_token._id)
 
         if (user == null) return res.status(403).json({ message: "Not authorized 5"});
 
