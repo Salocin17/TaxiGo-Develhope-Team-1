@@ -14,18 +14,9 @@ export function SetupGpsTaxi() {
   const [street, setStreet] = useState([])
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(`http://localhost:3300/api/getStreet`).then(result => result.json()).then(json => setStreets(json))
-
-    const token = localStorage.getItem("token1");
-    fetch(`http://localhost:3300/api/status`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    }).then((res) => res.json()).then(json => console.log(json));
-
-  },[])
+  useEffect(() =>{
+      fetch(`http://localhost:3300/api/getStreet`).then(result => result.json()).then(json => setStreets(json))
+  })
 
 
   const handleClick = (e) =>{

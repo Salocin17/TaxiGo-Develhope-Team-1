@@ -7,14 +7,17 @@ import React, {useEffect, useState} from 'react';
 
 const TaxiProfileCard = ({onValueChange, data, destination}) => {
 
-const handleConfirm = () => {
-  Swal.fire({
-    title: "Prenotazione in attesa",
-    text: `Attendi la conferma di ${data.first_name} `,
-    icon: "info",
-    confirmButtonText: "Ok",
-    confirmButtonColor: '#31C48D'
-  });
+  const [request, setRequest] = useState()
+  const [status, setStatus] = useState(false) 
+
+  const handleConfirm = () => {
+    Swal.fire({
+      title: "Prenotazione in attesa",
+      text: `Attendi la conferma di ${data.first_name} `,
+      icon: "info",
+      confirmButtonText: "Ok",
+      confirmButtonColor: '#31C48D'
+    })
 
   const token = localStorage.getItem("token")
     
@@ -30,12 +33,68 @@ const handleConfirm = () => {
     })
    
   }).then(res => res.json())
-    .then(json => {console.log(json)
-      onValueChange(3);})
+    .then(json => {
+      setRequest(json)
+    })
+  }
 
+  const deleteRequest = () => {
+    const token = localStorage.getItem("token")
 
+    fetch(`http://localhost:3300/api/delete`, {
+      method: "PATCH",
+      headers: {
+        'authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        id: request.request._id,
+      }), 
+    }).then(res => res.json())
+      .then(json => {   
+        console.log(json)
+      })
+  }
 
-}
+useEffect(()=>{
+  if(request){
+    const token = localStorage.getItem("token")
+
+    const interval = setInterval(()=>{
+      fetch(`http://localhost:3300/api/accept/${request.request._id}`, {
+      method: "GET",
+      headers: {
+          'authorization': `Bearer ${token}`,
+      },
+    
+    }).then(res => res.json())
+      .then(json => {
+
+        if(json == "accept"){
+          console.log(json)
+          clearInterval(interval)
+          deleteRequest()
+          setStatus(true)
+        }else if(json === "declire"){
+          clearInterval(interval)
+          deleteRequest()
+          console.log("declire")
+        }else {
+          console.log("null")
+        }
+
+      })
+    }, 3000)
+  }
+},[request])
+
+useEffect(()=>{
+  if(status){
+    setTimeout(()=>{
+      onValueChange(3);
+    },2000)  
+  }
+},[status])
 
   return (
     

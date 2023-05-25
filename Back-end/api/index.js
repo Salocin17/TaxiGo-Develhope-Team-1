@@ -16,6 +16,8 @@ app.use("/taxi", require("./routes/taxi"));
 app.use("/status", require("./routes/status"));
 
 app.use("/zone", require("./routes/zone"));
+app.use("/delete", require("./routes/delete"));
+app.use("/accept", require("./routes/accept"));
 
 app.use("/street", require("./routes/street"));
 
