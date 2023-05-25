@@ -11,8 +11,8 @@ const ProfilePicture = ({ onShowSidebar }) => {
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center rounded-circle bg-white propic shadow"
-      style={{ width: "50px", height: "50px" }}
+      className="d-flex justify-content-center align-items-center rounded-circle bg-white propic shadow "
+      style={{ width: "50px", height: "50px", position:"absolute", top:"2.3rem", right: "1rem" }}
       onClick={handleClick}
     >
       {isOpen ? <FaEye size={20} /> : <FaEyeSlash size={20} />}

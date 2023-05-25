@@ -34,6 +34,7 @@ export default function Sidebar() {
   return (
     <div className="sidebar-container">
       <SideNav
+        expanded={true}
         onSelect={(selected) => {
           console.log(selected);
           navigate("/" + selected);

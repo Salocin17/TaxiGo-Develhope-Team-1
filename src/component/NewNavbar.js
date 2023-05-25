@@ -8,7 +8,7 @@ const NewNavbar = (props) => {
     <div className="navbar fixed-top gradient-navbar">
       <div className="logo-image " />
       <div >
-        <TapSidebar Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onShowSidebar={props.onShowSidebar}  />
+        <TapSidebar Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} onShowSidebar={props.onShowSidebar} />
       </div>
     </div>
   );

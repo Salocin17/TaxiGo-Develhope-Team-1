@@ -12,6 +12,7 @@
 }
 
 .logo-image {
+  position: absolute;
   width: 132px;
   height: 26px;
   background-image: url("../Images/taxigo-logo-3.svg");

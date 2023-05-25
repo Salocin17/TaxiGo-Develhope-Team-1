@@ -153,7 +153,7 @@ export function HomeUser() {
         {active === 1 && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
         {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination}/>}
         {TaxiConfirm && <RideTimer onValueChange={handleValueChange3} street={destination} />}
-        {active === 4 && <FeedbackCard onValueChange={handleValueChange} />}
+        {active === 4 && <FeedbackCard onValueChange={handleValueChange} data={driver}/>}
 
         {center && active < 1 && <div className="container-map"><MapBoxUser street={center}/></div>}
         {active > 0 && <div className="container-map"><MapBoxUser street={center} destination={coordinate}/></div>}

@@ -39,26 +39,26 @@ const UserRequest = ({onValueChange, data}) => {
             <Card className="taxi-profile-card">
                 <Card.Body>
                     <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
+                        <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
                         <span className="fs-3 fw-bold">La tua richiesta!</span>
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
-                        <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
                         <div>
                             <div>
-                                <h6 className="mb-1">Partenza</h6>
-                                <span className="ml-2 fs-5 fw-semibold">{departure}</span>
+                                <h6 className="mb-1 text-muted">Partenza</h6>
+                                <span className="ml-2 fw-semibold">{departure}</span>
                             </div>
                         </div>
                         <div>
                             <div>
-                                <h6 className="mb-1">Destinazione</h6>
-                                <span className="ml-2 fs-5 fw-semibold">{data.destination}</span>
+                                <h6 className="mb-1 text-muted">Destinazione</h6>
+                                <span className="ml-2 fw-semibold">{data.destination}</span>
                             </div>
                         </div>
                         <div>
                             <div>
-                                <h6 className="ml-2">1 Persona</h6>
-                                <span className="ml-2">2 min</span>
+                                <h6 className="ml-2 text-muted">1 Persona</h6>
+                                <span className="ml-2 text-muted">2 min</span>
                             </div>
                         </div>
                     </div>

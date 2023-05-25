@@ -4,7 +4,7 @@ import ProfilePicture from './ProfileIcon';
 import '../css/Feedback.css';
 import Swal from "sweetalert2"
 
-function FeedbackCard({ nome, onValueChange }) {
+function FeedbackCard({ data, onValueChange }) {
     const [rating, setRating] = useState(null);
 
     
@@ -31,7 +31,7 @@ function FeedbackCard({ nome, onValueChange }) {
         <Card className='fixed-bottom feedback-card'>
             <Card.Body className='d-flex-column feedback-container'>
                 <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
-                <Card.Text className='fs-4 fw-semibold'>Valuta il tuo viaggio con {nome}</Card.Text>
+                <Card.Text className='fs-5 fw-semibold'>Valuta il tuo viaggio con {data.first_name}</Card.Text>
                 <Form onSubmit={handleSubmit} className='feedback-form'>
                     <Form.Group controlId="rating">
                         <div className='d-flex gap-3 justify-content-center'>
