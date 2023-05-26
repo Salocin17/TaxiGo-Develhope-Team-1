@@ -72,9 +72,6 @@ export function SignUpUser() {
             <Link to="/signInUser">
               <a
                 href="Sign Up"
-                style={{
-                  display: windowWidth <= 768 ? "none" : "inline-block",
-                }}
               >
                 Registrati
               </a>
