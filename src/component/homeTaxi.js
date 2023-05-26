@@ -12,7 +12,7 @@ import '../css/PrincpalBackground.css';
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa'
 
-export function HomeTaxi() {
+export function HomeTaxi({onSetStreet}) {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0)
   const [request, setRequest] = useState()
@@ -37,6 +37,10 @@ export function HomeTaxi() {
       console.log(res);
     });
   }, []);
+
+  useEffect(() => {
+    onSetStreet(street)
+  }, [street]);
 
   useEffect(() => {
     if(request){
@@ -77,7 +81,14 @@ export function HomeTaxi() {
     activeSidebar === 0 ? setActiveSidebar(1) : setActiveSidebar(0);
   }
 
-  console.log(request)
+  function handleShowSidebar(value) {
+    activeSidebar === 0 ? setActiveSidebar(1) : setActiveSidebar(0);
+  }
+
+  useEffect(() => {
+    onSetStreet(street)
+  }, [street]);
+
 
   return (
     <div className="container">

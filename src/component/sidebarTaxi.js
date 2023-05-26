@@ -45,7 +45,7 @@ export default function SidebarTaxi() {
         <Toggle />
       <SideNav.Nav defaultSelected="homeUser">
       <NavItem className="sidenav-header">
-            <NavIcon>
+            <NavIcon style={{ width: '55px', height: '50px', "margin-left": '1rem' }} >
               <ProfilePicture style={{marginTop:"2rem"}}
                 Propic={
                   "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"

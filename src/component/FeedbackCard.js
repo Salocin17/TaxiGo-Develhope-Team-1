@@ -31,7 +31,7 @@ function FeedbackCard({ data, onValueChange }) {
         <Card className='fixed-bottom feedback-card'>
             <Card.Body className='d-flex-column feedback-container'>
                 <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
-                <Card.Text className='fs-5 fw-semibold'>Valuta il tuo viaggio con {data.first_name}</Card.Text>
+                <Card.Text className='fs-6 fw-semibold'>Valuta il tuo viaggio con {data.first_name}</Card.Text>
                 <Form onSubmit={handleSubmit} className='feedback-form'>
                     <Form.Group controlId="rating">
                         <div className='d-flex gap-3 justify-content-center'>

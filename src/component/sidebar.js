@@ -45,7 +45,7 @@ export default function Sidebar() {
 
         <SideNav.Nav defaultSelected="homeUser">
           <NavItem className="sidenav-header" >
-            <NavIcon >
+            <NavIcon style={{width: '55px', height: '50px', "margin-left": '1rem'}} >
               <ProfilePicture
                 Propic={
                   "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"

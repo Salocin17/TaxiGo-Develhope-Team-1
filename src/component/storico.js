@@ -5,11 +5,13 @@ import { PaymentHistory } from "./paymentHistory";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export function Storico() {
+export function Storico(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,35 +32,39 @@ export function Storico() {
     setSelectedDate(date);
   }
 
+  function handleClick() {
+    navigate(`/homeUser/${props.street}`)
+  }
+
   const [payments, setPayments] = useState([
     {
       date: "2023-05-07",
       taxiCompany: "Yellow Cab",
-      origin: "JFK Airport",
-      destination: "Manhattan",
+      origin: "Viale Lunigiana",
+      destination: "Via Spoleto",
       price: "50.00",
-      departureTime: "10:00 a.m",
-      arrivalTime: "13:09 p.m",
+      departureTime: "10:00",
+      arrivalTime: "10:20",
       state: "Confermato",
     },
     {
       date: "2023-04-22",
       taxiCompany: "Uber",
-      origin: "LaGuardia Airport",
-      destination: "Brooklyn",
+      origin: "Via Roma",
+      destination: "Via Lesa",
       price: "35.00",
-      departureTime: "04:00 a.m",
-      arrivalTime: "10:34 p.m",
+      departureTime: "08:00",
+      arrivalTime: "08:15",
       state: "Cancellato",
     },
     {
       date: "2023-03-10",
       taxiCompany: "Lyft",
-      origin: "Newark Airport",
-      destination: "Jersey City",
+      origin: "Via Tonale",
+      destination: "Via Delia",
       price: "45.00",
-      departureTime: "15:00 p.m",
-      arrivalTime: "22:15 p.m",
+      departureTime: "15:00",
+      arrivalTime: "15:15",
       state: "Completato",
     },
   ]);
@@ -67,12 +73,7 @@ export function Storico() {
     <div className="wrapper-storico">
       <div className="container-nav-storico">
         <div className="nav-back">
-          <Link
-            to="/homeUser"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <i class="fa-solid fa-chevron-left fa-lg"></i>
-          </Link>
+            <i class="fa-solid fa-chevron-left fa-lg" onClick={handleClick}></i>
         </div>
         <div className="nav-title-storico">
           <div className="nav-text-storico">
@@ -89,6 +90,7 @@ export function Storico() {
             />
           </div>
         </div>
+        
       </div>
 
       <div className="container-storico">

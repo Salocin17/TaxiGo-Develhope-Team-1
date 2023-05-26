@@ -3,8 +3,9 @@ import "../css/account.css";
 import ProfilePicture from "./ProfileIcon";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export const Account = () => {
+export const Account = (props) => {
   const [id, setId] = useState("");
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
@@ -19,6 +20,7 @@ export const Account = () => {
   const [modifiedEmail, setModifiedEmail] = useState("");
   const [modifiedCompleanno, setModifiedCompleanno] = useState("");
   const [modifiedTelefono, setModifiedTelefono] = useState("");
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -75,16 +77,15 @@ export const Account = () => {
     setModifiedTelefono("");
   };
 
+  function handleClick() {
+    navigate(`/homeUser/${props.street}`)
+  }
+
   return (
     <div className="wrapper-account">
       <div className="container-nav">
         <div className="nav-back">
-          <Link
-            to="/homeUser"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <i class="fa-solid fa-chevron-left fa-lg"></i>
-          </Link>
+          <i class="fa-solid fa-chevron-left fa-lg" onClick={handleClick}></i>
         </div>
         <div className="nav-title">
           <div className="nav-text-account">

@@ -2,19 +2,21 @@ import React from "react";
 import "../css/homeUser.css";
 import "../css/wallet.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export function Wallet() {
+export function Wallet(props) {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(`/homeUser/${props.street}`)
+  }
+
   return (
     <div>
       <div className="wrapper-wallet">
         <div className="container-nav-wallet">
           <div className="nav-back">
-            <Link
-              to="/homeUser"
-              style={{ textDecoration: "none", color: "white" }}
-            >
-              <i class="fa-solid fa-chevron-left fa-lg"></i>
-            </Link>
+          <i class="fa-solid fa-chevron-left fa-lg" onClick={handleClick}></i>
           </div>
           <div className="nav-title-wallet">
             <div className="nav-text-wallet">Wallet</div>
@@ -114,7 +116,7 @@ export function Wallet() {
           <div className="container-wallet-footer">
             <div className="container-wallet-footer-left">
               <p>BALANCE</p>
-              <p>$2500</p>
+              <p>€ 2500</p>
             </div>
             <div className="container-wallet-footer-right">
               <p>SCADE</p>

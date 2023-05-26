@@ -9,12 +9,19 @@ import { Storico } from './component/storico';
 import { Account } from './component/account';
 import { HomeTaxi } from './component/homeTaxi';
 import { StoricoTaxi } from './component/storicoTaxi';
-import {TaxiAccount} from './component/TaxiAccount';
-import {Wallet} from './component/wallet';
-import {SetupGpsUser} from './component/setupgpsUser';
-import {SetupGpsTaxi} from './component/setupgpsTaxi';
+import { TaxiAccount } from './component/TaxiAccount';
+import { Wallet } from './component/wallet';
+import { SetupGpsUser } from './component/setupgpsUser';
+import { SetupGpsTaxi } from './component/setupgpsTaxi';
+import { useState } from "react"
 
 export default function App() {
+  const [street, setStreet] = useState()
+
+  const handleSet = (e) => {
+    setStreet(e)
+  }
+
   return (
     <Router>
       <div>
@@ -26,17 +33,17 @@ export default function App() {
           <Route exact path="/signInUser" element={<SignInUser />} />
           <Route exact path="/signUpUser" element={<SignUpUser />} />
 
-          <Route exact path="/homeUser/:street" element={<HomeUser />} />
-          <Route exact path="/homeTaxi/:street" element={<HomeTaxi />} />
+          <Route exact path="/homeUser/:street" element={<HomeUser onSetStreet={handleSet} />} />
+          <Route exact path="/homeTaxi/:street" element={<HomeTaxi onSetStreet={handleSet} />} />
 
-          <Route exact path="/account" element={<Account />} />
-          <Route exact path="/storico" element={<Storico />} />
-          <Route exact path="/storicoTaxi" element={<StoricoTaxi />} />
-          <Route exact path="/TaxiAccount" element={<TaxiAccount/>} />
-          <Route exact path="/wallet" element={<Wallet/>} />
+          <Route exact path="/account/" element={<Account street={street} />} />
+          <Route exact path="/storico/" element={<Storico street={street} />} />
+          <Route exact path="/storicoTaxi/" element={<StoricoTaxi street={street} />} />
+          <Route exact path="/TaxiAccount/" element={<TaxiAccount street={street} />} />
+          <Route exact path="/wallet" element={<Wallet street={street} />} />
 
-          <Route exact path="/setupUser" element={<SetupGpsUser/>} />
-          <Route exact path="/setupTaxi" element={<SetupGpsTaxi/>} />
+          <Route exact path="/setupUser" element={<SetupGpsUser />} />
+          <Route exact path="/setupTaxi" element={<SetupGpsTaxi />} />
         </Routes>
       </div>
     </Router>

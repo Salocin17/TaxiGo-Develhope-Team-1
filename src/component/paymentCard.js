@@ -48,7 +48,7 @@ export function PaymentCard({ payment }) {
           <div className="img2"></div>
           <h5 style={{ fontSize: "1.2rem" }}>
             {" "}
-            $ <strong>{payment.price}</strong>
+            € <strong>{payment.price}</strong>
           </h5>
         </div>
         <div className={`confermato ${payment.state}`}>

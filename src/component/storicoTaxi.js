@@ -5,11 +5,13 @@ import { PaymentHistory } from "./paymentHistory";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export function StoricoTaxi() {
+export function StoricoTaxi(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token1");
@@ -28,6 +30,10 @@ export function StoricoTaxi() {
 
   function handleDateChange(date) {
     setSelectedDate(date);
+  }
+
+  function handleClick() {
+    navigate(`/homeUser/${props.street}`)
   }
 
   const [payments, setPayments] = useState([
@@ -67,12 +73,7 @@ export function StoricoTaxi() {
     <div className="wrapper-storico">
       <div className="container-nav-storico">
         <div className="nav-back">
-          <Link
-            to="/homeTaxi"
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <i class="fa-solid fa-chevron-left fa-lg"></i>
-          </Link>
+        <i class="fa-solid fa-chevron-left fa-lg" onClick={handleClick}></i>
         </div>
         <div className="nav-title-storico">
           <div className="nav-text-storico">

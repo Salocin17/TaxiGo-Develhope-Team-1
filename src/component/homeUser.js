@@ -18,7 +18,7 @@ const slideInVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function HomeUser() {
+export function HomeUser({onSetStreet}) {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0);
   const [destination, setDestination] = useState(0);
@@ -83,8 +83,13 @@ export function HomeUser() {
   }
 
   const handleConfirm = () =>{
+    setActive(3)
     setTaxiConfirm(true)
   }
+
+  useEffect(() => {
+    onSetStreet(street)
+  }, [street]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
