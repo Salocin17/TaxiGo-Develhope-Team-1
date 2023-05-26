@@ -39,20 +39,26 @@ export function HomeTaxi() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("token1");
+    if(request){
+      const token = localStorage.getItem("token1");
 
-    fetch(`http://localhost:3300/api/user`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setUsername(data.last_name);
-        setName(data.first_name);
-      });
-  }, []);
+      fetch(`http://localhost:3300/api/user/driver`, {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json" 
+        },
+        body: JSON.stringify({
+          id: request.user
+        })
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setUsername(data.last_name);
+          setName(data.first_name);
+        });
+    }
+  }, [request]);
 
   function handleValueChange(newValue) {
     setActive(newValue);
@@ -70,6 +76,8 @@ export function HomeTaxi() {
   function handleShowSidebar(value) {
     activeSidebar === 0 ? setActiveSidebar(1) : setActiveSidebar(0);
   }
+
+  console.log(request)
 
   return (
     <div className="container">
@@ -98,13 +106,12 @@ export function HomeTaxi() {
       <div className="container-right">
         {active === 0 && <UserList onValueChange={handleValueChange2} />}
         {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request}/>}
-        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination}/>}
-        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination}/>}
+        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
+        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">
         {active === 1 && <MapBoxTaxi center={street}/> }
         {active === 2 && <MapBoxTaxi center={street} destination={destination}/> }
         {active === 3 && <MapBoxTaxi center={destination} destination={request.destination}/> }
-
         </div>
       </div>
     </div>

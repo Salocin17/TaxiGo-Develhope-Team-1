@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { MdPlace } from "react-icons/md";
 import '../css/ridetimer.css';
 
-function TaxiRideTimer({ startAddress, onValueChange }) {
+function TaxiRideTimer({ startAddress, onValueChange, name }) {
     const [time, setTime] = useState(0);
 
     useEffect(() => {
@@ -12,6 +12,8 @@ function TaxiRideTimer({ startAddress, onValueChange }) {
         }, 1000);
         return () => clearInterval(interval);
     }, []);
+
+  
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -22,7 +24,7 @@ function TaxiRideTimer({ startAddress, onValueChange }) {
     return (
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body >
-                <Card.Title className='ride-timer-title fs-4'>Raggiungi Alessio!</Card.Title>
+                <Card.Title className='ride-timer-title fs-4'>Raggiungi {name}!</Card.Title>
                 <div className='ride-timer-container'>
                     <Card.Text className='fs-4 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{startAddress}</Card.Text>
                     <Button className='align-self-center' variant="success" onClick={() => onValueChange(3)}>{`${formatTime(time)}`}</Button>
