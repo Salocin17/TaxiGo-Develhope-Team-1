@@ -70,9 +70,9 @@ export function SetupGpsTaxi() {
     <div className="container-gps-user">
       <div className="container-gps-user-header"></div>
       <div className="container-gps-user-body">
-        <h2 style={{ fontSize: "34px", fontWeight: "800" }}>Ciao, prenota </h2>
+        <h2 style={{ fontSize: "34px", fontWeight: "800" }}>Ciao,</h2>
         <h2 style={{ fontSize: "34px", fontWeight: "800" }}>
-          subito il tuo taxi!{" "}
+          mettiti in marcia!{" "}
         </h2>
         <button type="submit" class="btn buttonGps">
           <p>
