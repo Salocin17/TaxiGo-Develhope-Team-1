@@ -142,9 +142,6 @@ export function SignInUser() {
             <Link to="/signUpUser">
               <a
                 href="Sign In"
-                style={{
-                  display: windowWidth <= 768 ? "none" : "inline-block",
-                }}
               >
                 Accedi
               </a>
@@ -153,7 +150,7 @@ export function SignInUser() {
           <form onSubmit={handleSubmit}>
             <div className="wrapper-form-sign-in">
               <div class="row">
-                <div class="col">
+                <div class="col-auto">
                   <label for="nome">
                     <b style={{ color: "red" }}>*</b> Nome
                   </label>
@@ -166,7 +163,7 @@ export function SignInUser() {
                     required
                   />
                 </div>
-                <div class="col">
+                <div class="col-auto">
                   <label for="cognome">
                     <b style={{ color: "red" }}>*</b> Cognome
                   </label>
@@ -179,7 +176,7 @@ export function SignInUser() {
                     required
                   />
                 </div>
-                <div className="col-3">
+                <div className="col-auto">
                   <label for="gender">
                     <b style={{ color: "red" }}>*</b> Sesso
                   </label>
@@ -197,7 +194,7 @@ export function SignInUser() {
               </div>
 
               <div class="row">
-                <div class="col-8">
+                <div class="col-auto">
                   <label for="date">
                     <b style={{ color: "red" }}>*</b> Data di nascita
                   </label>
@@ -210,7 +207,7 @@ export function SignInUser() {
                     required
                   />
                 </div>
-                <div class="col-4">
+                <div class="col-auto">
                   <label for="prov">
                     <b style={{ color: "red" }}>*</b> Provincia
                   </label>
@@ -225,7 +222,7 @@ export function SignInUser() {
                 </div>
               </div>
               <div class="row">
-                <div class="col">
+                <div class="col-auto">
                   <label for="citta">Comune residenza</label>
                   <input
                     type="name"
@@ -235,7 +232,7 @@ export function SignInUser() {
                     onChange={(event) => setCitta(event.target.value)}
                   />
                 </div>
-                <div class="col-2">
+                <div class="col-auto">
                   <label for="cognome">CAP</label>
                   <input
                     type="name"
@@ -245,7 +242,7 @@ export function SignInUser() {
                     onChange={(event) => setCap(event.target.value)}
                   />
                 </div>
-                <div class="col">
+                <div class="col-auto">
                   <label for="cognome">Cellulare</label>
                   <input
                     type="telephone"
@@ -257,7 +254,7 @@ export function SignInUser() {
                 </div>
               </div>
               <div class="row">
-                <div class="col-12">
+                <div class="col-auto">
                   <label for="email">
                     <b style={{ color: "red" }}>*</b> Email
                   </label>
@@ -272,7 +269,7 @@ export function SignInUser() {
                 </div>
               </div>
               <div class="row">
-                <div class="col">
+                <div class="col-auto">
                   <label for="prov">
                     <b style={{ color: "red" }}>*</b> Password
                   </label>
@@ -286,7 +283,7 @@ export function SignInUser() {
                     required
                   />
                 </div>
-                <div class="col">
+                <div class="col-auto">
                   <label for="prov">
                     <b style={{ color: "red" }}>*</b> Conferma password
                   </label>
