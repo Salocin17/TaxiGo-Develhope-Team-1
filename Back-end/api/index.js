@@ -32,6 +32,7 @@ app.use("/aStreet", require("./routes/streets"));
 app.use("/update", require("./routes/update"));
 
 app.use("/driver", require("./routes/getDriver"));
+app.use("/user", require("./routes/getUser"));
 
 app.use("/location", require("./routes/location"));
 
