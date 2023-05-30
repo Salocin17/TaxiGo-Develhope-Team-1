@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Card, Form, Button } from "react-bootstrap";
-import '../css/SearchCard.css';
 import { MdPlace } from "react-icons/md";
 import { FaSearch } from 'react-icons/fa';
 import ProfilePicture from './ProfileIcon.js'

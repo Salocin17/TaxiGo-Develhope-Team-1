@@ -1,6 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/NewNavbar.css";
 import TapSidebar from "./tapSidebar";
 
 const NewNavbar = (props) => {

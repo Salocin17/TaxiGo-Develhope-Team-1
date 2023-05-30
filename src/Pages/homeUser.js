@@ -1,14 +1,13 @@
-import Sidebar from "./sidebar";
+import Sidebar from "../component/sidebar";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/homeUser.css";
-import SearchCard from "./SearchCard";
-import TaxiList from "./TaxiList";
-import TaxiProfileCard from "./TaxiProfileCard";
-import RideTimer from "./RideTimer";
-import FeedbackCard from "./FeedbackCard";
+import SearchCard from "../component/SearchCard";
+import TaxiList from "../component/TaxiList";
+import TaxiProfileCard from "../component/TaxiProfileCard";
+import RideTimer from "../component/RideTimer";
+import FeedbackCard from "../component/FeedbackCard";
 import { MapBoxUser } from "./mapBoxUser";
-import NewNavbar from "./NewNavbar";
+import NewNavbar from "../component/NewNavbar";
 import Swal from "sweetalert2";
 import { Routes, Route, useParams, createMemoryRouter } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa'

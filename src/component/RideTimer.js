@@ -1,7 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { MdPlace } from "react-icons/md";
-import '../css/ridetimer.css'
 
 function RideTimer({ street, onValueChange }) {
     const [time, setTime] = useState(0);

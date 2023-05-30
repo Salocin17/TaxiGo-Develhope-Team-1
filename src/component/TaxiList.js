@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { FaTaxi } from "react-icons/fa";
-import '../css/TaxiList.css';
 import * as turf from "@turf/turf"
 
 import { MdDataArray } from "react-icons/md";

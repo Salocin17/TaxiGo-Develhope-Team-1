@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../css/sidebar.css";
 import SideNav, {
   Toggle,
   NavItem,

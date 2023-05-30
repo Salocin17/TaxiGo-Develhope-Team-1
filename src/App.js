@@ -1,19 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Splash } from './component/splash';
-import { SignUpTaxi } from './component/signUpTaxi';
-import { SignInTaxi } from './component/signInTaxi';
-import { SignInUser } from './component/signInUser';
-import { SignUpUser } from './component/signUpUser';
-import { HomeUser } from './component/homeUser';
+import { Splash } from './Pages/splash';
+import { SignUpTaxi } from './Pages/signUpTaxi';
+import { SignInTaxi } from './Pages//signInTaxi';
+import { SignInUser } from './Pages/signInUser';
+import { SignUpUser } from './Pages/signUpUser';
+import { HomeUser } from './Pages/homeUser';
 import { Storico } from './component/storico';
 import { Account } from './component/account';
-import { HomeTaxi } from './component/homeTaxi';
+import { HomeTaxi } from './Pages/homeTaxi';
 import { StoricoTaxi } from './component/storicoTaxi';
 import { TaxiAccount } from './component/TaxiAccount';
 import { Wallet } from './component/wallet';
-import { SetupGpsUser } from './component/setupgpsUser';
-import { SetupGpsTaxi } from './component/setupgpsTaxi';
-import { useState } from "react"
+import { SetupGpsUser } from './Pages/setupgpsUser';
+import { SetupGpsTaxi } from './Pages/setupgpsTaxi';
+import { useState } from "react";
+import './css/Style.css'
 
 export default function App() {
   const [street, setStreet] = useState()

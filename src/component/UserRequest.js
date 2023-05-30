@@ -1,6 +1,5 @@
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
-import '../css/taxiprofilecard.css';
 import { useEffect, useState } from "react";
 
 const UserRequest = ({onValueChange, data}) => {

@@ -1,6 +1,5 @@
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
-import '../css/taxiprofilecard.css';
 import { FaTaxi } from "react-icons/fa";
 import Swal from "sweetalert2";
 import React, {useEffect, useState} from 'react';
@@ -124,7 +123,7 @@ useEffect(()=>{
             <div>
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Prezzo</h6>
-                <span className="ml-2 fs-6 fw-semibold">€25.00</span>
+                <span className="ml-2 fs-6 fw-semibold">€15.00</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,4 @@
 import React from "react";
-import "../css/homeUser.css";
-import "../css/wallet.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -116,7 +114,7 @@ export function Wallet(props) {
           <div className="container-wallet-footer">
             <div className="container-wallet-footer-left">
               <p>BALANCE</p>
-              <p>€ 2500</p>
+              <p>€ 25</p>
             </div>
             <div className="container-wallet-footer-right">
               <p>SCADE</p>

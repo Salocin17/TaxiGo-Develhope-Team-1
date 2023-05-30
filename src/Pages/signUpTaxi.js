@@ -1,12 +1,11 @@
-import "../css/signUp.css";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
-export function SignUpUser() {
+export function SignUpTaxi() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -20,26 +19,15 @@ export function SignUpUser() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
- /* useEffect(() => {
-    let timeout;
-    if (showSnackbar) {
-      timeout = setTimeout(() => {
-        setShowSnackbar(false);
-      }, 2000);
-    }
-    return () => clearTimeout(timeout);
-  }, [showSnackbar]);*/
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     const data = {
-      type: true,
+      type: false,
       email: email,
       password,
     };
-    console.log(data)
-    
+
     fetch("http://localhost:3300/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -47,21 +35,19 @@ export function SignUpUser() {
     }).then((res) => {
       if (res.status === 200) {
         res.json().then((json) => {
-          localStorage.setItem("token", json.token);
+          localStorage.setItem("token1", json.token);
         });
-        window.location.href = "/setupUser";
-      } else if(res.status === 500){
+        window.location.href = "/setupTaxi";
+      }else if(res.status === 500){
         setShowSnackbar(true);
 
       }
     });
   };
-  /**/
 
   return (
     <div className="wrapper-signUp">
       <div className="container-sign-up">
- 
         <div className="img-sign-up"></div>
         <div className="wrapper-sign-up">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -69,14 +55,15 @@ export function SignUpUser() {
             <b> Back</b>
           </Link>
           <div className="wrapper-header-sign-up">
-            <Link to="/signInUser">
+            <Link to="/signInTaxi">
               <a
                 href="Sign Up"
+               
               >
                 Registrati
               </a>
             </Link>
-            <Link to="/signUpUser">
+            <Link to="/signUpTaxi">
               <a href="Sign In" className="underline-link">
                 Accedi
               </a>
@@ -84,39 +71,40 @@ export function SignUpUser() {
           </div>
 
           <form className="wrapper-form-sign-up" onSubmit={handleSubmit}>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">
                   <FontAwesomeIcon icon={faUser} />
                 </span>
               </div>
               <input
                 type="email"
-                class="form-control"
-                id="username"
+                className="form-control"
+                id="email"
+                name="email"
                 placeholder="Enter email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 onClick={() => setShowSnackbar(false)}
-              />
+             />
             </div>
 
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text">
                   <FontAwesomeIcon icon={faLock} />
                 </span>
               </div>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 id="password"
+                name="password"
                 placeholder="Enter your password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 onClick={() => setShowSnackbar(false)}
               />
-                
             </div>
             {showSnackbar && (
               <p className="error-message" style={{color:"red", marginLeft:"0.5rem"}}>Credenziali errate</p>

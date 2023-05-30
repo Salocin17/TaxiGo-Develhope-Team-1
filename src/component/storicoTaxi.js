@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../css/homeUser.css";
-import "../css/storico.css";
 import { PaymentHistory } from "./paymentHistory";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

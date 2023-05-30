@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/homeUser.css";
 import { MapBoxTaxi } from "./mapBoxTaxi";
-import UserList from "./UserList";
-import UserRequest from "./UserRequest";
-import TaxiRideTimer from "./TaxiRideTimer";
-import TaxiRideTimer2 from "./TaxiRideTimer2";
-import SidebarTaxi from "./sidebarTaxi";
-import NewNavbar from "./NewNavbar";
-import '../css/PrincpalBackground.css';
+import UserList from "../component/UserList";
+import UserRequest from "../component/UserRequest";
+import TaxiRideTimer from "../component/TaxiRideTimer";
+import TaxiRideTimer2 from "../component/TaxiRideTimer2";
+import SidebarTaxi from "../component/sidebarTaxi";
+import NewNavbar from "../component/NewNavbar";
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa'
 

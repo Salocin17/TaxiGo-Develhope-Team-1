@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../css/account.css";
 import ProfilePicture from "./ProfileIcon";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";

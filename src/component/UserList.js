@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import '../css/TaxiList.css';
 import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
 

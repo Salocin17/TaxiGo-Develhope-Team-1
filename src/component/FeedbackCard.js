@@ -1,7 +1,6 @@
 import { Card, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import ProfilePicture from './ProfileIcon';
-import '../css/Feedback.css';
 import Swal from "sweetalert2"
 
 function FeedbackCard({ data, onValueChange }) {

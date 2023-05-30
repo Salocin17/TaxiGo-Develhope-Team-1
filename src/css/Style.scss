@@ -1,0 +1,941 @@
+body {
+  background: #fafafa;
+  font-family: poppins, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 400;
+  margin: 0;
+
+}
+
+// Account css
+
+.wrapper-account{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-nav{
+    height: 7rem;
+    background-color:#31C48D;
+    margin-bottom: 2rem;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-text-account h3{
+    font-size: 29px;
+}
+
+// Feedback css
+
+.feedback-card {
+width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .feedback-card {
+        width: 50%;
+        }
+}
+
+// SearchCard css
+
+.search-card {
+    width: 90%;
+    border-radius: 50px;
+     margin: 1rem auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar {
+    width: 100%;
+    height: 40px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    border-style: none;
+    background-color: rgba(128, 128, 128, 0.091);
+}
+
+.search-bar-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-search {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 15px;
+}
+
+
+@media (min-width: 768px) {
+    .search-card {
+        width: 50%;
+        }
+}
+
+// HomeUser css
+
+.container {
+  min-width: 100%;
+  display: flex !important;
+  min-height: 100vh;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+.container-right {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  margin: 0 0rem 0 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  overflow: hidden;
+}
+
+// NavBar css 
+
+.gradient-navbar {
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  padding: 1rem;
+}
+
+.container-navbar {
+  min-height: 300px;
+}
+
+.logo-image {
+  position: absolute;
+  width: 132px;
+  height: 26px;
+  background-image: url("../Images/taxigo-logo-3.svg");
+  background-repeat: none;
+  top: 3rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.navbar {
+  z-index: 1;
+}
+
+// PaymentCard css
+
+.container-group{
+    display: flex;
+    flex-direction: row;
+    gap:0.5rem;
+    padding: 0.5rem 0rem 0rem 0.5rem;
+    border-top: 1px solid;
+    border-color: rgba(0, 0, 0, 0.25); 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerCard{
+    display: flex;
+    flex-direction: row;
+    gap:0.5rem;
+    padding: 0.5rem 0rem 0rem 0.5rem;
+}
+
+.img{
+    background-image: url("../Images/location.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 4rem;
+    width: 2rem;
+}
+
+.img2{
+    background-image: url("../Images/dollar.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 1.5rem;
+}
+
+.confermato.Confermato{
+    color: #4252FF;
+    padding-right: 0.5rem;
+    font-family: Poppins, sans-serif;
+}
+
+.confermato.Completato {
+    color: #03DE73;
+    padding-right: 0.5rem;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .confermato.Cancellato {
+    color: #C8C7CC;
+    padding-right: 0.5rem;
+    font-family: Poppins, sans-serif;
+  }
+
+  // Principal BackGround css
+
+  .principal-background {
+    background-color: green;
+    background-image: url("../Images/splash.png");
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+// RideTimer css
+
+.ride-timer-card {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.ride-timer-title {
+    border-bottom: 0.5px solid gray;
+    padding-bottom: 0.5rem;
+    color: #31C48D;
+    text-align: center;
+}
+
+.ride-timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ride-timer-address {
+    background-color: rgba(221, 221, 221, 0.376);
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .ride-timer-card {
+        width: 50%;
+        }
+}
+
+// SetUp GPS css 
+
+.container-gps-user{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    gap: 3rem;
+}
+
+.container-gps-user-header {
+    background-image: url("../Images/setupGps.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40vh;
+    width: 100%;
+}
+
+.container-gps-user-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonGps{
+    background-color: white ;
+    border: 2px solid #31C48D;
+    color: #31C48D;
+    height: 3rem;
+    margin: 3rem 1rem 5rem 1rem;
+}
+
+.buttonGps>p{
+   font-size: 1rem;
+   margin-bottom: 0;
+   font-weight: 800;
+}
+
+.buttonGps>p>svg{
+    margin-right: 1rem;
+ }
+ 
+ .input-group{
+    display: flex;
+    flex-direction: row;
+align-items: center;
+gap: 0.5rem;
+ }
+
+ .input-hover:hover{
+    background-color: #d7f6eb;
+ }
+
+ // SideBard css 
+
+ .sidenav {
+  background-color: #31C48D !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-header{
+  background-image: url("../Images/rounded.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 23vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column !important;
+  position: relative;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px; /* Imposta la larghezza desiderata */
+  background-color: #f1f1f1;
+  transition: left 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .sidenav---navicon---3gCRo + .sidenav---navtext---1AE_f {
+  visibility: visible;
+  opacity: .9 !important;
+  color: white !important;
+  -ms-filter: none;
+  filter: none;
+  transition: opacity 0.2s linear;
+  z-index: 99999 !important;
+}
+
+.sidenav---navicon---3gCRo{
+  opacity: .9 !important;
+}
+
+.sidenav---sidenav---_2tBP {
+  z-index: 99999 !important;
+}
+
+// SignIn css 
+
+.wrapper{
+    background-color: #31C48D;
+    height: 20.5rem;
+    background-image: url("../Images/citta1.png");
+    width: 100%;
+    animation:  animazione 10s linear infinite;
+}
+
+@keyframes animazione {
+    0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
+}
+
+
+.slide-down {
+    animation-name: slideDown;
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
+.wrapper-sign-in {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.wrapper-header-sign-in {
+    background-color: white;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    height: 5rem;
+    border-bottom: 1px solid #EFEFF4;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapper-header-sign-in a {
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.wrapper-header-sign-in a[href='Sign In'] {
+    color: #C8C7CC;
+    text-decoration: none !important;
+}
+
+.underline-link {
+    text-underline-offset: 10px !important;
+    text-decoration-thickness: 4px !important;
+    text-decoration: underline !important;
+    text-decoration-color: #31C48D !important;
+}
+
+.wrapper-form-sign-in {
+    background-color: white;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.input-group-prepend {
+    align-self: center;
+}
+
+.input-group-text {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.container-sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6rem;
+    width: 100%;
+}
+
+.container-logo-sign-in {
+    align-self: center;
+}
+
+.img-sign-in {
+    background-image: url("../Images/logo2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    height: 8rem;
+    width: 8rem;
+}
+
+@media (max-width: 768px) {
+   
+    .container-sign-in{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .wrapper-sign-in {
+        width: 100%;
+    }
+}
+
+// SignUp css 
+
+.wrapper-signUp{
+    background-color: #31C48D;
+    height: 20.5rem;
+    background-image: url("../Images/citta1.png");
+    width: 100%;
+    animation:  animazione 10s linear infinite;
+}
+
+@keyframes animazione {
+    0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 100% 0;
+      }
+}
+
+.container-sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem;
+    width: 100%;
+}
+
+.img-sign-up {
+    background-image: url("../Images/logo2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-origin: content-box;
+    height: 8rem;
+    width: 8rem;
+}
+
+.wrapper-sign-up {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.wrapper-header-sign-up {
+    background-color: white;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    height: 5rem;
+    border-bottom: 1px solid #EFEFF4;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapper-header-sign-up a {
+    color: black;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.wrapper-header-sign-up a[href='Sign Up'] {
+    color: #C8C7CC;
+    text-decoration: none !important;
+}
+
+.underline-link {
+    text-underline-offset: 10px !important;
+    text-decoration-thickness: 4px !important;
+    text-decoration: underline !important;
+    text-decoration-color: #31C48D !important;
+}
+
+.wrapper-form-sign-up {
+    background-color: white;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+
+    .wrapper-sign-up {
+        width: 100%;
+    }
+    
+    .container-sign-up{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+// Splash css 
+
+.wrapper-splash {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  background-color: #31C48D;
+
+}
+
+.wrapper-splash-animation {
+  background-image: url("../Images/citta1.png");
+  animation: animazione 50s linear infinite;
+  height: 25rem;
+  background-position:bottom;
+}
+
+.wrapper-splash-animation-2 {
+  background-image: url("../Images/citta2.png");
+  animation: animazione 20s linear infinite;
+  height: 25rem;
+  background-position:bottom;
+}
+
+@keyframes animazione {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+
+.splash-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  flex-wrap: nowrap;
+  top: 30%;
+  left: 50%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  width: 25rem;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.container-logo {
+  height: 22rem;
+  background-image: url("../Images/logo-color.svg");
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.container-button {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-self: center;
+}
+
+.container-button button {
+  margin-top: 2rem;
+  width: 5rem;
+  height: 3rem;
+  background-color: white;
+  border-color: white;
+  color: #1F7E5B;
+}
+
+.container-button button:hover {
+  background-color: #1F7E5B;
+  border-color: #1F7E5B;
+}
+
+@media (max-width: 576px) {
+  .container-logo {
+    height: 18rem;
+    background-size: contain;
+  }
+
+  .wrapper-splash {
+    width: 100%;
+  }
+
+  .splash-container {
+    width: 14rem;
+  }
+
+  .container-button {
+    margin-top: -4rem;
+  }
+}
+
+// Storico css
+
+.wrapper-storico {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-nav-storico {
+    height: 14rem !important;
+    background-color: #31C48D;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title-storico {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.dataPicker {
+    border-radius: 2rem;
+    border-color: transparent;
+    opacity: .4;
+    color: black;
+    width: 100%;
+}
+
+.react-datepicker-wrapper{
+    width: 100% !important;
+}
+
+.container-storico {
+    width: 100%;
+    padding: 1rem;
+    align-self: center;
+    margin-top: -9rem;
+}
+
+.nav-text-storico{
+    font-size: 34px;
+    font-weight: 700;
+}
+
+// TaxiList css
+
+.taxi-list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid gray;
+}
+
+.taxi-list-title {
+     border-bottom: 0.5px solid gray;
+}
+
+.taxi-list{
+    border-bottom: 0.5px solid gray;
+}
+
+.taxi-list > div{
+    text-align: center;
+}
+
+.list-card {
+    width: 90%;
+    margin: 1rem auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+@media (min-width: 768px) {
+    .list-card {
+        width: 50%;
+        }
+}
+
+// TaxiProfileCard css
+
+.taxi-profile-card {
+    width: 90%;
+    margin: 1rem auto;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.taxi-profile-card-head {
+    border-bottom: 0.5px solid gray;
+}
+
+@media (min-width: 768px) {
+    .taxi-profile-card{
+        width: 50%;
+        }
+}
+
+// Wallet css
+
+.wrapper-wallet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container-nav-wallet {
+    height: 14rem !important;
+    background-color: #31C48D;
+    color: white;
+    padding: 1rem;
+}
+
+.nav-title-wallet {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: space-between;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.nav-text-wallet {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.nav-icon-wallet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    padding: 0.2rem;
+    font-size: 20px;
+    font-weight: 700;
+    height: fit-content;
+}
+
+.container-wallet {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 12rem;
+    padding: 1rem;
+    align-self: center;
+    margin-top: -5rem;
+    background-color: white;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+    align-items: center;
+}
+
+.container-wallet-title {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #EFEFF4;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.container-wallet-text {
+    margin-left: 0.9rem;
+}
+
+.container-wallet-text p:first-of-type {
+    margin-bottom: 0;
+    margin-top: 0.1rem;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 17px;
+}
+
+.container-wallet-text p:nth-of-type(2) {
+    color: #C8C7CC;
+}
+
+.container-wallet-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container-wallet-footer p:first-of-type {
+    margin-bottom: 0;
+    margin-top: 0.9rem;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 13px;
+    color: #C8C7CC;
+}
+
+.container-wallet-footer p:nth-of-type(2) {
+    margin-bottom: 0;
+    font-weight: 900;
+    font-style: bold;
+    font-size: 30px;
+    color: #F52D56;
+}
+
+.pointer {
+    margin-top: 1rem;
+}
+
+.wrapper-wallet-footer{
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8F8F8;
+    gap: 1rem;
+}
+
+.wallet-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 1px solid #EFEFF4;
+    height: 2rem;
+}
+
+.wallet-input p{
+    margin-bottom: 0;
+}
+
+
+
