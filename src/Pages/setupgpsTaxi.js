@@ -66,9 +66,9 @@ export function SetupGpsTaxi() {
   };
 
   const handlePosition = () => {
-    navigator.geolocation.getCurrentPosition((position) => { });
+    navigator.geolocation.getCurrentPosition((position) => {});
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/location/user/${streetInput}`, {
+    fetch(`http://localhost:3300/api/location/user/Via%20Tonale`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",
@@ -77,7 +77,7 @@ export function SetupGpsTaxi() {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      navigate(`/homeUser/${streetInput}`);
+      navigate(`/homeUser/Via%20Tonale`);
     });
   }
 

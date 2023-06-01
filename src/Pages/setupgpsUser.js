@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function SetupGpsUser() {
   const [streets, setStreets] = useState();
   const [street, setStreet] = useState([]);
-  const [streetInput, setStreetInput] = useState('Viale%20Lunigiana');
+  const [streetInput, setStreetInput] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isManualSelected, setIsManualSelected] = useState(false);
 
@@ -58,7 +58,7 @@ export function SetupGpsUser() {
   const handlePosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {});
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/location/user/${streetInput}`, {
+    fetch(`http://localhost:3300/api/location/user/Viale%20Lunigiana`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",
@@ -67,7 +67,7 @@ export function SetupGpsUser() {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      navigate(`/homeUser/${streetInput}`);
+      navigate(`/homeUser/Viale%20Lunigiana`);
     });
   }
 
