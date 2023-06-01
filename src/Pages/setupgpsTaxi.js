@@ -77,7 +77,7 @@ export function SetupGpsTaxi() {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      navigate(`/homeUser/Via%20Tonale`);
+      navigate(`/homeTaxi/Via%20Tonale`);
     });
   }
 

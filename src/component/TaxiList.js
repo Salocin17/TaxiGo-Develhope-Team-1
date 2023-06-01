@@ -8,7 +8,6 @@ import { MdDataArray } from "react-icons/md";
 const TaxiList = ({ onValueChange }) => {
 
   const [list, setList] = useState([])
-  const [interval, setInterval] = useState()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,7 +45,6 @@ const TaxiList = ({ onValueChange }) => {
   function handleChange(e) {
 
     onValueChange(2, list[e])
-    clearInterval(interval)
   }
 
   return (
