@@ -10,7 +10,7 @@ export function SetupGpsTaxi() {
   const [street, setStreet] = useState([]);
   const [isManualSelected, setIsManualSelected] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [streetInput, setStreetInput] = useState("");
+  const [streetInput, setStreetInput] = useState("Via%20Tonale");
 
   const navigate = useNavigate();
 
@@ -65,6 +65,22 @@ export function SetupGpsTaxi() {
     setIsManualSelected(true);
   };
 
+  const handlePosition = () => {
+    navigator.geolocation.getCurrentPosition((position) => { });
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/api/location/user/${streetInput}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        title: "change",
+      }),
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      navigate(`/homeUser/${streetInput}`);
+    });
+  }
+
   return (
     <div className="container-gps-user">
       <div className="container-gps-user-header"></div>
@@ -73,7 +89,7 @@ export function SetupGpsTaxi() {
         <h2 style={{ fontSize: "34px", fontWeight: "800" }}>
           mettiti in marcia!{" "}
         </h2>
-        <button type="submit" class="btn buttonGps">
+        <button type="submit" class="btn buttonGps" onClick={handlePosition}>
           <p>
             <svg
               width="20"

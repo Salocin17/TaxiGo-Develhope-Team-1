@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function SetupGpsUser() {
   const [streets, setStreets] = useState();
   const [street, setStreet] = useState([]);
-  const [streetInput, setStreetInput] = useState("");
+  const [streetInput, setStreetInput] = useState('Viale%20Lunigiana');
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [isManualSelected, setIsManualSelected] = useState(false);
 
@@ -55,6 +55,22 @@ export function SetupGpsUser() {
     setIsManualSelected(true);
   };
 
+  const handlePosition = () => {
+    navigator.geolocation.getCurrentPosition((position) => {});
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/api/location/user/${streetInput}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        title: "change",
+      }),
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      navigate(`/homeUser/${streetInput}`);
+    });
+  }
+
   return (
     <div className="container-gps-user">
       <div className="container-gps-user-header"></div>
@@ -63,7 +79,7 @@ export function SetupGpsUser() {
         <h2 style={{ fontSize: "34px", fontWeight: "800" }}>
           subito il tuo taxi!{" "}
         </h2>
-        <button type="submit" class="btn buttonGps">
+        <button type="submit" class="btn buttonGps" onClick={handlePosition}>
           <p>
             <svg
               width="20"
