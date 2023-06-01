@@ -714,11 +714,19 @@ body {
 }
 
 .taxi-list {
+  border-style: none;
   border-bottom: 0.5px solid gray;
 }
+.taxi-list:hover {
+  background-color: rgba(49, 196, 142, 0.3647058824);
+}
 
-.taxi-list > div {
-  text-align: center;
+.taxi-list-item {
+  gap: 0;
+}
+
+.taxi-list-item > p {
+  margin: 0;
 }
 
 .list-card {

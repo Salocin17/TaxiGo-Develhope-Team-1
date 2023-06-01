@@ -766,12 +766,20 @@ gap: 0.5rem;
      border-bottom: 0.5px solid gray;
 }
 
-.taxi-list{
+.taxi-list {
+    border-style: none;
     border-bottom: 0.5px solid gray;
+    &:hover {
+        background-color: #31c48e5d;
+    }
 }
 
-.taxi-list > div{
-    text-align: center;
+.taxi-list-item {
+    gap: 0;
+}
+
+.taxi-list-item > p {
+    margin: 0;
 }
 
 .list-card {
