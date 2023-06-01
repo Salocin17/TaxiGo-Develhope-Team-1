@@ -64,7 +64,7 @@ body {
 }
 .search-card {
   width: 90%;
-  border-radius: 50px;
+  border-radius: 30px;
   margin: 1rem auto;
   padding: 0;
   display: flex;

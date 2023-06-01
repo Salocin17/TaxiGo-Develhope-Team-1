@@ -6,16 +6,63 @@ import ProfilePicture from './ProfileIcon.js'
 
 const SearchCard = ({ onValueChange, onSetDestination }) => {
   const [data, setData] = useState()
+  const [streets, setStreets] = useState();
+  const [street, setStreet] = useState([]);
+  const [streetInput, setStreetInput] = useState("");
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
+
+  useEffect(() => {
+    fetch(`http://localhost:3300/api/getStreet`)
+      .then((result) => result.json())
+      .then((json) => setStreets(json));
+  }, [street]);
+
+  const handleChange = (e) => {
+    setStreetInput(e.target.value);
+    const data = [];
+    streets.street.map((el) => {
+      if (el.name.includes(e.target.value)) {
+        data.push(el.name);
+      }
+    });
+    setStreet(data);
+    setIsInputFocused(true);
+  };
+
+  const setInputClick = (e) => {
+    setStreetInput(e);
+  };
 
   return (
     <Card className="search-card fixed-bottom">
       <Card.Body className="p-2">
+        <div
+          style={{
+            maxHeight: "200px",
+            display: isInputFocused ? "block" : "none",
+            overflowY: "auto",
+            padding: "1rem"
+          }}
+        >
+          {street.map((el, index) => (
+            <div
+              className="input-hover"
+              value={index}
+              onClick={() => setInputClick(el)}
+              style={{ cursor: "pointer",
+              "border-radius": '5px'  }}
+            >
+              {el}
+            </div>
+          ))}
+        </div>
         <div className="rounded-bar" />
         <Form className="search-form">
           <Form.Group controlId="search" className="search-bar-container">
             <MdPlace size={45} className="mr-3" style={{ color: 'gray' }} />
-            <Form.Control type="text" placeholder="Dove vuoi andare?" className="search-bar" onChange={(e) => setData(e.target.value)}></Form.Control>
-            <Button variant="success" className="btn btn-search rounded-circle" onClick={() => {onValueChange(1); onSetDestination(data)}}>
+            <Form.Control type="text" placeholder="Dove vuoi andare?" className="search-bar" onChange={handleChange} value={streetInput}></Form.Control>
+            <Button variant="success" className="btn btn-search rounded-circle" onClick={() => {onValueChange(1); onSetDestination(streetInput)}}>
               <FaSearch className="search-icon" style={{ color: 'white' }} />
             </Button>
           </Form.Group>
