@@ -1,6 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import { FaTaxi } from "react-icons/fa";
+import { BsFillTelephoneFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import React, {useEffect, useState} from 'react';
 
@@ -99,13 +100,18 @@ useEffect(()=>{
     
     <div className="fixed-bottom ">
       <Card className="taxi-profile-card">
-        <Card.Body>
-          <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
+        <Card.Body className="taxi-profile-card-body">
+          <div className="d-flex justify-content-between align-items-center gap-3 mb-3 pt-3 pb-3 taxi-profile-card-head">
+            <div className="d-flex justify-content-center align-items-center gap-3">
               <ProfilePicture  Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'}/>
-              <span>{data.first_name+" "+data.last_name}</span>
+              <span className="fs-6 fw-semibold">{data.first_name+" "+data.last_name}</span>
+            </div>
+            <div className="rounded-circle d-flex align-items-center bg-success justify-content-center text-white" style={{ width: "40px", height: "40px" }}>
+              <BsFillTelephoneFill size={20} className="mr-3" />
+            </div>
           </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>
+          <div className="d-flex justify-content-between align-items-center px-4">
+            <div className="rounded-circle d-flex align-items-center bg-success justify-content-center text-white" style={{ width: "40px", height: "40px"}}>
               <FaTaxi size={20} className="mr-3" />
             </div>
             <div>
@@ -127,7 +133,7 @@ useEffect(()=>{
               </div>
             </div>
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-4 pb-3">
             <Button variant="success" onClick={handleConfirm}>Conferma</Button>
           </div>
         </Card.Body>

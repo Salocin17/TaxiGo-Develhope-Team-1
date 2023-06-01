@@ -746,8 +746,15 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
+.taxi-profile-card-body {
+  padding: 0;
+}
+
 .taxi-profile-card-head {
-  border-bottom: 0.5px solid gray;
+  width: 100%;
+  border-bottom: 0.5px solid rgb(202, 201, 201);
+  background-color: rgba(128, 128, 128, 0.05);
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {

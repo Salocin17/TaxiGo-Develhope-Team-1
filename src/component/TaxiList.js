@@ -59,7 +59,7 @@ const TaxiList = ({ onValueChange }) => {
           {list.map((el, index) => {
             return (<ListGroup.Item key={index} value={index} onClick={() => handleChange(index)} className="taxi-list" style={{ cursor: 'pointer' }}>
               <div className="d-flex gap-3 justify-content-center align-items-center">
-                <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px" }}>
+                <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px", "background-color": '#31C48D' }}>
                   <FaTaxi size={20} className="mr-3" />
                 </div>
                 <div className="d-flex flex-column align-items-start justify-content-center taxi-list-item">
