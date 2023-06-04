@@ -91,9 +91,7 @@ export const TaxiAccount = (props) => {
           </div>
           <div className="nav-icon">
             <ProfilePicture
-              Propic={
-                "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-              }
+              taxi={true}
             />
           </div>
         </div>

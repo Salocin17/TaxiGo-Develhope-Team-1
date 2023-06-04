@@ -29,7 +29,7 @@ export function MapBoxTaxi(props) {
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v12',
         center: center,
-        zoom: 12
+        zoom: 15
         });
 
       map.current.on('load', async () => {

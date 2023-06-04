@@ -41,7 +41,7 @@ const UserRequest = ({onValueChange, data}) => {
                 <Card.Body className="taxi-profile-card-body">
                     <div className="d-flex justify-content-between align-items-center gap-3 mb-2 pt-3 pb-3 taxi-profile-card-head">
                         <div className="d-flex justify-content-center align-items-center gap-3">
-                            <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                            <ProfilePicture user={true} />
                             <span className="fs-6 fw-semibold">La tua richiesta!</span>    
                         </div>
                         <div className="rounded-circle d-flex align-items-center bg-success justify-content-center text-white" style={{ width: "40px", height: "40px" }}>

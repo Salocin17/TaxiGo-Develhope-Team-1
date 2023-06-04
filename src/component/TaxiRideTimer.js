@@ -25,7 +25,7 @@ function TaxiRideTimer({ startAddress, onValueChange, name }) {
         <Card className="fixed-bottom ride-timer-card">
             <Card.Body className="taxi-profile-card-body d-flex flex-column justify-content-center gap-2">
                 <div className="d-flex justify-content-center align-items-center gap-3 pt-3 pb-3 taxi-profile-card-head">
-                    <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                    <ProfilePicture user={true} />
                     <span className="fs-5 fw-semibold">Raggiungi {name}!</span>
                 </div>
                 <div className='ride-timer-container d-flex justify-content-center align-items-center px-4'>

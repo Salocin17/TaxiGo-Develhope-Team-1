@@ -46,9 +46,7 @@ export default function SidebarTaxi() {
       <NavItem className="sidenav-header">
             <NavIcon style={{ width: '55px', height: '50px', "margin-left": '1rem' }} >
               <ProfilePicture style={{marginTop:"2rem"}}
-                Propic={
-                  "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                }
+                taxi={true}
               />{" "}
             </NavIcon>
             <NavText style={{display:"flex", flexDirection:"column"}}>

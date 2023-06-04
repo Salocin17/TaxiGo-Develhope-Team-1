@@ -47,7 +47,7 @@ const UserList = ({onValueChange}) => {
                     {list && list.map((item, index) => (
                         <li key={index} className="taxi-list pt-2 pb-2" onClick={()=> handleSelect(index)} style={{ cursor: 'pointer' }}>
                             <div className="d-flex align-items-center justify-content-center gap-3">
-                                <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                                <ProfilePicture user={true} />
                                 <div>
                                     <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
                                     <small className="text-muted">Via Roma</small>

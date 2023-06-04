@@ -103,7 +103,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
         <Card.Body className="taxi-profile-card-body">
           <div className="d-flex justify-content-between align-items-center gap-3 mb-3 pt-3 pb-3 taxi-profile-card-head">
             <div className="d-flex justify-content-center align-items-center gap-3">
-              <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+              <ProfilePicture taxi={true} />
               <div className="d-flex flex-column justify-content-center align-items-start pb-2 taxi-profile-card-feedback">
                 <span className="fs-6 fw-semibold">{data.first_name + " " + data.last_name}</span>
                 <div className="d-flex justify-content-center align-items-center gap-2">

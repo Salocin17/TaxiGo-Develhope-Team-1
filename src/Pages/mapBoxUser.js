@@ -14,7 +14,7 @@ export function MapBoxUser(props) {
           container: mapContainer2.current,
           style: 'mapbox://styles/mapbox/streets-v12',
           center: props.street,
-          zoom: 12
+          zoom: 15
           });
       },[]);
       

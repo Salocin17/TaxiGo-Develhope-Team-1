@@ -92,9 +92,7 @@ export const Account = (props) => {
           </div>
           <div className="nav-icon">
             <ProfilePicture
-              Propic={
-                "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-              }
+              user={true}
             />
           </div>
         </div>

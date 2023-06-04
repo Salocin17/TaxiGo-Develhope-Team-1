@@ -26,7 +26,7 @@ function FeedbackCard({ data, onValueChange }) {
     return (
         <Card className='fixed-bottom feedback-card'>
             <Card.Body className='d-flex-column feedback-container'>
-                <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                <ProfilePicture taxi={true} />
                 <Card.Text className='fs-5 fw-semibold mt-3'>Come è stato il tuo viaggio? </Card.Text>
                 <p className='text-muted px-5 text-center'>Il tuo feedback aiuta a migliorare la tua esperienza</p>
                 <Form onSubmit={handleSubmit} className='feedback-form'>
