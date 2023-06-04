@@ -1,6 +1,7 @@
 import { Card, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { MdPlace } from "react-icons/md";
+import ProfilePicture from "./ProfileIcon";
+import { MdPlace, MdMyLocation } from "react-icons/md";
 
 function TaxiRideTimer({ startAddress, onValueChange, name }) {
     const [time, setTime] = useState(0);
@@ -12,7 +13,7 @@ function TaxiRideTimer({ startAddress, onValueChange, name }) {
         return () => clearInterval(interval);
     }, []);
 
-  
+
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -22,12 +23,16 @@ function TaxiRideTimer({ startAddress, onValueChange, name }) {
 
     return (
         <Card className="fixed-bottom ride-timer-card">
-            <Card.Body >
-                <Card.Title className='ride-timer-title fs-4'>Raggiungi {name}!</Card.Title>
-                <div className='ride-timer-container'>
-                    <Card.Text className='fs-4 ride-timer-address d-flex align-items-center'><MdPlace size={20} className="mr-3" />{startAddress}</Card.Text>
-                    <Button className='align-self-center' variant="success" onClick={() => onValueChange(3)}>{`${formatTime(time)}`}</Button>
+            <Card.Body className="taxi-profile-card-body d-flex flex-column justify-content-center gap-2">
+                <div className="d-flex justify-content-center align-items-center gap-3 pt-3 pb-3 taxi-profile-card-head">
+                    <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                    <span className="fs-5 fw-semibold">Raggiungi {name}!</span>
                 </div>
+                <div className='ride-timer-container d-flex justify-content-center align-items-center px-4'>
+                    <MdMyLocation size={25} className="mr-3" style={{ "color": "#31C48D" }} />
+                    <Card.Text className='fs-2 fw-bold ride-timer-address d-flex align-items-center gap-2'>{startAddress}</Card.Text>
+                </div>
+                <Button className='align-self-center mb-3 mt-2' variant="success" onClick={() => onValueChange(3)}>{`${formatTime(time)}`}</Button>
             </Card.Body>
         </Card>
     );
