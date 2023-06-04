@@ -28,6 +28,7 @@ const UserList = ({onValueChange}) => {
                 }
             }).then(res => res.json())
                 .then(json => setList(json))
+                .then(console.log(list))
         }, 5000)
 
     },[])
@@ -39,23 +40,24 @@ const UserList = ({onValueChange}) => {
     return (
         <Card className="fixed-bottom list-card">
             <Card.Body>
-                <div className="d-flex align-items-center justify-content-center taxi-list-title taxi-list-title">
+                <div className="d-flex align-items-center justify-content-center taxi-list-title">
                     <h3 className="fs-3 fw-bold align-self-center" style={{ color: 'green' }}>Richieste Disponibili</h3>
                 </div>
-                <ListGroup variant="flush">
+                <ListGroup>
                     {list && list.map((item, index) => (
-                        <ListGroup.Item key={index} className="taxi-list" onClick={()=> handleSelect(index)} style={{ cursor: 'pointer' }}>
-                            <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
-                            <div>
-                                <h6 className="mb-1 fs-5 fw-bold">{item.name}</h6>
-                                <small className="text-muted">{item.address}</small>
-                                <small className="text-muted">{item.destination}</small>
+                        <li key={index} className="taxi-list pt-2 pb-2" onClick={()=> handleSelect(index)} style={{ cursor: 'pointer' }}>
+                            <div className="d-flex align-items-center justify-content-center gap-3">
+                                <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                                <div>
+                                    <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
+                                    <small className="text-muted">Via Roma</small>
+                                </div>
                             </div>
                             <div>
-                                <h6 className="fs-5 fw-bold">1 Persona</h6>
+                                <h6 className="mb-1 fs-6 fw-semibold">1 Persona</h6>
                                 <small className="text-muted">2 min</small>
                             </div>
-                        </ListGroup.Item>
+                        </li>
                     ))}
                 </ListGroup>
             </Card.Body>

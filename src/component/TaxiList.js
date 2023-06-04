@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import { FaTaxi } from "react-icons/fa";
+import { RiTaxiFill } from "react-icons/ri";
 import * as turf from "@turf/turf"
 
 import { MdDataArray } from "react-icons/md";
@@ -55,21 +55,21 @@ const TaxiList = ({ onValueChange }) => {
         </div>
         {list !== [] && <ListGroup >
           {list.map((el, index) => {
-            return (<ListGroup.Item key={index} value={index} onClick={() => handleChange(index)} className="taxi-list" style={{ cursor: 'pointer' }}>
+            return (<li key={index} value={index} onClick={() => handleChange(index)} className="taxi-list" style={{ cursor: 'pointer' }}>
               <div className="d-flex gap-3 justify-content-center align-items-center">
                 <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px", "background-color": '#31C48D' }}>
-                  <FaTaxi size={20} className="mr-3" />
+                  <RiTaxiFill size={25} className="mr-3" />
                 </div>
                 <div className="d-flex flex-column align-items-start justify-content-center taxi-list-item">
-                  <p className="fs-5 fw-bold d-inline">{el.first_name}</p>
+                  <p className="fs-6 fw-bold d-inline">{el.first_name}</p>
                   <p className="text-muted d-inline">1 Km</p>
                 </div>
               </div>
               <div>
-                <h6 className="fs-5 fw-bold">€15</h6>
+                <h6 className="fs-6 fw-bold">€15</h6>
                 <small className="text-muted">2 min</small>
               </div>
-            </ListGroup.Item>)
+            </li>)
           })}
         </ListGroup>}
       </Card.Body>

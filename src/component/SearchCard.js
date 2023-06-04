@@ -62,7 +62,7 @@ const SearchCard = ({ onValueChange, onSetDestination }) => {
           <Form.Group controlId="search" className="search-bar-container">
             <MdPlace size={45} className="mr-3" style={{ color: 'gray' }} />
             <Form.Control type="text" placeholder="Dove vuoi andare?" className="search-bar" onChange={handleChange} value={streetInput}></Form.Control>
-            <Button variant="success" className="btn btn-search rounded-circle" onClick={() => {onValueChange(1); onSetDestination(streetInput)}}>
+            <Button variant="success" className="btn btn-search" onClick={() => {onValueChange(1); onSetDestination(streetInput)}}>
               <FaSearch className="search-icon" style={{ color: 'white' }} />
             </Button>
           </Form.Group>

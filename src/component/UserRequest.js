@@ -1,5 +1,7 @@
 import { Card, Button } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
+import { BsFillTelephoneFill} from "react-icons/bs";
+import { MdPlace } from "react-icons/md";
 import { useEffect, useState } from "react";
 
 const UserRequest = ({onValueChange, data}) => {
@@ -36,18 +38,24 @@ const UserRequest = ({onValueChange, data}) => {
     return (
         <div className="fixed-bottom ">
             <Card className="taxi-profile-card">
-                <Card.Body>
-                    <div className="d-flex justify-content-center align-items-center gap-3 mb-3 pb-3 taxi-profile-card-head">
-                        <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
-                        <span className="fs-3 fw-bold">La tua richiesta!</span>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center">
-                        <div>
-                            <div>
-                                <h6 className="mb-1 text-muted">Partenza</h6>
-                                <span className="ml-2 fw-semibold">{departure}</span>
-                            </div>
+                <Card.Body className="taxi-profile-card-body">
+                    <div className="d-flex justify-content-between align-items-center gap-3 mb-2 pt-3 pb-3 taxi-profile-card-head">
+                        <div className="d-flex justify-content-center align-items-center gap-3">
+                            <ProfilePicture Propic={'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp'} />
+                            <span className="fs-6 fw-semibold">La tua richiesta!</span>    
                         </div>
+                        <div className="rounded-circle d-flex align-items-center bg-success justify-content-center text-white" style={{ width: "40px", height: "40px" }}>
+                            <BsFillTelephoneFill size={20} className="mr-3" />
+                        </div>
+                    </div>
+                    <div className="user-request-address px-4 pb-1 d-flex flex-column justify-content-center align-items-center">
+                        <h6 className="mb-1 text-muted">Angelo ti aspetta qui</h6>
+                        <div className="d-flex justify-content-start align-items-center gap-1">
+                            <MdPlace size={20} className="mr-6" style={{ "color": "#31C48D" }} />
+                            <span className="fs-6 fw-semibold">{departure}</span>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center px-4 pt-2">
                         <div>
                             <div>
                                 <h6 className="mb-1 text-muted">Destinazione</h6>
@@ -56,12 +64,12 @@ const UserRequest = ({onValueChange, data}) => {
                         </div>
                         <div>
                             <div>
-                                <h6 className="ml-2 text-muted">1 Persona</h6>
-                                <span className="ml-2 text-muted">2 min</span>
+                                <h6 className="mb-1 text-muted">1 Persona</h6>
+                                <span className="ml-2 fw-semibold">0.5km</span>
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex mt-4 align-items-center justify-content-center gap-3">
+                    <div className="d-flex mt-2 mb-3 align-items-center justify-content-center gap-3">
                         <Button variant="danger" onClick={() => onValueChange(0)}>Rifiuta</Button>
                         <Button variant="success" onClick={handleConfirm}>Accetta</Button>
                     </div>
