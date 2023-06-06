@@ -21,6 +21,8 @@ export function HomeTaxi({onSetStreet}) {
 
   const { street } = useParams()
 
+  console.log(request);
+
   useEffect(() => {
     const token = localStorage.getItem("token1");
     fetch(`http://localhost:3300/api/location/taxiDriver/${street}`, {
@@ -113,8 +115,8 @@ export function HomeTaxi({onSetStreet}) {
       )}
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
-        {active === 0 && <UserList onValueChange={handleValueChange2} />}
-        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request}/>}
+        {active === 0 && <UserList onValueChange={handleValueChange2} name={name}/>}
+        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} name={name}/>}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">

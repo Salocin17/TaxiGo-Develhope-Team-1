@@ -56,9 +56,8 @@ export function SetupGpsUser() {
   };
 
   const handlePosition = () => {
-    navigator.geolocation.getCurrentPosition((position) => {});
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/location/user/Viale%20Lunigiana`, {
+    fetch(`http://localhost:3300/api/location/user/Viale Lunigiana`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",
@@ -67,7 +66,7 @@ export function SetupGpsUser() {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => {
-      navigate(`/homeUser/Viale%20Lunigiana`);
+      navigate(`/homeUser/Viale Lunigiana`);
     });
   }
 

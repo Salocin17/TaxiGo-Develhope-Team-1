@@ -6,6 +6,8 @@ import { MdPlace, MdMyLocation } from "react-icons/md";
 function TaxiRideTimer({ startAddress, onValueChange, name }) {
     const [time, setTime] = useState(0);
 
+    console.log(startAddress);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setTime(prevTime => prevTime + 1);

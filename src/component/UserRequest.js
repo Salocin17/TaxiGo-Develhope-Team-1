@@ -4,9 +4,10 @@ import { BsFillTelephoneFill} from "react-icons/bs";
 import { MdPlace } from "react-icons/md";
 import { useEffect, useState } from "react";
 
-const UserRequest = ({onValueChange, data}) => {
+const UserRequest = ({onValueChange, data, name}) => {
 
     const [departure, setDeparture] = useState()
+    console.log(data)
 
     const handleConfirm = () => {
         const token = localStorage.getItem("token1")
@@ -31,8 +32,8 @@ const UserRequest = ({onValueChange, data}) => {
             method: "GET",
         })
         .then(result => result.json())
-        .then(json => setDeparture(json.street.name))
-    })
+            .then(json =>  {console.log(json); setDeparture(json.street.name) } )
+        })
 
 
     return (
@@ -49,7 +50,7 @@ const UserRequest = ({onValueChange, data}) => {
                         </div>
                     </div>
                     <div className="user-request-address px-4 pb-1 d-flex flex-column justify-content-center align-items-center">
-                        <h6 className="mb-1 text-muted">Angelo ti aspetta qui</h6>
+                        <h6 className="mb-1 text-muted">{name} ti aspetta qui</h6>
                         <div className="d-flex justify-content-start align-items-center gap-1">
                             <MdPlace size={20} className="mr-6" style={{ "color": "#31C48D" }} />
                             <span className="fs-6 fw-semibold">{departure}</span>

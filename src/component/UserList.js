@@ -4,9 +4,11 @@ import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
 
 
-const UserList = ({onValueChange}) => {
+const UserList = ({onValueChange, name}) => {
 
     const [list, setList] = useState();
+
+    console.log(list);
 
     useEffect(() => {
         const token = localStorage.getItem("token1");
@@ -49,8 +51,8 @@ const UserList = ({onValueChange}) => {
                             <div className="d-flex align-items-center justify-content-center gap-3">
                                 <ProfilePicture user={true} />
                                 <div>
-                                    <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
-                                    <small className="text-muted">Via Roma</small>
+                                    <h6 className="mb-1 fs-6 fw-semibold">{name}</h6>
+                                    <small className="text-muted">{item.destination}</small>
                                 </div>
                             </div>
                             <div>
