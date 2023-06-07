@@ -35,10 +35,10 @@ export function PaymentCard({ payment }) {
 
         <div className="viewDetails">
           <p>
-            {payment.origin} {payment.departureTime}
+            <b>{payment.departure.name}</b> {new Date(payment.createdAt).toLocaleTimeString()}
           </p>
           <p>
-            {payment.destination} {payment.arrivalTime}
+            <b>{payment.destination}</b> {new Date(payment.updatedAt).toLocaleTimeString()}
           </p>
         </div>
       </Card.Body>
@@ -47,7 +47,7 @@ export function PaymentCard({ payment }) {
           <div className="img2"></div>
           <h5 style={{ fontSize: "1.2rem" }}>
             {" "}
-            € <strong>{payment.price}</strong>
+            € <strong>{payment.price.toFixed(2)}</strong>
           </h5>
         </div>
         <div className={`confermato ${payment.state}`}>

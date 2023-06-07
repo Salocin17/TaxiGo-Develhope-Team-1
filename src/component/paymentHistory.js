@@ -3,7 +3,7 @@ import {PaymentCard} from './paymentCard';
 
 export function PaymentHistory({ payments, selectedDate }) {
   const filteredPayments = selectedDate
-    ? payments.filter(payment => payment.date === selectedDate.toISOString().slice(0, 10))
+    ? payments.filter(payment => new Date(payment.date).toLocaleDateString() === selectedDate.toLocaleDateString())
     : payments;
 
   return (

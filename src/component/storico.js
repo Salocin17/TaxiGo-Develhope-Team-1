@@ -26,6 +26,23 @@ export function Storico(props) {
       });
   }, []);
 
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    fetch(`http://localhost:3300/api/route`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.length)
+        setPayments(data)
+      });
+  }, []);
+
+
   function handleDateChange(date) {
     setSelectedDate(date);
   }
@@ -34,38 +51,7 @@ export function Storico(props) {
     navigate(`/homeUser/${props.street}`)
   }
 
-  const [payments, setPayments] = useState([
-    {
-      date: "2023-05-07",
-      taxiCompany: "Yellow Cab",
-      origin: "Viale Lunigiana",
-      destination: "Via Spoleto",
-      price: "50.00",
-      departureTime: "10:00",
-      arrivalTime: "10:20",
-      state: "Confermato",
-    },
-    {
-      date: "2023-04-22",
-      taxiCompany: "Uber",
-      origin: "Via Roma",
-      destination: "Via Lesa",
-      price: "35.00",
-      departureTime: "08:00",
-      arrivalTime: "08:15",
-      state: "Cancellato",
-    },
-    {
-      date: "2023-03-10",
-      taxiCompany: "Lyft",
-      origin: "Via Tonale",
-      destination: "Via Delia",
-      price: "45.00",
-      departureTime: "15:00",
-      arrivalTime: "15:15",
-      state: "Completato",
-    },
-  ]);
+  const [payments, setPayments] = useState([]);
 
   return (
     <div className="wrapper-storico">
@@ -92,7 +78,9 @@ export function Storico(props) {
       </div>
 
       <div className="container-storico">
+        {payments && payments.length>0 &&
         <PaymentHistory payments={payments} selectedDate={selectedDate} />
+        }
       </div>
     </div>
   );

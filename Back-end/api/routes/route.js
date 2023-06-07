@@ -3,6 +3,7 @@ const app = express.Router();
 const Joi = require("joi");
 const { Street, Zone, Request, Route, TaxiDriver } = require("../../db");
 const { outError } = require("../../utility/errors");
+const { authUser } = require("../../middleware/authUser");
 const { authDriver } = require("../../middleware/authDriver");
 
 app.post("/", authDriver(), async(req, res) =>{
@@ -35,5 +36,18 @@ app.post("/", authDriver(), async(req, res) =>{
     }
 
 })
+
+app.get("/", authUser(), async (req, res) => {
+  
+    try {
+
+        Route.find({user: req.user._id}).populate({path:"departure", select:"name"}).exec().then((result,err) =>{
+            res.status(200).json(result);
+        })
+
+    }catch(error){
+        outError(error)(req, res)
+    }
+});
 
 module.exports = app

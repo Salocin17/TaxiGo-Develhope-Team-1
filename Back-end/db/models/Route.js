@@ -5,6 +5,7 @@ const RouteSchema = new Schema({
     departure: {
         type: String,
         required: true,
+        ref:"Street"
     },
     destination : {
         type: String,
