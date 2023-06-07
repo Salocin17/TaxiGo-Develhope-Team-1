@@ -2,36 +2,67 @@ import React, { useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
-
+import io from "socket.io-client";
 
 const UserList = ({onValueChange}) => {
+    const socket = io.connect("http://localhost:3300");
 
-    const [list, setList] = useState();
+    const [list, setList] = useState([]);
 
-    useEffect(() => {
+    
+    if(!list){
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${token}`,
           },
-        }).then((res) => res.json()).then(json => console.log(json));
-      },[])
-    
-    useEffect(() => {
-        const token = localStorage.getItem("token1")
-        setInterval(() => {
-            fetch("http://localhost:3300/api/request", {
-                method: "GET",
-                headers: {
-                    'authorization': `Bearer ${token}`,
-                }
-            }).then(res => res.json())
-                .then(json => setList(json))
-                .then(console.log(list))
-        }, 5000)
+        }).then((res) => res.json()).then(json => console.log("change"));
+    }
+      
 
-    },[])
+    useEffect(() => {
+        const token = localStorage.getItem("token1");
+        fetch(`http://localhost:3300/api/driver`, {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data)
+            const id = data._id
+            socket.emit("join_room", id);
+          });
+    }, [socket]);
+
+
+
+ 
+    
+  
+    socket.on("receive_message", (data) => {
+        console.log(data)
+        setList(list => [...list, data])
+    });
+
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token1")
+    //     setInterval(() => {
+    //         fetch("http://localhost:3300/api/request", {
+    //             method: "GET",
+    //             headers: {
+    //                 'authorization': `Bearer ${token}`,
+    //             }
+    //         }).then(res => res.json())
+    //             .then(json => setList(json))
+    //             .then(console.log(list))
+    //     }, 5000)
+
+    // },[])
+
 
     const handleSelect = (e) => {
         onValueChange(1, list[e]);
@@ -50,7 +81,7 @@ const UserList = ({onValueChange}) => {
                                 <ProfilePicture user={true} />
                                 <div>
                                     <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
-                                    <small className="text-muted">Via Roma</small>
+                                    <small className="text-muted">{item.destination}</small>
                                 </div>
                             </div>
                             <div>

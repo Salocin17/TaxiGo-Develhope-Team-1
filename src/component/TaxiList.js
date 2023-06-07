@@ -20,8 +20,11 @@ const TaxiList = ({ onValueChange }) => {
           'authorization': `Bearer ${token}`,
         }
       }).then(res => res.json()).then(data => {
-
-        setList(data)
+        if(data){
+          clearInterval(interval)
+          setList(data)
+          
+        }
       })
       // data.map(el => {
       //   console.log(el.street)

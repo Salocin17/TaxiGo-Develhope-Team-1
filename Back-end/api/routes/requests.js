@@ -4,7 +4,7 @@ const Joi = require("joi");
 const { User, Request } = require("../../db");
 const { outError } = require("../../utility/errors");
 const { authUser } = require("../../middleware/authUser");
-
+const {io} = require("../../socket/index")
 
 app.post("/", authUser(), async (req, res)=>{ 
     const schema = Joi.object().keys({
@@ -26,6 +26,8 @@ app.post("/", authUser(), async (req, res)=>{
         const data = {departure, destination, taxiDriver, user }
 
         const request = await Request.create(data);
+
+        io.sockets.to(id).emit("receive_message", request);
 
         return res.status(201).json({ request });
 

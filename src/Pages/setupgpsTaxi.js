@@ -10,7 +10,7 @@ export function SetupGpsTaxi() {
   const [street, setStreet] = useState([]);
   const [isManualSelected, setIsManualSelected] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [streetInput, setStreetInput] = useState("Via%20Tonale");
+  const [streetInput, setStreetInput] = useState();
 
   const navigate = useNavigate();
 
@@ -67,8 +67,8 @@ export function SetupGpsTaxi() {
 
   const handlePosition = () => {
     navigator.geolocation.getCurrentPosition((position) => {});
-    const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/location/user/Via%20Tonale`, {
+    const token = localStorage.getItem("token1");
+    fetch(`http://localhost:3300/api/location/taxiDriver/Via%20Tonale`, {
       method: "PATCH",
       body: JSON.stringify({
         title: "change",

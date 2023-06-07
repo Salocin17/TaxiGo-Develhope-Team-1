@@ -36,7 +36,7 @@ const SearchCard = ({ onValueChange, onSetDestination }) => {
   return (
     <Card className="search-card fixed-bottom">
       <Card.Body className="p-2">
-        <div
+        {street !=[] && <div
           style={{
             maxHeight: "200px",
             display: isInputFocused ? "block" : "none",
@@ -55,7 +55,7 @@ const SearchCard = ({ onValueChange, onSetDestination }) => {
               {el}
             </div>
           ))}
-        </div>
+        </div>}
         <div className="rounded-bar" />
         <Form className="search-form">
           <Form.Group controlId="search" className="search-bar-container">

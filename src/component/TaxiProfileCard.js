@@ -5,7 +5,14 @@ import { BsFillTelephoneFill, BsStarFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from 'react';
 
+import io from "socket.io-client";
+
+// const socket = io.connect("http://localhost:3001");
+
+
 const TaxiProfileCard = ({ onValueChange, data, destination }) => {
+
+  const socket = io.connect("http://localhost:3300");
 
   const [request, setRequest] = useState()
   const [status, setStatus] = useState(false)
@@ -19,7 +26,15 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
       confirmButtonColor: '#31C48D'
     })
 
+    // const id = data._id
+    
+    // socket.emit("join_room", id);
+    // socket.emit("send_message", { destination, id });
+
+
     const token = localStorage.getItem("token")
+
+
 
     fetch("http://localhost:3300/api/requests", {
       method: "POST",
