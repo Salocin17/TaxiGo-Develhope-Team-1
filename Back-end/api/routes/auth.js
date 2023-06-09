@@ -13,6 +13,9 @@ app.post("/login", async (req, res) => {
     })
     
     try {
+
+
+        console.log(req.body)
         const data = await schema.validateAsync(req.body);
         
         const user = data.type ? 

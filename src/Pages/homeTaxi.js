@@ -65,6 +65,7 @@ export function HomeTaxi({onSetStreet}) {
   function handleValueChange(newValue) {
     setActive(newValue);
   }
+  
   function handleValueChange2(newValue, data) {
     setRequest(data)
     setActive(newValue);
@@ -85,8 +86,9 @@ export function HomeTaxi({onSetStreet}) {
 
   useEffect(() => {
     onSetStreet(street)
-  }, [street]);
+  }, []);
 
+  console.log("homeTaxi")
 
   return (
     <div className="container">

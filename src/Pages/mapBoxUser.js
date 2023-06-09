@@ -70,17 +70,20 @@ export function MapBoxUser(props) {
                 .addTo(map2.current);
         })
 
-    },[]);
+    },[props.street]);
 
+    
     useEffect(() => {
+      if(props.destination){
+        console.log(props.destination)
         map2.current.on('load', async () => {
-            const marker1 = new mapboxgl.Marker({color: "red"})
-                .setLngLat(props.destination)
-                .addTo(map2.current);
-        })
+          const marker1 = new mapboxgl.Marker({color: "red"})
+              .setLngLat(props.destination)
+              .addTo(map2.current);
+      })
 
-        getRoute(props.street, props.destination);
-       
+      getRoute(props.street, props.destination);
+      }
     },[props.destination]);
 
     return (

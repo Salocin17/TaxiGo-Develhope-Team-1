@@ -4,18 +4,21 @@ import { RiTaxiFill } from "react-icons/ri";
 import { BsFillTelephoneFill, BsStarFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from 'react';
-
 import io from "socket.io-client";
 
-// const socket = io.connect("http://localhost:3001");
-
+// const socket = io.connect("http://localhost:3300");
 
 const TaxiProfileCard = ({ onValueChange, data, destination }) => {
 
-  const socket = io.connect("http://localhost:3300");
-
   const [request, setRequest] = useState()
   const [status, setStatus] = useState(false)
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    const newSocket = io.connect('http://localhost:3300')
+    setSocket(newSocket)
+
+}, [])
 
   const handleConfirm = () => {
     Swal.fire({
@@ -26,15 +29,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
       confirmButtonColor: '#31C48D'
     })
 
-    // const id = data._id
-    
-    // socket.emit("join_room", id);
-    // socket.emit("send_message", { destination, id });
-
-
     const token = localStorage.getItem("token")
-
-
 
     fetch("http://localhost:3300/api/requests", {
       method: "POST",
@@ -49,9 +44,17 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
 
     }).then(res => res.json())
       .then(json => {
+        console.log(json)
+
+        const id = data._id
+    
+        socket.emit("join_room", id);
+        socket.emit("send_message", { json, id });
+
         setRequest(json)
       })
   }
+
 
   const deleteRequest = () => {
     const token = localStorage.getItem("token")

@@ -4,13 +4,30 @@ import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
 import io from "socket.io-client";
 
+// const socket = io.connect("http://localhost:3300")
+
+
 const UserList = ({onValueChange}) => {
-    const socket = io.connect("http://localhost:3300");
+
 
     const [list, setList] = useState([]);
 
+    const [socket, setSocket] = useState(null)
+
+    useEffect(()=>{
+        console.log("cuai")
+    },[])
+
+    useEffect(() => {
+        const newSocket = io.connect('http://localhost:3300')
+        console.log("ciao" + newSocket)
+        setSocket(newSocket)
+        return () => setSocket(null)
+    }, [])
+
     
-    if(!list){
+    useEffect(() =>{
+        console.log("ciao")
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
           method: "GET",
@@ -18,34 +35,36 @@ const UserList = ({onValueChange}) => {
             authorization: `Bearer ${token}`,
           },
         }).then((res) => res.json()).then(json => console.log("change"));
-    }
-      
+    },[])
 
-    useEffect(() => {
+    
+    useEffect(() =>{
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/driver`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${token}`,
           },
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data)
-            const id = data._id
-            socket.emit("join_room", id);
-          });
-    }, [socket]);
+        }).then((res) => res.json()).then(json =>{
+            socket.emit("join_room", json._id);
+        });      
+
+    },[])
+      
+    if(socket){
+        if(socket.connected){
+            socket.on("receive_message", (data) => {
+                console.log(data)
+                    setList(list => [...list, data])
+                
+            });
+          
+        }
+    }
+   
+       
 
 
-
- 
-    
-  
-    socket.on("receive_message", (data) => {
-        console.log(data)
-        setList(list => [...list, data])
-    });
 
 
     // useEffect(() => {

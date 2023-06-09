@@ -11,21 +11,20 @@ const io = new Server(server, {
   },
 });
 
-const sockets = []
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
   socket.on("join_room", (data) => {
-  console.log(data)
     socket.join(data);
   });
 
-//   // socket.on("send_message", (data) => {
-//   //     console.log(data)
-//   //   socket.to(data.id).emit("receive_message", data);
-//   // });
+  socket.on("send_message", (data) => {
+    console.log(data.json.request)
+    socket.to(data.json.request.taxiDriver).emit("receive_message", data.json.request);
+  });
 });
+  
 
 
 module.exports = {

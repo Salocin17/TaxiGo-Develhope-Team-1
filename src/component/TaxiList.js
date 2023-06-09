@@ -9,9 +9,9 @@ const TaxiList = ({ onValueChange }) => {
 
   const [list, setList] = useState([])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  console.log(list)
 
+  if(list.length === 0){      
       const token = localStorage.getItem("token")
 
       fetch("http://localhost:3300/api/taxi", {
@@ -21,9 +21,7 @@ const TaxiList = ({ onValueChange }) => {
         }
       }).then(res => res.json()).then(data => {
         if(data){
-          clearInterval(interval)
           setList(data)
-          
         }
       })
       // data.map(el => {
@@ -42,8 +40,7 @@ const TaxiList = ({ onValueChange }) => {
 
       // })
 
-    }, 2000)
-  }, [])
+  }
 
   function handleChange(e) {
 
