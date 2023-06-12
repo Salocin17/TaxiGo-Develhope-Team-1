@@ -2,28 +2,19 @@ import React, { useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
-import io from "socket.io-client";
 
 // const socket = io.connect("http://localhost:3300")
 
 
-const UserList = ({onValueChange}) => {
+const UserList = ({onValueChange, socket}) => {
 
 
     const [list, setList] = useState([]);
 
-    const [socket, setSocket] = useState(null)
 
     useEffect(()=>{
         console.log("cuai")
     },[])
-
-    useEffect(() => {
-        const newSocket = io.connect('http://localhost:3300')
-        console.log("ciao" + newSocket)
-        setSocket(newSocket)
-        return () => setSocket(null)
-    }, [])
 
     
     useEffect(() =>{
@@ -37,30 +28,17 @@ const UserList = ({onValueChange}) => {
         }).then((res) => res.json()).then(json => console.log("change"));
     },[])
 
-    
-    useEffect(() =>{
-        const token = localStorage.getItem("token1");
-        fetch(`http://localhost:3300/api/driver`, {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }).then((res) => res.json()).then(json =>{
-            socket.emit("join_room", json._id);
-        });      
 
-    },[])
-      
-    if(socket){
-        if(socket.connected){
-            socket.on("receive_message", (data) => {
-                console.log(data)
-                    setList(list => [...list, data])
-                
-            });
-          
-        }
+    if(socket !== null){
+        socket.on("receive_message", (data) => {
+            console.log(data)
+            setList(list => [...list, data])
+        });
+              
     }
+
+        
+    
    
        
 

@@ -10,6 +10,9 @@ import NewNavbar from "../component/NewNavbar";
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa'
 
+import io from "socket.io-client";
+
+
 export function HomeTaxi({onSetStreet}) {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0)
@@ -20,6 +23,26 @@ export function HomeTaxi({onSetStreet}) {
   const [username, setUsername] = useState("");
 
   const { street } = useParams()
+
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    const newSocket = io.connect('http://localhost:3300')
+    console.log("ciao" + newSocket)
+
+    const token = localStorage.getItem("token1");
+    fetch(`http://localhost:3300/api/driver`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.json()).then(json =>{
+        newSocket.emit("join_room", json._id);
+    });      
+
+    setSocket(newSocket)
+}, [])
+
 
   useEffect(() => {
     const token = localStorage.getItem("token1");
@@ -35,10 +58,6 @@ export function HomeTaxi({onSetStreet}) {
       console.log(res);
     });
   }, []);
-
-  useEffect(() => {
-    onSetStreet(street)
-  }, [street]);
 
   useEffect(() => {
     if(request){
@@ -115,7 +134,7 @@ export function HomeTaxi({onSetStreet}) {
       )}
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
-        {active === 0 && <UserList onValueChange={handleValueChange2} />}
+        {active === 0 && <UserList onValueChange={handleValueChange2} socket={socket} />}
         {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request}/>}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
