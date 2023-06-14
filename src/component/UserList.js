@@ -3,62 +3,46 @@ import { Card, ListGroup } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
 
-// const socket = io.connect("http://localhost:3300")
-
-
 const UserList = ({onValueChange, socket}) => {
 
-
     const [list, setList] = useState([]);
-
-
-    useEffect(()=>{
-        console.log("cuai")
-    },[])
-
+    const [event, setEvent] = useState([])
     
     useEffect(() =>{
-        console.log("ciao")
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${token}`,
           },
-        }).then((res) => res.json()).then(json => console.log("change"));
+        })
+        .then((res) => res.json())
+        .then(json => console.log("change"));
     },[])
 
 
+    useEffect(()=>{
+        setList(list => [...list, event])
+    },[event])
+
     if(socket !== null){
         socket.on("receive_message", (data) => {
-            console.log(data)
-            setList(list => [...list, data])
-        });
-              
+            setEvent(data)
+        });  
     }
 
-        
-    
-   
-       
 
-
-
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token1")
-    //     setInterval(() => {
-    //         fetch("http://localhost:3300/api/request", {
-    //             method: "GET",
-    //             headers: {
-    //                 'authorization': `Bearer ${token}`,
-    //             }
-    //         }).then(res => res.json())
-    //             .then(json => setList(json))
-    //             .then(console.log(list))
-    //     }, 5000)
-
-    // },[])
+    useEffect(() => {
+        const token = localStorage.getItem("token1")
+        fetch("http://localhost:3300/api/request", {
+            method: "GET",
+            headers: {
+                'authorization': `Bearer ${token}`,
+            }
+        })
+        .then(res => res.json())
+        .then(json => setList(json))
+    },[])
 
 
     const handleSelect = (e) => {

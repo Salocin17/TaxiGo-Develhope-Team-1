@@ -72,10 +72,6 @@ export function MapBoxTaxi(props) {
 
 async function getRoute(start,end) {
 
-  const options = {units: 'miles'};
-
-  const distance = turf.distance(start, end, options);
-
   const query = await fetch(
     `https://api.mapbox.com/directions/v5/mapbox/cycling/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg`,
     { method: 'GET' }
@@ -84,6 +80,18 @@ async function getRoute(start,end) {
   const json = await query.json();
   const data = json.routes[0];
   const route = data.geometry.coordinates;
+
+  var line = turf.lineString(route);
+  
+  var point1 = turf.point(start);
+  var point2 = turf.point(end);
+  
+  var snapped1 = turf.nearestPointOnLine(line, point1, {units: 'kilometers'});      
+  var snapped2 = turf.nearestPointOnLine(line, point2, {units: 'kilometers'});
+  
+  var distance = Math.abs(snapped1.properties.location - snapped2.properties.location);
+  console.log('distance: ', distance);
+
   const geojson = {
     type: 'Feature',
     properties: {},

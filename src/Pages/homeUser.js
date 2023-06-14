@@ -9,8 +9,9 @@ import FeedbackCard from "../component/FeedbackCard";
 import { MapBoxUser } from "./mapBoxUser";
 import NewNavbar from "../component/NewNavbar";
 import Swal from "sweetalert2";
-import { Routes, Route, useParams, createMemoryRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa'
+import io from "socket.io-client";
 
 const slideInVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -20,20 +21,23 @@ const slideInVariants = {
 export function HomeUser({onSetStreet}) {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0);
-  const [destination, setDestination] = useState(0);
+  const [destination, setDestination] = useState("");
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [TaxiConfirm, setTaxiConfirm] = useState(false)
+  const [TaxiConfirm, setTaxiConfirm] = useState("")
   const { street } = useParams();
   const [center, setCenter] = useState()
-  const [coordinate, setCoordinate] = useState()
   const [distance, setDistance] = useState()
   const [driver, setDriver] = useState()
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+      const newSocket = io.connect('http://localhost:3300')
+      setSocket(newSocket)
+  }, [])
 
 
   useEffect(()=>{
-    console.log("1")
-
     async function data(){
       const name = street.split(" ")
       let responce1
@@ -44,63 +48,48 @@ export function HomeUser({onSetStreet}) {
         case 5: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
         case 6: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%20${name[5]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
       }
-
       const place1 = await responce1.json()
       setCenter(place1.features[0].center)
     }
     data()
   },[])
 
-  useEffect(()=>{
-    console.log("13")
-
-    async function data(){
-      const name = destination.split(" ")
-      let responce1
-      switch(name.length){
-        case 2: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
-        case 3: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
-        case 4: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
-        case 5: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
-        case 6: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%20${name[5]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
-      }
-
-      const place1 = await responce1.json()
-      setCoordinate(place1.features[0].center)
-    }
-    data()
-  },[])
-
-
-  if (TaxiConfirm) {
-    const startAfterTenSeconds = () => {
-        Swal.fire({
-          title: "Prenotazione Confermata",
-          text: "A breve sarai a destinazione",
-          icon: "success",
-          confirmButtonText: "Ottimo!",
-          confirmButtonColor: '#31C48D'
-        });
-    };
-    startAfterTenSeconds();
+  if (TaxiConfirm === "accept") {
+    Swal.fire({
+      title: "Prenotazione Confermata",
+      text: "A breve sarai a destinazione",
+      icon: "success",
+      confirmButtonText: "Ottimo!",
+      confirmButtonColor: '#31C48D'
+    });
   }
 
-  const handleConfirm = () =>{
-    console.log("12")
+  if (TaxiConfirm === "declined") {
+    Swal.fire({
+      title: "Prenotazione Non Confermata",
+      text: "Scegli un altro driver",
+      icon: "error",
+      confirmButtonColor: '#31C48D'
+    });
+    setTimeout(()=>{
+      setTaxiConfirm("")
+    },2000)
+  }
 
-    setActive(3)
-    setTaxiConfirm(true)
+  const handleConfirm = (status) =>{
+    if(status === "accept"){
+      setActive(3)
+    }else{
+      setActive(1)
+    }
+    setTaxiConfirm(status)
   }
 
   useEffect(() => {
-    console.log("11")
-
     onSetStreet(street)
   }, []);
 
   useEffect(() => {
-    console.log("10")
-
     const token = localStorage.getItem("token");
     fetch(`http://localhost:3300/api/user`, {
       method: "GET",
@@ -115,7 +104,6 @@ export function HomeUser({onSetStreet}) {
   }, []);
 
   function handleValueChange(newValue) {
-    console.log("1")
     setActive(newValue);
   }
 
@@ -124,33 +112,23 @@ export function HomeUser({onSetStreet}) {
   }
 
   function handleSetDestination(value) {
-    console.log("2")
-
     setDestination(value);
   }
 
   function handleDistance(value){
-    console.log("3")
-
     setDistance(value)
   }
 
   function handleValueChange2(newValue, data) {
-    console.log("4")
-
     setActive(newValue);
     setDriver(data)
   }
 
   function handleValueChange3(newValue, data) {    
-    console.log("5")
-
-
     setTaxiConfirm(false);
     setActive(newValue);
   }
 
-  console.log("homeuser")
   return (
     <div className="container">
       <NewNavbar onShowSidebar={handleShowSidebar} />
@@ -170,19 +148,19 @@ export function HomeUser({onSetStreet}) {
             onClick={() => setActive(active - 1)}
           >
             <FaArrowLeft size={20}/>
-          </div>
+          </div> 
         </div>
       )}
       {activeSidebar === 1 && <Sidebar />}
       <div className="container-right">
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
-        {active === 1 && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
-        {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination}/>}
-        {TaxiConfirm && <RideTimer onValueChange={handleValueChange3} street={destination} />}
-        {active === 4 && <FeedbackCard onValueChange={handleValueChange} data={driver} onSetDestination={setCoordinate}/>}
+        {active === 1 && destination && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
+        {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination} socket={socket}/>}
+        {TaxiConfirm==="accept" && <RideTimer onValueChange={handleValueChange3} street={destination} />}
+        {active === 4 && <FeedbackCard onValueChange={handleValueChange}/>}
 
         {center && active < 1 && <div className="container-map"><MapBoxUser street={center}/></div>}
-        {active > 0 && <div className="container-map"><MapBoxUser street={center} destination={coordinate}/></div>}
+        {active > 0 && <div className="container-map"><MapBoxUser street={center} destination={destination}/></div>}
 
        
       </div>

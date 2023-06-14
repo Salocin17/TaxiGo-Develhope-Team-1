@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ProfilePicture from './ProfileIcon';
 import Swal from "sweetalert2";
 
-function FeedbackCard({ data, onValueChange, onSetDestination }) {
+function FeedbackCard({ data, onValueChange }) {
     const [rating, setRating] = useState(null);
 
     const handleRatingChange = (value) => {
@@ -19,7 +19,6 @@ function FeedbackCard({ data, onValueChange, onSetDestination }) {
             confirmButtonText: "Chiudi",
             confirmButtonColor: '#31C48D'
         });
-        onSetDestination([])
         onValueChange(0);
     };
 

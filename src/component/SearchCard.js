@@ -4,23 +4,20 @@ import { MdPlace } from "react-icons/md";
 import { FaSearch } from 'react-icons/fa';
 
 const SearchCard = ({ onValueChange, onSetDestination }) => {
-  const [data, setData] = useState()
   const [streets, setStreets] = useState([]);
   const [street, setStreet] = useState([]);
   const [streetInput, setStreetInput] = useState("");
   const [isInputFocused, setIsInputFocused] = useState(false);
 
-
   if(streets.length === 0){
     fetch(`http://localhost:3300/api/getStreet`)
     .then((result) => result.json())
-    .then((json) => {console.log(json) ; setStreets(json.street)});
+    .then((json) => {setStreets(json.street)});
   }
 
   const handleChange = (e) => {
     setStreetInput(e.target.value);
     const data = [];
-    console.log(streets)
     streets.map((el) => {
       if (el.name.includes(e.target.value)) {
         data.push(el.name);

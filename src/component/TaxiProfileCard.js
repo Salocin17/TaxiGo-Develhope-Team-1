@@ -4,22 +4,11 @@ import { RiTaxiFill } from "react-icons/ri";
 import { BsFillTelephoneFill, BsStarFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from 'react';
-import io from "socket.io-client";
 
-// const socket = io.connect("http://localhost:3300");
-
-const TaxiProfileCard = ({ onValueChange, data, destination }) => {
+const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
 
   const [request, setRequest] = useState()
-  const [status, setStatus] = useState(false)
-  const [socket, setSocket] = useState(null)
-
-  useEffect(() => {
-    const newSocket = io.connect('http://localhost:3300')
-    setSocket(newSocket)
-
-}, [])
-
+  
   const handleConfirm = () => {
     Swal.fire({
       title: "Prenotazione in attesa",
@@ -44,17 +33,12 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
 
     }).then(res => res.json())
       .then(json => {
-        console.log(json)
-
         const id = data._id
-    
-        socket.emit("join_room", id);
-        socket.emit("send_message", { json, id });
-
+        socket.emit("join_room", {id, type:"user"});
+        socket.emit("send_message", { json, id});
         setRequest(json)
       })
   }
-
 
   const deleteRequest = () => {
     const token = localStorage.getItem("token")
@@ -74,45 +58,19 @@ const TaxiProfileCard = ({ onValueChange, data, destination }) => {
       })
   }
 
-  useEffect(() => {
-    if (request) {
-      const token = localStorage.getItem("token")
-
-      const interval = setInterval(() => {
-        fetch(`http://localhost:3300/api/accept/${request.request._id}`, {
-          method: "GET",
-          headers: {
-            'authorization': `Bearer ${token}`,
-          },
-
-        }).then(res => res.json())
-          .then(json => {
-
-            if (json == "accept") {
-              console.log(json)
-              clearInterval(interval)
-              deleteRequest()
-              setStatus(true)
-            } else if (json === "declire") {
-              clearInterval(interval)
-              deleteRequest()
-              console.log("declire")
-            } else {
-              console.log("null")
-            }
-
-          })
-      }, 3000)
+  useEffect(()=>{
+    if(socket && request){
+      socket.on("receive_id", (id) => {
+        if(id === request.request._id){
+          onValueChange("accept");
+        }else{
+          onValueChange("declined");
+        }
+        socket.emit("unsubscribe", request.request.taxiDriver)
+        deleteRequest()
+      });
     }
-  }, [request])
-
-  useEffect(() => {
-    if (status) {
-      setTimeout(() => {
-        onValueChange(3);
-      }, 2000)
-    }
-  }, [status])
+  },[request])
 
   return (
 

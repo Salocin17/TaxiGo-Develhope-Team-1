@@ -70,21 +70,48 @@ export function MapBoxUser(props) {
                 .addTo(map2.current);
         })
 
+        console.log(props.destination)
+        if(props.destination){
+          let destination 
+          map2.current.on('load', async () => {
+  
+            const name = props.destination.split(" ")
+            let responce1
+            switch(name.length){
+              case 2: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
+              case 3: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
+              case 4: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
+              case 5: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
+              case 6: responce1 = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${name[0]}%20${name[1]}%20${name[2]}%20${name[3]}%20${name[4]}%20${name[5]}%2020124.json?access_token=pk.eyJ1IjoiY2FtZWxpYTk3IiwiYSI6ImNsaDU3Y3dodjA2NW4zZXBlbHluMXByc3AifQ.DRw1llh3YM_HfCOFpSGgHg` ); break;
+            }
+  
+            const place1 = await responce1.json()
+            destination = place1.features[0].center
+          
+            const marker1 = new mapboxgl.Marker({color: "red"})
+              .setLngLat(destination)
+              .addTo(map2.current);
+  
+            getRoute(props.street, destination);
+          })
+         
+        }
+
     },[props.street]);
 
     
-    useEffect(() => {
-      if(props.destination){
-        console.log(props.destination)
-        map2.current.on('load', async () => {
-          const marker1 = new mapboxgl.Marker({color: "red"})
-              .setLngLat(props.destination)
-              .addTo(map2.current);
-      })
+    // useEffect(() => {
+    //   if(props.destination){
+    //     console.log(props.destination)
+    //     map2.current.on('load', async () => {
+    //       const marker1 = new mapboxgl.Marker({color: "red"})
+    //           .setLngLat(props.destination)
+    //           .addTo(map2.current);
+    //   })
 
-      getRoute(props.street, props.destination);
-      }
-    },[props.destination]);
+    //   getRoute(, props.destination);
+    //   }
+    // },[props.destination]);
 
     return (
         <div

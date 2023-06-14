@@ -25,11 +25,10 @@ export function HomeTaxi({onSetStreet}) {
   const { street } = useParams()
 
   const [socket, setSocket] = useState(null)
-
+  const [id, setId] = useState("")
+ 
   useEffect(() => {
-    const newSocket = io.connect('http://localhost:3300')
-    console.log("ciao" + newSocket)
-
+    console.log("ciao2")
     const token = localStorage.getItem("token1");
     fetch(`http://localhost:3300/api/driver`, {
       method: "GET",
@@ -37,12 +36,21 @@ export function HomeTaxi({onSetStreet}) {
         authorization: `Bearer ${token}`,
       },
     }).then((res) => res.json()).then(json =>{
-        newSocket.emit("join_room", json._id);
+        setId(json._id)
     });      
 
-    setSocket(newSocket)
+   
 }, [])
 
+
+useEffect(()=>{
+  if(id){
+    console.log("connection")
+    const newSocket = io.connect('http://localhost:3300')
+    newSocket.emit("join_room", {id, type:"driver"});
+    setSocket(newSocket)
+  }
+},[id])
 
   useEffect(() => {
     const token = localStorage.getItem("token1");
@@ -107,8 +115,6 @@ export function HomeTaxi({onSetStreet}) {
     onSetStreet(street)
   }, []);
 
-  console.log("homeTaxi")
-
   return (
     <div className="container">
       {active === 0 && <div className="principal-background"></div>}
@@ -135,7 +141,7 @@ export function HomeTaxi({onSetStreet}) {
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
         {active === 0 && <UserList onValueChange={handleValueChange2} socket={socket} />}
-        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request}/>}
+        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} socket={socket} room={id}/>}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">
