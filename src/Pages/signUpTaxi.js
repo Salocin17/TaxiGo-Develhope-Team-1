@@ -11,6 +11,8 @@ export function SignUpTaxi() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showSnackbar, setShowSnackbar] = useState(false);
 
+
+
   useEffect(() => {
     function handleResize() {
       setWindowWidth(window.innerWidth);

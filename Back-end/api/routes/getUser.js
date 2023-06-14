@@ -2,6 +2,7 @@ const express = require("express");
 const { authUser } = require("../../middleware/authUser");
 const { authDriver } = require("../../middleware/authDriver");
 const { User } = require("../../db");
+const { outError } = require("../../utility/errors");
 const app = express.Router();
 const Joi = require("joi");
 

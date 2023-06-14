@@ -10,7 +10,7 @@ export function SetupGpsTaxi() {
   const [street, setStreet] = useState([]);
   const [isManualSelected, setIsManualSelected] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [streetInput, setStreetInput] = useState("Via%20Tonale");
+  const [streetInput, setStreetInput] = useState();
 
   const navigate = useNavigate();
 

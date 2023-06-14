@@ -9,7 +9,7 @@ app.get("/:id", authUser(), async(req, res) =>{
 
     try{ 
         const status = await Request.findOne({_id: req.params.id})
-        console.log(status)
+        // console.log(status)
         res.status(200).json(status.status)
 
     }catch(error){

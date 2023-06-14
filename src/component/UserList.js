@@ -3,37 +3,50 @@ import { Card, ListGroup } from "react-bootstrap";
 import ProfilePicture from "./ProfileIcon";
 import { useState } from "react";
 
+// const socket = io.connect("http://localhost:3300")
 
-const UserList = ({onValueChange, name}) => {
 
-    const [list, setList] = useState();
+const UserList = ({onValueChange, socket}) => {
 
-    console.log(list);
 
-    useEffect(() => {
+    const [list, setList] = useState([]);
+
+    
+    useEffect(() =>{
+        console.log("ciao")
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
           method: "GET",
           headers: {
             authorization: `Bearer ${token}`,
           },
-        }).then((res) => res.json()).then(json => console.log(json));
-      },[])
-    
-    useEffect(() => {
-        const token = localStorage.getItem("token1")
-        setInterval(() => {
-            fetch("http://localhost:3300/api/request", {
-                method: "GET",
-                headers: {
-                    'authorization': `Bearer ${token}`,
-                }
-            }).then(res => res.json())
-                .then(json => setList(json))
-                .then(console.log(list))
-        }, 5000)
-
+        }).then((res) => res.json()).then(json => console.log("change"));
     },[])
+
+
+    if(socket !== null){
+        socket.on("receive_message", (data) => {
+            console.log(data)
+            setList(list => [...list, data])
+        });
+              
+    }
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token1")
+    //     setInterval(() => {
+    //         fetch("http://localhost:3300/api/request", {
+    //             method: "GET",
+    //             headers: {
+    //                 'authorization': `Bearer ${token}`,
+    //             }
+    //         }).then(res => res.json())
+    //             .then(json => setList(json))
+    //             .then(console.log(list))
+    //     }, 5000)
+
+    // },[])
+
 
     const handleSelect = (e) => {
         onValueChange(1, list[e]);
@@ -51,7 +64,7 @@ const UserList = ({onValueChange, name}) => {
                             <div className="d-flex align-items-center justify-content-center gap-3">
                                 <ProfilePicture user={true} />
                                 <div>
-                                    <h6 className="mb-1 fs-6 fw-semibold">{name}</h6>
+                                    <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
                                     <small className="text-muted">{item.destination}</small>
                                 </div>
                             </div>

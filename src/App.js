@@ -16,11 +16,13 @@ import { SetupGpsTaxi } from './Pages/setupgpsTaxi';
 import { useState } from "react";
 import './css/Style.css'
 
-export default function App() {
-  const [street, setStreet] = useState()
+
+function App() {
+
+  const [street, setStreet] = useState(null)
 
   const handleSet = (e) => {
-    setStreet(e)
+      setStreet(e)
   }
 
   return (
@@ -49,4 +51,8 @@ export default function App() {
       </div>
     </Router>
   );
+}
+
+export{
+  App,
 }

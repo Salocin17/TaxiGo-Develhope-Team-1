@@ -10,6 +10,9 @@ import NewNavbar from "../component/NewNavbar";
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa'
 
+import io from "socket.io-client";
+
+
 export function HomeTaxi({onSetStreet}) {
   const [active, setActive] = useState(0);
   const [activeSidebar, setActiveSidebar] = useState(0)
@@ -21,7 +24,29 @@ export function HomeTaxi({onSetStreet}) {
 
   const { street } = useParams()
 
+<<<<<<< HEAD
   console.log(request);
+=======
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    const newSocket = io.connect('http://localhost:3300')
+    console.log("ciao" + newSocket)
+
+    const token = localStorage.getItem("token1");
+    fetch(`http://localhost:3300/api/driver`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }).then((res) => res.json()).then(json =>{
+        newSocket.emit("join_room", json._id);
+    });      
+
+    setSocket(newSocket)
+}, [])
+
+>>>>>>> Feature/Socket
 
   useEffect(() => {
     const token = localStorage.getItem("token1");
@@ -37,10 +62,6 @@ export function HomeTaxi({onSetStreet}) {
       console.log(res);
     });
   }, []);
-
-  useEffect(() => {
-    onSetStreet(street)
-  }, [street]);
 
   useEffect(() => {
     if(request){
@@ -67,6 +88,7 @@ export function HomeTaxi({onSetStreet}) {
   function handleValueChange(newValue) {
     setActive(newValue);
   }
+  
   function handleValueChange2(newValue, data) {
     setRequest(data)
     setActive(newValue);
@@ -87,8 +109,9 @@ export function HomeTaxi({onSetStreet}) {
 
   useEffect(() => {
     onSetStreet(street)
-  }, [street]);
+  }, []);
 
+  console.log("homeTaxi")
 
   return (
     <div className="container">
@@ -115,8 +138,8 @@ export function HomeTaxi({onSetStreet}) {
       )}
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
-        {active === 0 && <UserList onValueChange={handleValueChange2} name={name}/>}
-        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} name={name}/>}
+        {active === 0 && <UserList onValueChange={handleValueChange2} socket={socket} name={name} />}
+        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} name={name} />}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">

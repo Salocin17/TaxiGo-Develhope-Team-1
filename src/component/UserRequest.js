@@ -28,12 +28,13 @@ const UserRequest = ({onValueChange, data, name}) => {
     }
 
     useEffect(() =>{
+        console.log(data)
         fetch(`http://localhost:3300/api/aStreet/${data.departure}`, {
             method: "GET",
         })
         .then(result => result.json())
-            .then(json =>  {console.log(json); setDeparture(json.street.name) } )
-        })
+        .then(json => setDeparture(json.street.name))
+    },[])
 
 
     return (

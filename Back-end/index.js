@@ -1,11 +1,13 @@
 require("dotenv").config();
 
 const express = require("express");
-const app = express();
+
 
 const db = require("./db");
 const cors = require("cors");
 const helmet = require("helmet");
+const {server,app} = require("./socket/index")
+
 
 app.use(cors());
 app.use(helmet());
@@ -18,9 +20,8 @@ app.use(express.urlencoded({ extended: true }));
  */
 app.use("/api", require("./api"));
 
-
 db.connect();
 
-app.listen(process.env.SERVER_PORT, () => {
+server.listen(process.env.SERVER_PORT, () => {
     console.log(`Server listen on port ${process.env.SERVER_PORT}`);
 });

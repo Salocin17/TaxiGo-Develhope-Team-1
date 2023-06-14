@@ -47,6 +47,10 @@ export function SetupGpsUser() {
     setIsInputFocused(true);
   };
 
+  useEffect(() => {
+    
+  }, []);
+
   const setInputClick = (e) => {
     setStreetInput(e);
   };
