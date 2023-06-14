@@ -125,7 +125,6 @@ export function HomeUser({onSetStreet}) {
 
   function handleSetDestination(value) {
     console.log("2")
-
     setDestination(value);
   }
 
