@@ -113,12 +113,12 @@ export function Wallet(props) {
           </div>
           <div className="container-wallet-footer">
             <div className="container-wallet-footer-left">
-              <p>BALANCE</p>
-              <p>€ 25</p>
+              <p className="fs-6 fw-bold">BALANCE</p>
+              <p className="fw-semibold">€ 25</p>
             </div>
             <div className="container-wallet-footer-right">
-              <p>SCADE</p>
-              <p style={{ color: "black", fontSize: "20px" }}>09/21</p>
+              <p className="fs-6 fw-bold">Scadenza</p>
+              <p style={{"font-size": "1.7rem", color: 'black'}} className="fw-semibold">09/23</p>
             </div>
           </div>
           <div className="pointer">
@@ -153,14 +153,11 @@ export function Wallet(props) {
       </div>
       <div className="wrapper-wallet-footer">
         <div className="wallet-input">
-            <p>Metodi di pagamento</p>
-            <i class="fa-solid fa-chevron-right"></i>
+            <p>Aggiungi metodo di pagamento</p>
         </div>
         <div className="wallet-input">
             <p>Coupon</p>
-            <i class="fa-solid fa-chevron-right"></i>
         </div>
-
       </div>
     </div>
   );

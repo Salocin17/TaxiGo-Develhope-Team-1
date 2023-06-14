@@ -91,8 +91,7 @@ export const Account = (props) => {
             <h3><b>Il mio account</b></h3>
           </div>
           <div className="nav-icon">
-            <ProfilePicture
-              user={true}
+            <ProfilePicture user={true}
             />
           </div>
         </div>
@@ -110,12 +109,12 @@ export const Account = (props) => {
                   <div class="card-body">
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Name</p>
+                        <p className="mb-0 fs-6 fw-semibold">Nome</p>
                       </div>
                       <div class="col">
                         {modifiedNome !== "" ? (
                           <input
-                            style={{ width: "90%" }}
+                            className="input-modifier"
                             type="text"
                             value={modifiedNome}
                             onChange={(e) => setModifiedNome(e.target.value)}
@@ -146,12 +145,12 @@ export const Account = (props) => {
                     <hr />
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Cognome</p>
+                        <p className="mb-0 fs-6 fw-semibold">Cognome</p>
                       </div>
                       <div class="col">
                         {modifiedCognome !== "" ? (
                           <input
-                            style={{ width: "90%" }}
+                            className="input-modifier"
                             type="text"
                             value={modifiedCognome}
                             onChange={(e) => setModifiedCognome(e.target.value)}
@@ -182,12 +181,12 @@ export const Account = (props) => {
                     <hr />
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Email</p>
+                        <p className="mb-0 fs-6 fw-semibold">Email</p>
                       </div>
                       <div class="col">
                         {modifiedEmail !== "" ? (
                           <input
-                            style={{ width: "90%" }}
+                            className="input-modifier"
                             type="text"
                             value={modifiedEmail}
                             onChange={(e) => setModifiedEmail(e.target.value)}
@@ -218,12 +217,12 @@ export const Account = (props) => {
                     <hr />
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Compleanno</p>
+                        <p className="mb-0 fs-6 fw-semibold">Data di nascita</p>
                       </div>
                       <div class="col">
                         {modifiedCompleanno !== "" ? (
                           <input
-                            style={{ width: "90%" }}
+                            className="input-modifier"
                             type="text"
                             value={modifiedCompleanno}
                             onChange={(e) => setModifiedCompleanno(e.target.value)}
@@ -254,12 +253,12 @@ export const Account = (props) => {
                     <hr />
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Telefono</p>
+                        <p className="mb-0 fs-6 fw-semibold">Telefono</p>
                       </div>
                       <div class="col">
                         {modifiedTelefono !== "" ? (
                           <input
-                            style={{ width: "90%" }}
+                            className="input-modifier"
                             type="text"
                             value={modifiedTelefono}
                             onChange={(e) => setModifiedTelefono(e.target.value)}
