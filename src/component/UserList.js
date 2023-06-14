@@ -6,7 +6,7 @@ import { useState } from "react";
 // const socket = io.connect("http://localhost:3300")
 
 
-const UserList = ({onValueChange, socket}) => {
+const UserList = ({onValueChange, socket, name}) => {
 
 
     const [list, setList] = useState([]);
@@ -64,7 +64,7 @@ const UserList = ({onValueChange, socket}) => {
                             <div className="d-flex align-items-center justify-content-center gap-3">
                                 <ProfilePicture user={true} />
                                 <div>
-                                    <h6 className="mb-1 fs-6 fw-semibold">Angelo</h6>
+                                    <h6 className="mb-1 fs-6 fw-semibold">{name}</h6>
                                     <small className="text-muted">{item.destination}</small>
                                 </div>
                             </div>

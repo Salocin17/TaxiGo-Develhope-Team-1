@@ -24,9 +24,6 @@ export function HomeTaxi({onSetStreet}) {
 
   const { street } = useParams()
 
-<<<<<<< HEAD
-  console.log(request);
-=======
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
@@ -46,7 +43,6 @@ export function HomeTaxi({onSetStreet}) {
     setSocket(newSocket)
 }, [])
 
->>>>>>> Feature/Socket
 
   useEffect(() => {
     const token = localStorage.getItem("token1");
