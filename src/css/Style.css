@@ -184,20 +184,24 @@ body {
 
 .container-group {
   display: flex;
-  flex-direction: row;
   gap: 0.5rem;
   padding: 0.5rem 0rem 0rem 0.5rem;
-  border-top: 1px solid;
-  border-color: rgba(0, 0, 0, 0.25);
-  justify-content: space-between;
+  border-top: 0.5px solid gray;
   align-items: center;
+  background-color: rgba(128, 128, 128, 0.088);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.viewDetails {
+  width: 90%;
 }
 
 .containerCard {
   display: flex;
-  flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0rem 0rem 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .img {
@@ -206,13 +210,6 @@ body {
   background-size: contain;
   height: 4rem;
   width: 2rem;
-}
-
-.img2 {
-  background-image: url("../Images/dollar.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 1.5rem;
 }
 
 .confermato.Confermato {

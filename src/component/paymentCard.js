@@ -8,6 +8,7 @@ import {
   faMapMarker,
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons";
+import { BiCoinStack } from "react-icons/bi";
 
 export function PaymentCard({ payment }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -27,28 +28,24 @@ export function PaymentCard({ payment }) {
       <Card.Body
         style={{
           display: "flex",
-          flexDirection: "row",
-          padding: "1rem 0rem 0rem 1rem",
+          "align-items": 'center',
         }}
       >
         <div className="img"></div>
 
-        <div className="viewDetails">
-          <p>
-            <b>{payment.departure.name}</b> {new Date(payment.createdAt).toLocaleTimeString()}
-          </p>
-          <p>
-            <b>{payment.destination}</b> {new Date(payment.updatedAt).toLocaleTimeString()}
-          </p>
+        <div className="viewDetails d-flex flex-column gap-2">
+          <span className="d-flex align-items-center justify-content-between">
+            <span className="fs-5 fw-regular">{payment.departure.name}</span> <span className="text-muted fs-6 fw-semibold">{new Date(payment.createdAt).toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' })}</span>
+          </span>
+          <span className="d-flex align-items-center justify-content-between">
+            <span className="fs-5 fw-regular">{payment.destination}</span> <span className="text-muted fs-6 fw-semibold">{new Date(payment.updatedAt).toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' })}</span>
+          </span>
         </div>
       </Card.Body>
       <div className="container-group">
         <div className="containerCard">
-          <div className="img2"></div>
-          <h5 style={{ fontSize: "1.2rem" }}>
-            {" "}
-            € <strong>{payment.price.toFixed(2)}</strong>
-          </h5>
+          <BiCoinStack size={20} className="mr-3" />
+          <span className="fs-5 fw-semibold">€ {payment.price.toFixed(2)}</span>
         </div>
         <div className={`confermato ${payment.state}`}>
           <strong>
