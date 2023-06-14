@@ -46,13 +46,11 @@ export default function Sidebar() {
           <NavItem className="sidenav-header" >
             <NavIcon style={{width: '55px', height: '50px', "margin-left": '1rem'}} >
               <ProfilePicture
-                Propic={
-                  "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                }
-              />{" "}
+                user={true}
+              />
             </NavIcon>
             <NavText>
-              <h4 style={{position:"absolute", left:"0.3rem", top: "5rem", color:"white", fontWeight:"600"}}>{name} {username}</h4>
+              <h4 style={{position:"absolute", left:"1rem", top: "5rem", color:"white", fontWeight:"600"}}>{name} {username}</h4>
             </NavText>
           </NavItem>
 

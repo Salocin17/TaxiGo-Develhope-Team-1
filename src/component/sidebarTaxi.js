@@ -45,14 +45,14 @@ export default function SidebarTaxi() {
       <SideNav.Nav defaultSelected="homeUser">
       <NavItem className="sidenav-header">
             <NavIcon style={{ width: '55px', height: '50px', "margin-left": '1rem' }} >
-              <ProfilePicture style={{marginTop:"2rem"}}
+              <ProfilePicture 
                 taxi={true}
-              />{" "}
+              />
             </NavIcon>
             <NavText style={{display:"flex", flexDirection:"column"}}>
-              <h4 style={{position:"absolute", left:"0.3rem", top: "5rem", color:"white", fontWeight:"600"}}>{name} {username}</h4>
+              <h4 style={{position:"absolute", left:"1rem", top: "5rem", color:"white", fontWeight:"600"}}>{name} {username}</h4>
               <svg
-              style={{position:"absolute", left:"0.3rem", top: "7rem",}}
+              style={{position:"absolute", left:"1rem", top: "7rem",}}
              
                 height="30"
                 viewBox="0 0 20 20"
@@ -86,7 +86,7 @@ export default function SidebarTaxi() {
                   fill="white"
                 />
               </svg>
-              <h4 style={{ position:"absolute", left:"3rem", top: "7.2rem",color:"white", fontWeight:"600"}}>2500</h4>
+              <h4 style={{ position:"absolute", left:"3.5rem", top: "7.2rem",color:"white", fontWeight:"600"}}>2500</h4>
             </NavText>
           </NavItem>
         <NavItem eventKey="homeTaxi" selected={selected === 'homeTaxi'}>

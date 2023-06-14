@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ProfilePicture from "./ProfileIcon";
+import ProfilePicture from "../component/ProfileIcon";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
