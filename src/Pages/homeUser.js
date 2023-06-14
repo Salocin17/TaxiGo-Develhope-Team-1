@@ -51,7 +51,7 @@ export function HomeUser({onSetStreet}) {
     data()
   },[])
 
-  useEffect(()=>{
+   useEffect(()=>{
     console.log("13")
 
     async function data(){
@@ -67,9 +67,9 @@ export function HomeUser({onSetStreet}) {
 
       const place1 = await responce1.json()
       setCoordinate(place1.features[0].center)
-    }
+    } 
     data()
-  },[])
+  },[destination]) 
 
 
   if (TaxiConfirm) {
