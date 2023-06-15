@@ -3,13 +3,37 @@ import ProfilePicture from "./ProfileIcon";
 import { BsFillTelephoneFill} from "react-icons/bs";
 import { MdPlace } from "react-icons/md";
 import { useEffect, useState } from "react";
+import { useDistance } from "../hooks/Distance";
 
 const UserRequest = ({ onValueChange, data, socket, room, name }) => {
 
     const [departure, setDeparture] = useState()
-    console.log(data)
+
+    console.log(data.destination)
+    console.log(data.departure)
+
+    const distance = useDistance("", data.destination, true, data.departure)
 
     const handleConfirm = () => {
+        const token = localStorage.getItem("token1")
+
+        fetch("http://localhost:3300/api/route", {
+            method: "POST",
+            headers: {
+              'authorization': `Bearer ${token}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              id: data._id,
+              distance: distance
+            })
+      
+        })
+        .then(res => res.json())
+        .then(json => {
+            console.log(json)
+        })
+
         socket.emit("send_id", { room , data });
         onValueChange(2, departure);
     }
@@ -30,6 +54,7 @@ const UserRequest = ({ onValueChange, data, socket, room, name }) => {
 
 
     return (
+        distance && 
         <div className="fixed-bottom ">
             <Card className="taxi-profile-card">
                 <Card.Body className="taxi-profile-card-body">
@@ -59,7 +84,7 @@ const UserRequest = ({ onValueChange, data, socket, room, name }) => {
                         <div>
                             <div>
                                 <h6 className="mb-1 text-muted">1 Persona</h6>
-                                <span className="ml-2 fw-semibold">0.5km</span>
+                                <span className="ml-2 fw-semibold">{distance}km</span>
                             </div>
                         </div>
                     </div>
