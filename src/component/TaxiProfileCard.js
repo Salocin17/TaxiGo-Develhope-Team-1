@@ -4,10 +4,16 @@ import { RiTaxiFill } from "react-icons/ri";
 import { BsFillTelephoneFill, BsStarFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import React, { useEffect, useState } from 'react';
+import { useDistance } from "../hooks/Distance";
+import { useParams } from "react-router-dom";
 
 const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
 
   const [request, setRequest] = useState()
+
+  const {street} = useParams()
+  const distance = useDistance("", street, true, data.street)
+  const distanceRoute = useDistance(street, destination)
   
   const handleConfirm = () => {
     Swal.fire({
@@ -72,8 +78,8 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
     }
   },[request])
 
-  return (
-
+ return (
+    distance && distanceRoute &&
     <div className="fixed-bottom ">
       <Card className="taxi-profile-card">
         <Card.Body className="taxi-profile-card-body">
@@ -101,19 +107,19 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
             <div>
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Distanza</h6>
-                <span className="ml-2 fs-6 fw-semibold">0.5 Km</span>
+                <span className="ml-2 fs-6 fw-semibold">{distance} Km</span>
               </div>
             </div>
             <div>
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Tempo</h6>
-                <span className="ml-2 fs-6 fw-semibold">2 min</span>
+                <span className="ml-2 fs-6 fw-semibold">{(distance / 0.8).toFixed(0)} min</span>
               </div>
             </div>
             <div>
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Prezzo</h6>
-                <span className="ml-2 fs-6 fw-semibold">€15.00</span>
+                <span className="ml-2 fs-6 fw-semibold">€{3 + 1.15*distanceRoute}</span>
               </div>
             </div>
           </div>

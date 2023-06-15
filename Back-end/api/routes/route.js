@@ -9,6 +9,7 @@ const { authDriver } = require("../../middleware/authDriver");
 app.post("/", authDriver(), async(req, res) =>{
     const schema = Joi.object().keys({
         id: Joi.string().required(),
+        distance: Joi.number().required()
     })
 
     try{ 
@@ -18,7 +19,7 @@ app.post("/", authDriver(), async(req, res) =>{
 
         const {departure, destination, taxiDriver, user, createdAt } = request._doc
         const date = createdAt
-        const price = Math.random() * 5;
+        const price = 3 + 1.15 * data.distance;
 
         const route = {departure, destination, price, date, taxiDriver, user }
 
@@ -41,9 +42,9 @@ app.get("/", authUser(), async (req, res) => {
   
     try {
 
-        Route.find({user: req.user._id}).populate({path:"departure", select:"name"}).exec().then((result,err) =>{
-            res.status(200).json(result);
-        })
+        const route = await Route.find({user: req.user._id}).populate({path:"departure", select:"name"})
+        return res.status(201).json(route);
+
 
     }catch(error){
         outError(error)(req, res)

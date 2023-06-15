@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { RiTaxiFill } from "react-icons/ri";
-import * as turf from "@turf/turf"
-
-import { MdDataArray } from "react-icons/md";
 
 const TaxiList = ({ onValueChange }) => {
 
@@ -24,22 +21,6 @@ const TaxiList = ({ onValueChange }) => {
           setList(data)
         }
       })
-      // data.map(el => {
-      //   console.log(el.street)
-      //   const information = {
-      //     street: el.street
-      //   }
-      //   console.log(information)
-      //   fetch(`http://localhost:3300/api/aStreet/${el.street}`, {
-      //     method: "GET",
-      //     headers: {
-      //         'authorization': `Bearer ${token}`,
-      //     },
-
-      //     }).then(result => result.json()). then(json => console.log(json))})
-
-      // })
-
   }
 
   function handleChange(e) {
