@@ -30,7 +30,7 @@ const TaxiList = ({ onValueChange }) => {
 
   return (
     <Card className="fixed-bottom list-card ">
-      <Card.Body>
+      <Card.Body className="taxi-list-body">
         <div className="d-flex align-items-center justify-content-center taxi-list-title" >
           <h3 className="align-self-center fw-bold" style={{ color: 'green' }} >Taxi disponibili</h3>
         </div>

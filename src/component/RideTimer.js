@@ -5,6 +5,7 @@ import ProfilePicture from "./ProfileIcon";
 
 function RideTimer({ street, onValueChange }) {
     const [time, setTime] = useState(0);
+    const [wait, setWait] = useState(true);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -26,7 +27,7 @@ function RideTimer({ street, onValueChange }) {
     return (
         
         <Card className="fixed-bottom ride-timer-card">
-            <Card.Body className="taxi-profile-card-body d-flex flex-column justify-content-center gap-2">
+            {wait === false && <Card.Body className="taxi-profile-card-body d-flex flex-column justify-content-center gap-2">
                 <div className="d-flex justify-content-center align-items-center gap-3 pt-3 pb-3 taxi-profile-card-head">
                     <ProfilePicture taxi={true} />
                     <span className="fs-6 fw-semibold">A breve sarai a destinazione!</span>
@@ -36,7 +37,15 @@ function RideTimer({ street, onValueChange }) {
                     <Card.Text className='fs-2 fw-bold ride-timer-address d-flex align-items-center gap-2'>{street}</Card.Text>
                 </div>
                 <Button onClick={changeCard} className='align-self-center mb-3 mt-2' variant="success">{`${formatTime(time)}`}</Button>
-            </Card.Body>
+            </Card.Body>}
+            {wait === true && <Card.Body className="taxi-profile-card-body d-flex flex-column justify-content-center gap-2">
+                <div className="d-flex justify-content-center align-items-center pt-3 pb-3 taxi-profile-card-head">
+                    <ProfilePicture taxi={true} />
+                    <span className="fs-6 fw-semibold ms-3">Attendi il tuo driver!</span>
+                    <div className='loading-icon ms-1'></div>
+                </div>
+            </Card.Body>}
+            
         </Card>
     
     );
