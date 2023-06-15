@@ -10,10 +10,21 @@ import { useParams } from "react-router-dom";
 const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
 
   const [request, setRequest] = useState()
-
   const {street} = useParams()
   const distance = useDistance("", street, true, data.street)
   const distanceRoute = useDistance(street, destination)
+
+  const feedbackValue = [5, 4, 5, 5, 4]
+
+  
+  const sum = feedbackValue.reduce((acc, num) => acc + num, 0);
+  const average = sum / feedbackValue.length;
+  let recommend = '';
+  if (average >= 3) {
+    recommend = 'raccomandato'
+  } else { recommend = 'non raccomandato'}
+
+  
   
   const handleConfirm = () => {
     Swal.fire({
@@ -88,11 +99,12 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
               <ProfilePicture taxi={true} />
               <div className="d-flex flex-column justify-content-center align-items-start pb-2 taxi-profile-card-feedback">
                 <span className="fs-6 fw-semibold">{data.first_name + " " + data.last_name}</span>
-                <div className="d-flex justify-content-center align-items-center gap-2">
+                <div className="d-flex justify-content-center align-items-center gap-1">
+                   <span className="fw-bold">{average}</span>
                   <div className="rounded-circle d-flex align-items-center justify-content-center text-white" style={{ width: "20px", height: "20px", "background-color": "#eccc11" }}>
                     <BsStarFill size={10} className="mr-3" />
                   </div>
-                  <small className="text-muted ">Raccomandato</small>
+                  <small className="text-muted">{recommend}</small>
                 </div>
               </div>
             </div>
