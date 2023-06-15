@@ -4,31 +4,23 @@ import { BsFillTelephoneFill} from "react-icons/bs";
 import { MdPlace } from "react-icons/md";
 import { useEffect, useState } from "react";
 
-const UserRequest = ({onValueChange, data, name}) => {
+const UserRequest = ({ onValueChange, data, socket, room, name }) => {
 
     const [departure, setDeparture] = useState()
     console.log(data)
 
     const handleConfirm = () => {
-        const token = localStorage.getItem("token1")
-
-        fetch("http://localhost:3300/api/route", {
-            method: "POST",
-            body: JSON.stringify({
-                id: data._id,
-            }),
-            headers: {
-                'authorization': `Bearer ${token}`,
-                "Content-Type": "application/json"
-            }
-           
-        }).then(res => res.json())
-            .then(json => console.log(json))
+        socket.emit("send_id", { room , data });
         onValueChange(2, departure);
     }
 
+    const handleDeclire = () =>{
+        socket.emit("send_id", { room , data:{} });
+        onValueChange(0)
+    }
+ 
+
     useEffect(() =>{
-        console.log(data)
         fetch(`http://localhost:3300/api/aStreet/${data.departure}`, {
             method: "GET",
         })
@@ -72,7 +64,7 @@ const UserRequest = ({onValueChange, data, name}) => {
                         </div>
                     </div>
                     <div className="d-flex mt-2 mb-3 align-items-center justify-content-center gap-3">
-                        <Button variant="danger" onClick={() => onValueChange(0)}>Rifiuta</Button>
+                        <Button variant="danger" onClick={handleDeclire}>Rifiuta</Button>
                         <Button variant="success" onClick={handleConfirm}>Accetta</Button>
                     </div>
                 </Card.Body>

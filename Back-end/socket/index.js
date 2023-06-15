@@ -12,16 +12,23 @@ const io = new Server(server, {
 });
 
 
+
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
-
   socket.on("join_room", (data) => {
-    socket.join(data);
+    socket.join(data.id);
   });
 
   socket.on("send_message", (data) => {
-    console.log(data.json.request)
-    socket.to(data.json.request.taxiDriver).emit("receive_message", data.json.request);
+    socket.to(data.id).emit("receive_message", data.json.request);
+  })
+
+  socket.on('unsubscribe', function(room){  
+    socket.leave(room);
+  })
+
+  socket.on("send_id", (data) => {
+    socket.to(data.room).emit("receive_id", data.data._id);
   });
 });
   
