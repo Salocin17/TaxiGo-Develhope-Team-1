@@ -9,7 +9,7 @@ app.get("/", authDriver(), async (req, res) =>{
     
     try {
 
-        const request = await Request.find({taxiDriver: req.user._id})
+        const request = await Request.find({taxiDriver: req.user._id}).populate({path: "user", select:"first_name last_name"})
         const data = []
         request.map((el)=>{
             const {__v, updatedAt, ...rest} = el._doc

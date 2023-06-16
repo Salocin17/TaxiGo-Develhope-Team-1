@@ -17,7 +17,7 @@ app.post("/", authDriver(), async(req, res) =>{
         const data = await schema.validateAsync(req.body);
         const request = await Request.findOne({_id: data.id})
 
-        const {departure, destination, taxiDriver, user, createdAt } = request._doc
+        const {departure, destination, taxiDriver, user, createdAt } = request
         const date = createdAt
         const price = 3 + 1.15 * data.distance;
 

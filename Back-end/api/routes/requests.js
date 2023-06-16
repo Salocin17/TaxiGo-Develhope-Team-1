@@ -23,8 +23,8 @@ app.post("/", authUser(), async (req, res)=>{
 
         const data = {departure, destination, taxiDriver, user }
 
-        const request = await Request.create(data);
-
+        const element = await Request.create(data)
+        const request = await Request.findOne({_id: element._id}).populate({path: "user" , select:"first_name last_name"})
         return res.status(201).json({ request });
 
     }catch(error){

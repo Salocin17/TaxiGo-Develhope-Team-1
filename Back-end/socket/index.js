@@ -28,7 +28,8 @@ io.on("connection", (socket) => {
   })
 
   socket.on("send_id", (data) => {
-    socket.to(data.room).emit("receive_id", data.data._id);
+    // console.log( data.data._id)
+    socket.to(data.room).emit("receive", data);
   });
 });
   
