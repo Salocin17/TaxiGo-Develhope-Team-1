@@ -133,7 +133,7 @@ export function HomeUser({onSetStreet}) {
     <div className="container">
       <NewNavbar onShowSidebar={handleShowSidebar} />
 
-      {active != 0 && (
+      {active !== 0 && (
         <div
           style={{
             position: "absolute",
@@ -154,7 +154,7 @@ export function HomeUser({onSetStreet}) {
       {activeSidebar === 1 && <Sidebar />}
       <div className="container-right">
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
-        {active === 1 && destination && <TaxiList onValueChange={handleValueChange2} destination={destination}/>}
+        {active === 1 && destination && <TaxiList onValueChange={handleValueChange2} destination={destination} data={driver} destination={destination} />}
         {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination} socket={socket}/>}
         {TaxiConfirm==="accept" && <RideTimer onValueChange={handleValueChange3} street={destination} />}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange}/>}
