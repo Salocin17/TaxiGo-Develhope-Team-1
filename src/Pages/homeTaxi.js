@@ -78,7 +78,7 @@ useEffect(()=>{
           "Content-Type": "application/json" 
         },
         body: JSON.stringify({
-          id: request.user
+          id: request.user._id
         })
       })
         .then((response) => response.json())
@@ -141,7 +141,7 @@ useEffect(()=>{
       {activeSidebar === 1 && <SidebarTaxi />}
       <div className="container-right">
         {active === 0 && <UserList onValueChange={handleValueChange2} socket={socket} name={name} />}
-        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} socket={socket} room={id} name={name} />}
+        {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} socket={socket} room={id} name={name}/>}
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">
