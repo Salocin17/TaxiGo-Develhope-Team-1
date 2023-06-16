@@ -51,6 +51,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
     }).then(res => res.json())
       .then(json => {
         const id = data._id
+        console.log(json)
         socket.emit("join_room", {id, type:"user"});
         socket.emit("send_message", { json, id});
         setRequest(json)
@@ -76,9 +77,11 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
   }
 
   useEffect(()=>{
-    if(socket && request){
-      socket.on("receive_id", (id) => {
-        if(id === request.request._id){
+    if(socket && request){ 
+      console.log(request)
+      socket.on("receive", (data) => {
+        console.log(data)
+        if(data.data._id === request.request._id){
           onValueChange("accept");
         }else{
           onValueChange("declined");
@@ -132,7 +135,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
               <div>
                 <h6 className="mb-1 fs-6 text-muted">Prezzo</h6>
                 <span className="ml-2 fs-6 fw-semibold">€{3 + 1.15*distanceRoute}</span>
-              </div>
+               </div>
             </div>
           </div>
           <div className="text-center mt-4 pb-3">

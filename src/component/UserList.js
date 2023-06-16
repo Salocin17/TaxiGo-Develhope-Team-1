@@ -30,6 +30,7 @@ const UserList = ({onValueChange, socket, name}) => {
 
     if(socket !== null){
         socket.on("receive_message", (data) => {
+            console.log(data)
             setEvent(data)
         });  
     }
@@ -44,13 +45,17 @@ const UserList = ({onValueChange, socket, name}) => {
             }
         })
         .then(res => res.json())
-        .then(json => setList(json))
+        .then(json => {
+
+            setList(json)
+        }) 
     },[])
 
 
     const handleSelect = (e) => {
         onValueChange(1, list[e]);
     }
+
 
     return (
         <Card className="fixed-bottom list-card">
@@ -59,12 +64,12 @@ const UserList = ({onValueChange, socket, name}) => {
                     <h3 className="fs-3 fw-bold align-self-center" style={{ color: 'green' }}>Richieste Disponibili</h3>
                 </div>
                 <ListGroup>
-                    {list && list.map((item, index) => (
+                    {list !==[] && list.map((item, index) => (
                         <li key={index} className="taxi-list pt-2 pb-2" onClick={()=> handleSelect(index)} style={{ cursor: 'pointer' }}>
                             <div className="d-flex align-items-center justify-content-center gap-3">
                                 <ProfilePicture user={true} />
                                 <div>
-                                    <h6 className="mb-1 fs-6 fw-semibold">{name}</h6>
+                                    {item.user && <h6 className="mb-1 fs-6 fw-semibold">{item.user.first_name}</h6>}
                                     <small className="text-muted">{item.destination}</small>
                                 </div>
                             </div>
