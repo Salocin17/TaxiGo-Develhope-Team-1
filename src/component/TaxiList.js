@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useParams } from "react";
 import { Card, ListGroup } from "react-bootstrap";
 import { RiTaxiFill } from "react-icons/ri";
+import { useDistance } from "../hooks/Distance";
+import ProfilePicture from "./ProfileIcon";
 
-const TaxiList = ({ onValueChange }) => {
+const TaxiList = ({ onValueChange, data, destination }) => {
 
   const [list, setList] = useState([])
 
@@ -30,25 +32,21 @@ const TaxiList = ({ onValueChange }) => {
 
   return (
     <Card className="fixed-bottom list-card ">
-      <Card.Body>
+      <Card.Body className="taxi-list-body">
         <div className="d-flex align-items-center justify-content-center taxi-list-title" >
           <h3 className="align-self-center fw-bold" style={{ color: 'green' }} >Taxi disponibili</h3>
         </div>
         {list !== [] && <ListGroup >
           {list.map((el, index) => {
-            return (<li key={index} value={index} onClick={() => handleChange(index)} className="taxi-list" style={{ cursor: 'pointer' }}>
+            return (<li key={index} value={index} onClick={() => handleChange(index)} className="taxi-list pt-2" style={{ cursor: 'pointer' }}>
               <div className="d-flex gap-3 justify-content-center align-items-center">
-                <div className="rounded-circle d-flex align-items-center justify-content-center bg-success text-white" style={{ width: "40px", height: "40px", "background-color": '#31C48D' }}>
-                  <RiTaxiFill size={25} className="mr-3" />
-                </div>
-                <div className="d-flex flex-column align-items-start justify-content-center taxi-list-item">
-                  <p className="fs-6 fw-bold d-inline">{el.first_name}</p>
-                  <p className="text-muted d-inline">1 Km</p>
+                <ProfilePicture taxi={true}/>
+                <div className="d-flex flex-column align-items-center justify-content-center taxi-list-item">
+                  <p className="fs-6 fw-semibold d-inline">{el.first_name} {el.last_name}</p>
                 </div>
               </div>
               <div>
-                <h6 className="fs-6 fw-bold">€15</h6>
-                <small className="text-muted">2 min</small>
+                <small className="text-muted">A 0.5 km da te!</small>
               </div>
             </li>)
           })}

@@ -145,11 +145,12 @@ useEffect(()=>{
         {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
         {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
         <div className="container-map">
-        {active === 1 && <MapBoxTaxi center={street}/> }
-        {active === 2 && <MapBoxTaxi center={street} destination={destination}/> }
-        {active === 3 && <MapBoxTaxi center={destination} destination={request.destination}/> }
+        {active === 1 && <MapBoxTaxi center={street} />}
+        {active === 2 && <MapBoxTaxi center={street} destination={destination} />}
+        {active === 3 && <MapBoxTaxi center={destination} destination={request.destination} />}
         </div>
       </div>
+      
     </div>
   );
 }
