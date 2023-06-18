@@ -38,8 +38,6 @@ export function HomeTaxi({onSetStreet}) {
     }).then((res) => res.json()).then(json =>{
         setId(json._id)
     });      
-
-   
 }, [])
 
 
@@ -47,7 +45,6 @@ useEffect(()=>{
   if(id){
     console.log("connection")
     const newSocket = io.connect('http://localhost:3300')
-    newSocket.emit("join_room", {id, type:"driver"});
     setSocket(newSocket)
   }
 },[id])
@@ -139,11 +136,11 @@ useEffect(()=>{
         </div>
       )}
       {activeSidebar === 1 && <SidebarTaxi />}
-      <div className="container-right">
-        {active === 0 && <UserList onValueChange={handleValueChange2} socket={socket} name={name} />}
+      <div className="container-right">s
+        {active === 0 && id && <UserList onValueChange={handleValueChange2} socket={socket} name={name}  id={id} />}
         {active === 1 && <UserRequest onValueChange={handleValueChange3} data={request} socket={socket} room={id} name={name}/>}
-        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name}/>}
-        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name}/>}
+        {active === 2 && <TaxiRideTimer onValueChange={handleValueChange} startAddress={destination} name={name} data={request} socket={socket}/>}
+        {active === 3 && <TaxiRideTimer2 onValueChange={handleValueChange} endAddress={request.destination} name={name} data={request} socket={socket}/>}
         <div className="container-map">
         {active === 1 && <MapBoxTaxi center={street} />}
         {active === 2 && <MapBoxTaxi center={street} destination={destination} />}

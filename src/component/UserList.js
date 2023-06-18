@@ -6,11 +6,19 @@ import { useState } from "react";
 // const socket = io.connect("http://localhost:3300")
 
 
-const UserList = ({onValueChange, socket, name}) => {
+const UserList = ({onValueChange, socket, name, id}) => {
 
     const [list, setList] = useState([]);
     const [event, setEvent] = useState([])
+
+    useEffect(()=>{
+        if(socket !== null){
+            socket.emit("join_room", {id, type:"driver"});
+        } 
+    },[socket])
+   
     
+
     useEffect(() =>{
         const token = localStorage.getItem("token1");
         fetch(`http://localhost:3300/api/status`, {
@@ -19,8 +27,6 @@ const UserList = ({onValueChange, socket, name}) => {
             authorization: `Bearer ${token}`,
           },
         })
-        .then((res) => res.json())
-        .then(json => console.log("change"));
     },[])
 
 
@@ -28,27 +34,28 @@ const UserList = ({onValueChange, socket, name}) => {
         setList(list => [...list, event])
     },[event])
 
-    if(socket !== null){
-        socket.on("receive_message", (data) => {
-            console.log(data)
-            setEvent(data)
-        });  
-    }
-
+    useEffect(()=>{
+        if(socket !== null){
+            socket.on("receive_message", (data) => {
+                setEvent(data)
+            });  
+        }
+    },[socket])
 
     useEffect(() => {
-        const token = localStorage.getItem("token1")
-        fetch("http://localhost:3300/api/request", {
-            method: "GET",
-            headers: {
-                'authorization': `Bearer ${token}`,
-            }
-        })
-        .then(res => res.json())
-        .then(json => {
-
-            setList(json)
-        }) 
+        setTimeout(()=>{
+            const token = localStorage.getItem("token1")
+            fetch("http://localhost:3300/api/request", {
+                method: "GET",
+                headers: {
+                    'authorization': `Bearer ${token}`,
+                }
+            })
+            .then(res => res.json())
+            .then(json => {
+                setList(json)
+            }) 
+        },300)  
     },[])
 
 

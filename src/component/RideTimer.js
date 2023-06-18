@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { MdPlace } from "react-icons/md";
 import ProfilePicture from "./ProfileIcon";
 
-function RideTimer({ street, onValueChange }) {
+function RideTimer({ street, onValueChange, socket, id }) {
     const [time, setTime] = useState(0);
     const [wait, setWait] = useState(true);
 
@@ -27,9 +27,19 @@ function RideTimer({ street, onValueChange }) {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
 
+    socket.on("receive_wait2", ()=>{
+        console.log("id" + id)
+        socket.emit("unsubscribe" ,id)
+        onValueChange(4);
+    })
+
     function changeCard() {
         onValueChange(4);
     }
+
+    socket.on("receive_wait", ()=>{
+        setWait(false);
+    })
 
     const handleTimer = () => {
         setWait(false);

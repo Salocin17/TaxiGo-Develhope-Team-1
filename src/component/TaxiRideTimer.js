@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 import ProfilePicture from "./ProfileIcon";
 import { MdPlace, MdMyLocation } from "react-icons/md";
 
-function TaxiRideTimer({ startAddress, onValueChange, name }) {
+function TaxiRideTimer({ startAddress, onValueChange, name, data, socket }) {
     const [time, setTime] = useState(0);
 
-    console.log(startAddress);
+    console.log(data);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,6 +16,13 @@ function TaxiRideTimer({ startAddress, onValueChange, name }) {
     }, []);
 
 
+    const handlechange = () =>{
+        const room = data.user._id
+        socket.emit("unsubscribe", data.taxiDriver)
+        socket.emit("join_room", {room});
+        socket.emit("send_wait", room)
+        onValueChange(3)
+    }
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -34,7 +41,7 @@ function TaxiRideTimer({ startAddress, onValueChange, name }) {
                     <MdMyLocation size={25} className="mr-3" style={{ "color": "#31C48D" }} />
                     <Card.Text className='fs-2 fw-bold ride-timer-address d-flex align-items-center gap-2'>{startAddress}</Card.Text>
                 </div>
-                <Button className='align-self-center mb-3 mt-2' variant="success" onClick={() => onValueChange(3)}>{`${formatTime(time)}`}</Button>
+                <Button className='align-self-center mb-3 mt-2' variant="success" onClick={handlechange}>{`${formatTime(time)}`}</Button>
             </Card.Body>
         </Card>
     );

@@ -24,12 +24,20 @@ io.on("connection", (socket) => {
   })
 
   socket.on('unsubscribe', function(room){  
+    console.log(room)
     socket.leave(room);
   })
 
   socket.on("send_id", (data) => {
-    // console.log( data.data._id)
     socket.to(data.room).emit("receive", data);
+  });
+
+  socket.on("send_wait", (data) => {
+    socket.to(data.room).emit("receive_wait", data);
+  });
+
+  socket.on("send_wait2", (data) => {
+    socket.to(data.room).emit("receive_wait2", data);
   });
 });
   
