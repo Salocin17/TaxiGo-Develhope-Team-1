@@ -75,7 +75,7 @@ const UserList = ({onValueChange, socket, name}) => {
                             </div>
                             <div>
                                 <h6 className="mb-1">1 Persona</h6>
-                                <small className="text-muted">2 min</small>
+                                <small className="text-muted">1 Km</small>
                             </div>
                         </li>
                     ))}

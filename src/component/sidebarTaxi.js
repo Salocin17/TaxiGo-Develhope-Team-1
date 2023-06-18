@@ -17,7 +17,7 @@ export default function SidebarTaxi() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3300/api/user`, {
+    fetch(`http://localhost:3300/api/driver`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export default function SidebarTaxi() {
               />
             </NavIcon>
             <NavText style={{display:"flex", flexDirection:"column"}}>
-              <h4 style={{position:"absolute", left:"1rem", top: "5rem", color:"white", fontWeight:"600"}}>{name} {username}</h4>
+              <h4 style={{position:"absolute", left:"1rem", top: "5rem", color:"white", fontWeight:"600"}}>Giovanni Rossi</h4>
               <svg
               style={{position:"absolute", left:"1rem", top: "7rem",}}
              
@@ -86,7 +86,7 @@ export default function SidebarTaxi() {
                   fill="white"
                 />
               </svg>
-              <h4 style={{ position:"absolute", left:"3.5rem", top: "7.2rem",color:"white", fontWeight:"600"}}>2500</h4>
+              <h4 style={{ position: "absolute", left: "3.5rem", top: "7.2rem", color: "white", fontWeight: "400" }} className="fs-5">25.00 €</h4>
             </NavText>
           </NavItem>
         <NavItem eventKey="homeTaxi" selected={selected === 'homeTaxi'}>

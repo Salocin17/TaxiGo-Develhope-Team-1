@@ -121,7 +121,7 @@ export const TaxiAccount = (props) => {
                           />
                         ) : (
                           <p class="text-muted mb-0">
-                            {nome}
+                            Giovanni
                           </p>
                         )}
                       </div>
@@ -157,7 +157,7 @@ export const TaxiAccount = (props) => {
                           />
                         ) : (
                           <p class="text-muted mb-0">
-                            {cognome}
+                            Rossi
                           </p>
                         )}
                       </div>
@@ -193,7 +193,7 @@ export const TaxiAccount = (props) => {
                           />
                         ) : (
                           <p class="text-muted mb-0">
-                            {email}
+                            giovanni@gmail.com
                           </p>
                         )}
                       </div>
@@ -217,7 +217,7 @@ export const TaxiAccount = (props) => {
                     <hr />
                     <div class="row" style={{ alignItems: "center" }}>
                       <div class="col-auto">
-                        <p class="mb-0">Compleanno</p>
+                        <p class="mb-0">Data di nascita</p>
                       </div>
                       <div class="col">
                         {modifiedCompleanno !== "" ? (
@@ -229,7 +229,7 @@ export const TaxiAccount = (props) => {
                           />
                         ) : (
                           <p class="text-muted mb-0">
-                            {date}
+                            28/02/1986
                           </p>
                         )}
                       </div>
@@ -265,7 +265,7 @@ export const TaxiAccount = (props) => {
                           />
                         ) : (
                           <p class="text-muted mb-0">
-                            {cellulare}
+                            3332156783
                           </p>
                         )}
                       </div>

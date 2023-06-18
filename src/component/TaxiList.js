@@ -46,7 +46,7 @@ const TaxiList = ({ onValueChange, data, destination }) => {
                 </div>
               </div>
               <div>
-                <small className="text-muted">A 0.5 km da te!</small>
+                <small className="text-muted">A 1 km da te!</small>
               </div>
             </li>)
           })}

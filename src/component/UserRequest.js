@@ -84,7 +84,7 @@ const UserRequest = ({ onValueChange, data, socket, room, name }) => {
                         <div>
                             <div>
                                 <h6 className="mb-1 text-muted">1 Persona</h6>
-                                <span className="ml-2 fw-semibold">{distance}km</span>
+                                <span className="ml-2 fw-semibold">0.5 km</span>
                             </div>
                         </div>
                     </div>
