@@ -80,6 +80,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
           const id = data.data.user._id
           console.log(id)
 
+          
           socket.emit("unsubscribe", request.request.taxiDriver)
           socket.emit("join_room", {id});
         }else{

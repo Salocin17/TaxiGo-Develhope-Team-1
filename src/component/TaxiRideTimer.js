@@ -17,10 +17,11 @@ function TaxiRideTimer({ startAddress, onValueChange, name, data, socket }) {
 
 
     const handlechange = () =>{
-        const room = data.user._id
+        const id = data.user._id
+        console.log("room" + id )
         socket.emit("unsubscribe", data.taxiDriver)
-        socket.emit("join_room", {room});
-        socket.emit("send_wait", room)
+        socket.emit("join_room", {id});
+        socket.emit("send_wait", id)
         onValueChange(3)
     }
 

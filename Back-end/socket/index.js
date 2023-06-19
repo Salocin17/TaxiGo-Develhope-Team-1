@@ -15,7 +15,9 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
+
   socket.on("join_room", (data) => {
+    console.log("data.id" + data.id)
     socket.join(data.id);
   });
 
@@ -33,11 +35,11 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_wait", (data) => {
-    socket.to(data.room).emit("receive_wait", data);
+    socket.to(data).emit("receive_wait", data);
   });
 
   socket.on("send_wait2", (data) => {
-    socket.to(data.room).emit("receive_wait2", data);
+    socket.to(data).emit("receive_wait2", data);
   });
 });
   

@@ -38,6 +38,7 @@ function RideTimer({ street, onValueChange, socket, id }) {
     }
 
     socket.on("receive_wait", ()=>{
+        console.log("wait")
         setWait(false);
     })
 
