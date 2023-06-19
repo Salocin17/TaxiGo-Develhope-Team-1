@@ -8,8 +8,6 @@ const TaxiList = ({ onValueChange, data, destination }) => {
 
   const [list, setList] = useState([])
 
-  console.log(list)
-
   if(list.length === 0){      
       const token = localStorage.getItem("token")
 

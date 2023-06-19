@@ -27,9 +27,9 @@ export function HomeUser({onSetStreet}) {
   const [TaxiConfirm, setTaxiConfirm] = useState("")
   const { street } = useParams();
   const [center, setCenter] = useState()
-  const [distance, setDistance] = useState()
   const [driver, setDriver] = useState()
   const [socket, setSocket] = useState(null)
+  const [id, setId] = useState()
 
   useEffect(() => {
       const newSocket = io.connect('http://localhost:3300')
@@ -76,9 +76,10 @@ export function HomeUser({onSetStreet}) {
     },2000)
   }
 
-  const handleConfirm = (status) =>{
+  const handleConfirm = (status, id) =>{
     if(status === "accept"){
       setActive(3)
+      setId(id)
     }else{
       setActive(1)
     }
@@ -115,10 +116,6 @@ export function HomeUser({onSetStreet}) {
     setDestination(value);
   }
 
-  function handleDistance(value){
-    setDistance(value)
-  }
-
   function handleValueChange2(newValue, data) {
     setActive(newValue);
     setDriver(data)
@@ -129,6 +126,8 @@ export function HomeUser({onSetStreet}) {
     setActive(newValue);
   }
 
+
+  console.log(driver)
   return (
     <div className="container">
       <NewNavbar onShowSidebar={handleShowSidebar} />
@@ -156,7 +155,7 @@ export function HomeUser({onSetStreet}) {
         {active === 0 && <SearchCard onValueChange={handleValueChange} onShowSidebar={handleShowSidebar} onSetDestination={handleSetDestination} />}
         {active === 1 && destination && <TaxiList onValueChange={handleValueChange2} destination={destination} data={driver}/>}
         {active === 2 && <TaxiProfileCard onValueChange={handleConfirm} data={driver} destination={destination} socket={socket}/>}
-        {TaxiConfirm==="accept" && <RideTimer onValueChange={handleValueChange3} street={destination} />}
+        {TaxiConfirm==="accept" && <RideTimer onValueChange={handleValueChange3} street={destination} socket={socket} id={id}/>}
         {active === 4 && <FeedbackCard onValueChange={handleValueChange}/>}
 
         {center && active < 1 && <div className="container-map"><MapBoxUser street={center}/></div>}

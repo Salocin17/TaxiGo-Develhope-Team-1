@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ProfilePicture from "./ProfileIcon";
 import { MdPlace, MdMyLocation } from "react-icons/md";
 
-function TaxiRideTimer2({ endAddress, onValueChange, name }) {
+function TaxiRideTimer2({ endAddress, onValueChange, name, data, socket }) {
     const [time, setTime] = useState(0);
 
     useEffect(() => {
@@ -13,6 +13,15 @@ function TaxiRideTimer2({ endAddress, onValueChange, name }) {
         return () => clearInterval(interval);
     }, []);
 
+    const handlechange = ()=>{
+        const room = data.user._id
+        socket.emit("send_wait2", room)
+        setTimeout(()=>{
+            socket.emit("unsubscribe" ,room)
+            onValueChange(0)
+        },1000)
+        
+    }
 
 
     const formatTime = (time) => {
@@ -32,7 +41,7 @@ function TaxiRideTimer2({ endAddress, onValueChange, name }) {
                     <MdPlace size={25} className="mr-3" style={{ "color": "#31C48D" }} />
                     <Card.Text className='fs-2 fw-bold ride-timer-address d-flex align-items-center gap-2'>{endAddress}</Card.Text>
                 </div>
-                <Button className='align-self-center mb-3 mt-2' variant="success" onClick={() => onValueChange(0)}>{`${formatTime(time)}`}</Button>
+                <Button className='align-self-center mb-3 mt-2' variant="success" onClick={handlechange}>{`${formatTime(time)}`}</Button>
             </Card.Body>
         </Card>
     );

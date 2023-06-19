@@ -51,8 +51,7 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
     }).then(res => res.json())
       .then(json => {
         const id = data._id
-        console.log(json)
-        socket.emit("join_room", {id, type:"user"});
+        socket.emit("join_room", {id});
         socket.emit("send_message", { json, id});
         setRequest(json)
       })
@@ -70,23 +69,23 @@ const TaxiProfileCard = ({ onValueChange, data, destination, socket}) => {
       body: JSON.stringify({
         id: request.request._id,
       }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log(json)
-      })
+    })
   }
 
   useEffect(()=>{
     if(socket && request){ 
-      console.log(request)
       socket.on("receive", (data) => {
-        console.log(data)
         if(data.data._id === request.request._id){
-          onValueChange("accept");
+          onValueChange("accept", data.data.user._id);
+          const id = data.data.user._id
+          console.log(id)
+
+          socket.emit("unsubscribe", request.request.taxiDriver)
+          socket.emit("join_room", {id});
         }else{
+          socket.emit("unsubscribe", request.request.taxiDriver)
           onValueChange("declined");
         }
-        socket.emit("unsubscribe", request.request.taxiDriver)
         deleteRequest()
       });
     }
